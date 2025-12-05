@@ -30,7 +30,7 @@ export default function Footer() {
                     </div>
 
                     {/* Quick Links */}
-                    <div className="space-y-4">
+                    <div className="space-y-4 md:col-start-3">
                         <h4 className="font-serif text-lg tracking-wider text-white">Explore</h4>
                         <ul className="space-y-2 text-sm text-gray-400">
                             <li><Link href="/properties" className="hover:text-accent transition-colors">Properties</Link></li>
@@ -39,27 +39,6 @@ export default function Footer() {
                             <li><Link href="/blog" className="hover:text-accent transition-colors">Market Insights</Link></li>
                             <li><Link href="/contact" className="hover:text-accent transition-colors">Contact</Link></li>
                         </ul>
-                    </div>
-
-                    {/* Newsletter / Social */}
-                    <div className="space-y-4">
-                        <h4 className="font-serif text-lg tracking-wider text-white">Stay Connected</h4>
-                        <p className="text-gray-400 text-sm">
-                            Subscribe to our newsletter for exclusive listings and market updates.
-                        </p>
-                        <form className="flex gap-2">
-                            <input
-                                type="email"
-                                placeholder="Email Address"
-                                className="bg-white/10 border border-white/20 text-white px-4 py-2 w-full focus:outline-none focus:border-accent transition-colors text-sm"
-                            />
-                            <button
-                                type="button"
-                                className="bg-accent text-white px-6 py-2 text-sm uppercase tracking-wider hover:bg-white hover:text-foreground transition-all duration-300"
-                            >
-                                Join
-                            </button>
-                        </form>
                     </div>
                 </div>
 

@@ -1,5 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ExclusiveListings from "@/components/ExclusiveListings";
+import NewsletterItem from "@/components/NewsletterItem";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -39,79 +41,118 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Featured Properties Section (Placeholder) */}
-        <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">Featured Properties</h2>
-              <div className="w-24 h-1 bg-accent mx-auto" />
-            </div>
+        {/* Exclusive Listings Section */}
+        <ExclusiveListings />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Property Card Placeholders */}
-              {[1, 2, 3].map((item) => (
-                <div key={item} className="group cursor-pointer">
-                  <div className="relative h-[400px] overflow-hidden mb-4">
-                    <Image
-                      src={`https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop`}
-                      alt="Property"
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute top-4 left-4 bg-white/90 px-3 py-1 text-xs uppercase tracking-wider">
-                      For Sale
-                    </div>
-                  </div>
-                  <h3 className="font-serif text-xl mb-1 group-hover:text-accent transition-colors">123 Beverly Park</h3>
-                  <p className="text-gray-500 text-sm mb-2">Beverly Hills, CA</p>
-                  <p className="text-foreground font-medium">$12,500,000</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center mt-12">
-              <Link
-                href="/properties"
-                className="inline-block border-b border-foreground pb-1 text-sm uppercase tracking-widest hover:text-accent hover:border-accent transition-all"
-              >
-                View All Properties
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* About Section */}
+        {/* Team Section */}
         <section className="py-24 bg-muted">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-              <div className="relative h-[600px]">
-                <Image
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop"
-                  alt="Gwo Pina Buchana Team"
-                  fill
-                  className="object-cover"
-                />
-              </div>
+            <div className="text-center mb-16">
+              <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6">Meet The Team</h2>
+              <div className="w-24 h-1 bg-accent mx-auto mb-8" />
+              <p className="max-w-2xl mx-auto text-gray-600 leading-relaxed text-lg">
+                Gwo Pina Buchana represents the pinnacle of luxury real estate. Our team combines decades of market expertise with an unwavering commitment to our clients.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              {/* Team Member 1 */}
               <div className="space-y-6">
-                <h2 className="font-serif text-3xl md:text-4xl text-foreground">
-                  Gwo Pina Buchana
-                </h2>
-                <p className="text-gray-600 leading-relaxed">
-                  With over $1 Billion in career sales, Gwo Pina Buchana represents the pinnacle of luxury real estate in Los Angeles. Our team combines market expertise, innovative marketing, and discreet service to deliver exceptional results for our clients.
-                </p>
-                <p className="text-gray-600 leading-relaxed">
-                  Whether you are buying your dream home or selling a prized asset, we provide a personalized experience tailored to your unique needs.
-                </p>
-                <Link
-                  href="/about"
-                  className="inline-block bg-foreground text-white px-8 py-3 text-sm uppercase tracking-widest hover:bg-accent transition-colors duration-300 mt-4"
-                >
-                  Meet the Team
-                </Link>
+                <div className="relative h-[350px] md:h-[500px] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+                  <Image
+                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop"
+                    alt="Gwo Pina"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="font-serif text-2xl text-foreground mb-1">Gwo Pina</h3>
+                  <p className="text-accent text-sm uppercase tracking-widest mb-4">Founder & Principal</p>
+                  <p className="text-gray-600 leading-relaxed text-sm">
+                    With over 15 years of experience in the luxury market, Gwo has established a reputation for discretion, integrity, and record-breaking results.
+                  </p>
+                </div>
+              </div>
+
+              {/* Team Member 2 */}
+              <div className="space-y-6">
+                <div className="relative h-[350px] md:h-[500px] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+                  <Image
+                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&auto=format&fit=crop"
+                    alt="Marcus Buchana"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="font-serif text-2xl text-foreground mb-1">Marcus Buchana</h3>
+                  <p className="text-accent text-sm uppercase tracking-widest mb-4">Managing Partner</p>
+                  <p className="text-gray-600 leading-relaxed text-sm">
+                    Marcus brings a background in architectural design and finance, offering clients a unique perspective on value and potential in every property.
+                  </p>
+                </div>
+              </div>
+
+              {/* Team Member 3 */}
+              <div className="space-y-6">
+                <div className="relative h-[350px] md:h-[500px] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+                  <Image
+                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1000&auto=format&fit=crop"
+                    alt="Elena Rossi"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="font-serif text-2xl text-foreground mb-1">Elena Rossi</h3>
+                  <p className="text-accent text-sm uppercase tracking-widest mb-4">Senior Associate</p>
+                  <p className="text-gray-600 leading-relaxed text-sm">
+                    Elena specializes in international clientele and off-market properties, ensuring seamless transactions for buyers and sellers from around the globe.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </section>
+
+        {/* CTA Grid Section */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-20">
+              <h2 className="font-serif text-3xl md:text-5xl text-foreground tracking-wide">
+                Award-Winning Expertise Meets<br />Unmatched Client Service
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                { title: "Home Search", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop", link: "/search" },
+                { title: "Home Valuation", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop", link: "/valuation" },
+                { title: "Let's Connect", image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1000&auto=format&fit=crop", link: "/contact" }
+              ].map((item) => (
+                <Link key={item.title} href={item.link} className="group relative h-[300px] md:h-[500px] overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+                  <div className="absolute bottom-8 left-8 z-10">
+                    <h3 className="font-serif text-2xl md:text-3xl text-white tracking-wide group-hover:translate-x-2 transition-transform duration-300">
+                      {item.title}
+                    </h3>
+                    <div className="h-[1px] w-0 bg-white mt-4 group-hover:w-16 transition-all duration-500 delay-100" />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Newsletter Section */}
+        <NewsletterItem />
       </main>
 
       <Footer />
