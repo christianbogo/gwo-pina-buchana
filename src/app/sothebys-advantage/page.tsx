@@ -39,26 +39,26 @@ export default async function SothebysAdvantagePage() {
                 </section>
 
                 {/* Content */}
-                <section className="py-24 bg-white">
+                <section className="py-24 bg-background">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg prose-headings:font-serif">
                         <h2 className="text-center font-serif text-3xl md:text-4xl text-foreground mb-12">
                             A Legacy of Excellence
                         </h2>
-                        <p className="text-gray-600 leading-relaxed mb-6">
+                        <p className="text-muted-foreground leading-relaxed mb-6">
                             For centuries, the Sotheby’s name has been synonymous with the exceptional. A tradition of continued excellence, built on a foundation of integrity and expertise, defines the Sotheby’s International Realty® brand.
                         </p>
-                        <p className="text-gray-600 leading-relaxed mb-6">
+                        <p className="text-muted-foreground leading-relaxed mb-6">
                             Our affiliation with Sotheby’s International Realty provides our clients with exclusive access to a global network of real estate professionals, innovative marketing tools, and a qualified audience of international buyers.
                         </p>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 my-16">
-                            <div className="text-center p-8 bg-gray-50">
+                            <div className="text-center p-8 bg-muted">
                                 <h3 className="font-serif text-2xl mb-4">Global Network</h3>
                                 <p className="text-sm text-gray-500">
                                     Connecting the finest independent real estate companies to the most prestigious clientele in the world.
                                 </p>
                             </div>
-                            <div className="text-center p-8 bg-gray-50">
+                            <div className="text-center p-8 bg-muted dark:bg-card">
                                 <h3 className="font-serif text-2xl mb-4">Brand Heritage</h3>
                                 <p className="text-sm text-gray-500">
                                     Distinguished by a commitment to art, culture, and high standards of service.
@@ -66,7 +66,7 @@ export default async function SothebysAdvantagePage() {
                             </div>
                         </div>
 
-                        <p className="text-gray-600 leading-relaxed">
+                        <p className="text-muted-foreground leading-relaxed">
                             When you list with Gwo Pina Buchana, your home is presented to a highly qualified global audience through exclusive channels and proprietary marketing relationships.
                         </p>
                     </div>

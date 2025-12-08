@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface HeaderProps {
     theme?: "transparent" | "solid";
@@ -58,10 +59,10 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
     const isSolid = theme === "solid" || isScrolled;
 
     const headerClasses = isSolid
-        ? "bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm py-0"
+        ? "bg-white/90 dark:bg-black/90 backdrop-blur-md border-b border-gray-200 dark:border-white/10 shadow-sm py-0"
         : "bg-transparent border-transparent py-4";
 
-    const textColorClass = isSolid ? "text-gray-900" : "text-white";
+    const textColorClass = isSolid ? "text-gray-900 dark:text-white" : "text-white";
     const hoverColorClass = isSolid ? "hover:text-accent" : "hover:text-white/80";
 
     return (
@@ -171,13 +172,13 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
 
                 {/* Sidebar Panel */}
                 <div
-                    className={`absolute right-0 top-0 h-full w-full sm:w-[400px] bg-white shadow-2xl transform transition-transform duration-500 ease-out flex flex-col ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
+                    className={`absolute right-0 top-0 h-full w-full sm:w-[400px] bg-white dark:bg-zinc-900 shadow-2xl transform transition-transform duration-500 ease-out flex flex-col ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
                 >
-                    <div className="flex flex-col h-full p-8 md:p-12 overflow-y-auto">
+                    <div className="flex flex-col h-full p-8 md:p-12 overflow-y-auto w-full">
                         <div className="flex justify-end mb-8">
                             <button
                                 onClick={() => setIsMenuOpen(false)}
-                                className="text-gray-900 hover:text-accent transition-colors p-2"
+                                className="text-gray-900 dark:text-white hover:text-accent transition-colors p-2"
                                 aria-label="Close menu"
                             >
                                 <svg

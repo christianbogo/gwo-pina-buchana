@@ -46,7 +46,7 @@ export default function InTheNewsPage() {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {newsItems.map((item) => (
-                                <Link key={item.slug} href={`/in-the-news/${item.slug}`} className="group bg-white flex flex-col h-full shadow-sm hover:shadow-md transition-shadow">
+                                <Link key={item.slug} href={`/in-the-news/${item.slug}`} className="group bg-card dark:bg-card border dark:border-white/10 flex flex-col h-full shadow-sm hover:shadow-md transition-shadow">
                                     <div className="relative h-64 overflow-hidden">
                                         <Image
                                             src={item.image}
@@ -60,10 +60,10 @@ export default function InTheNewsPage() {
                                             <span className="text-xs uppercase tracking-widest text-accent font-medium">{item.date}</span>
                                         </div>
                                         <h3 className="font-serif text-2xl mb-4 group-hover:text-accent transition-colors">{item.title}</h3>
-                                        <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">
+                                        <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow">
                                             {item.summary}
                                         </p>
-                                        <div className="text-xs uppercase tracking-widest font-bold border-b border-gray-900 self-start group-hover:border-accent group-hover:text-accent transition-all">
+                                        <div className="text-xs uppercase tracking-widest font-bold border-b border-foreground self-start group-hover:border-accent group-hover:text-accent transition-all">
                                             Read More
                                         </div>
                                     </div>

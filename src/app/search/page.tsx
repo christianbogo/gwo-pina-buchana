@@ -88,12 +88,12 @@ export default async function NeighborhoodsPage() {
         <div className="min-h-screen flex flex-col">
             <Header theme="solid" />
             <main className="flex-grow pt-24">
-                <section className="bg-white py-24">
+                <section className="bg-background py-24">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center mb-16">
                             <h1 className="font-serif text-4xl md:text-6xl text-foreground mb-6">Home Search</h1>
                             <div className="w-24 h-1 bg-accent mx-auto mb-8" />
-                            <p className="max-w-2xl mx-auto text-gray-600 leading-relaxed text-lg">
+                            <p className="max-w-2xl mx-auto text-muted-foreground leading-relaxed text-lg">
                                 Explore the finest neighborhoods in the Pacific Northwest.
                             </p>
                         </div>

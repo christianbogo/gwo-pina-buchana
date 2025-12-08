@@ -1,1 +1,1 @@
-export const GREY_PLACEHOLDER = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88P//fwAJ/QP0ws75kAAAAABJRU5ErkJggg=="; // Dark grey #333333 approx
+export const GREY_PLACEHOLDER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect width='1' height='1' fill='%23333333'/%3E%3C/svg%3E";

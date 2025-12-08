@@ -28,7 +28,7 @@ const teamMembers = [
 export default function TeamPage() {
     return (
         <div className="min-h-screen flex flex-col">
-            <Header />
+            <Header theme="solid" />
             <main className="flex-grow pt-24">
                 <section className="bg-muted py-24">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

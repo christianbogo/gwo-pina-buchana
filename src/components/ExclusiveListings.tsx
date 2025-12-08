@@ -101,7 +101,7 @@ export default function ExclusiveListings() {
     };
 
     return (
-        <section className="py-24 bg-white relative overflow-hidden">
+        <section className="py-24 bg-background relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-end mb-16">
                     <div>
@@ -112,7 +112,7 @@ export default function ExclusiveListings() {
                     <div className="flex gap-4">
                         <button
                             onClick={prevPage}
-                            className="p-3 border border-gray-200 hover:border-accent hover:text-accent transition-colors duration-300"
+                            className="p-3 border border-border hover:border-accent hover:text-accent transition-colors duration-300"
                             aria-label="Previous property"
                         >
                             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -121,7 +121,7 @@ export default function ExclusiveListings() {
                         </button>
                         <button
                             onClick={nextPage}
-                            className="p-3 border border-gray-200 hover:border-accent hover:text-accent transition-colors duration-300"
+                            className="p-3 border border-border hover:border-accent hover:text-accent transition-colors duration-300"
                             aria-label="Next property"
                         >
                             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -150,12 +150,12 @@ export default function ExclusiveListings() {
                                             fill
                                             className="object-cover transition-transform duration-700 group-hover:scale-110"
                                         />
-                                        <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm px-4 py-2 text-xs uppercase tracking-wider font-medium">
+                                        <div className="absolute top-6 left-6 bg-background/90 backdrop-blur-sm px-4 py-2 text-xs uppercase tracking-wider font-medium">
                                             {property.tag}
                                         </div>
                                     </div>
                                     <h3 className="font-serif text-2xl mb-2 group-hover:text-accent transition-colors">{property.title}</h3>
-                                    <p className="text-gray-500 text-sm mb-3 tracking-wide">{property.location}</p>
+                                    <p className="text-muted-foreground text-sm mb-3 tracking-wide">{property.location}</p>
                                     <p className="text-foreground font-medium text-lg">{property.price}</p>
                                 </div>
                             </div>

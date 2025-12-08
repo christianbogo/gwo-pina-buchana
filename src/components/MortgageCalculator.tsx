@@ -37,8 +37,8 @@ export default function MortgageCalculator({ defaultPrice = 1000000 }: MortgageC
     }
 
     return (
-        <div className="bg-white p-8 max-w-2xl mx-auto font-sans text-gray-900">
-            <h3 className="text-2xl font-light mb-8 uppercase tracking-widest border-b border-gray-200 pb-4">
+        <div className="bg-white dark:bg-card p-8 max-w-2xl mx-auto font-sans text-gray-900 key={1}">
+            <h3 className="text-2xl font-light mb-8 uppercase tracking-widest border-b border-gray-200 dark:border-border pb-4 text-foreground">
                 Mortgage Calculator
             </h3>
 
@@ -54,7 +54,7 @@ export default function MortgageCalculator({ defaultPrice = 1000000 }: MortgageC
                             type="number"
                             value={price}
                             onChange={(e) => setPrice(Number(e.target.value))}
-                            className="w-full pl-6 pr-0 py-2 text-xl bg-transparent border-b border-gray-300 focus:border-black outline-none transition-colors duration-300 placeholder-gray-300"
+                            className="w-full pl-6 pr-0 py-2 text-xl bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-black dark:focus:border-white outline-none transition-colors duration-300 placeholder-gray-300 dark:placeholder-gray-600 text-foreground"
                             placeholder="0"
                         />
                     </div>
@@ -74,7 +74,7 @@ export default function MortgageCalculator({ defaultPrice = 1000000 }: MortgageC
                                 const val = Number(e.target.value)
                                 setDownPaymentPercent((val / price) * 100)
                             }}
-                            className="w-full pl-6 pr-0 py-2 text-xl bg-transparent border-b border-gray-300 focus:border-black outline-none transition-colors duration-300 placeholder-gray-300"
+                            className="w-full pl-6 pr-0 py-2 text-xl bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-black dark:focus:border-white outline-none transition-colors duration-300 placeholder-gray-300 dark:placeholder-gray-600 text-foreground"
                             placeholder="0"
                         />
                     </div>
@@ -91,7 +91,7 @@ export default function MortgageCalculator({ defaultPrice = 1000000 }: MortgageC
                             step="0.1"
                             value={interestRate}
                             onChange={(e) => setInterestRate(Number(e.target.value))}
-                            className="w-full pl-0 pr-0 py-2 text-xl bg-transparent border-b border-gray-300 focus:border-black outline-none transition-colors duration-300 placeholder-gray-300"
+                            className="w-full pl-0 pr-0 py-2 text-xl bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-black dark:focus:border-white outline-none transition-colors duration-300 placeholder-gray-300 dark:placeholder-gray-600 text-foreground"
                             placeholder="0"
                         />
                         <span className="absolute right-0 bottom-2 text-lg text-gray-400">%</span>
@@ -108,7 +108,7 @@ export default function MortgageCalculator({ defaultPrice = 1000000 }: MortgageC
                             type="number"
                             value={loanTermYears}
                             onChange={(e) => setLoanTermYears(Number(e.target.value))}
-                            className="w-full pl-0 pr-0 py-2 text-xl bg-transparent border-b border-gray-300 focus:border-black outline-none transition-colors duration-300 placeholder-gray-300"
+                            className="w-full pl-0 pr-0 py-2 text-xl bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-black dark:focus:border-white outline-none transition-colors duration-300 placeholder-gray-300 dark:placeholder-gray-600 text-foreground"
                             placeholder="30"
                         />
                         <span className="absolute right-0 bottom-2 text-lg text-gray-400">Years</span>
@@ -117,11 +117,11 @@ export default function MortgageCalculator({ defaultPrice = 1000000 }: MortgageC
             </div>
 
             {/* Result */}
-            <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-baseline">
-                <span className="text-sm uppercase tracking-widest text-gray-500">
+            <div className="mt-12 pt-8 border-t border-gray-100 dark:border-border flex flex-col md:flex-row justify-between items-baseline">
+                <span className="text-sm uppercase tracking-widest text-gray-500 dark:text-muted-foreground">
                     Estimated Monthly Payment
                 </span>
-                <span className="text-4xl font-light text-black mt-2 md:mt-0">
+                <span className="text-4xl font-light text-black dark:text-white mt-2 md:mt-0">
                     {formatCurrency(monthlyPayment)}
                     <span className="text-lg text-gray-400 ml-1">/mo</span>
                 </span>

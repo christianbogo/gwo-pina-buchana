@@ -5,6 +5,7 @@
   --foreground: #1a1a1a;
   --accent: #c5a059;
   --muted: #f4f4f4;
+  --muted-foreground: #737373;
   --border: #e5e5e5;
 }
 
@@ -13,20 +14,21 @@
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
 
   --font-serif: var(--font-serif);
   --font-sans: var(--font-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --accent: #d4af37;
-    --muted: #1f1f1f;
-    --border: #333333;
-  }
+/* Manual dark mode support via class */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --accent: #d4af37;
+  --muted: #1f1f1f;
+  --muted-foreground: #a3a3a3;
+  --border: #333333;
 }
 
 body {

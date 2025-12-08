@@ -57,7 +57,7 @@ export default async function Home() {
             <div className="text-center mb-16">
               <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6">Meet The Team</h2>
               <div className="w-24 h-1 bg-accent mx-auto mb-8" />
-              <p className="max-w-2xl mx-auto text-gray-600 leading-relaxed text-lg">
+              <p className="max-w-2xl mx-auto text-muted-foreground leading-relaxed text-lg">
                 Gwo Pina Buchana represents the pinnacle of luxury real estate. Our team combines decades of market expertise with an unwavering commitment to our clients.
               </p>
             </div>
@@ -76,7 +76,7 @@ export default async function Home() {
                 <div>
                   <h3 className="font-serif text-2xl text-foreground mb-1">Gwo Pina</h3>
                   <p className="text-accent text-sm uppercase tracking-widest mb-4">Founder & Principal</p>
-                  <p className="text-gray-600 leading-relaxed text-sm">
+                  <p className="text-muted-foreground leading-relaxed text-sm">
                     With over 15 years of experience in the luxury market, Gwo has established a reputation for discretion, integrity, and record-breaking results.
                   </p>
                 </div>
@@ -95,7 +95,7 @@ export default async function Home() {
                 <div>
                   <h3 className="font-serif text-2xl text-foreground mb-1">Marcus Buchana</h3>
                   <p className="text-accent text-sm uppercase tracking-widest mb-4">Managing Partner</p>
-                  <p className="text-gray-600 leading-relaxed text-sm">
+                  <p className="text-muted-foreground leading-relaxed text-sm">
                     Marcus brings a background in architectural design and finance, offering clients a unique perspective on value and potential in every property.
                   </p>
                 </div>
@@ -114,7 +114,7 @@ export default async function Home() {
                 <div>
                   <h3 className="font-serif text-2xl text-foreground mb-1">Elena Rossi</h3>
                   <p className="text-accent text-sm uppercase tracking-widest mb-4">Senior Associate</p>
-                  <p className="text-gray-600 leading-relaxed text-sm">
+                  <p className="text-muted-foreground leading-relaxed text-sm">
                     Elena specializes in international clientele and off-market properties, ensuring seamless transactions for buyers and sellers from around the globe.
                   </p>
                 </div>
@@ -124,7 +124,7 @@ export default async function Home() {
             <div className="text-center">
               <Link
                 href="/team"
-                className="inline-block border border-gray-900 px-8 py-3 text-sm uppercase tracking-widest hover:bg-gray-900 hover:text-white transition-all duration-300"
+                className="inline-block border border-foreground px-8 py-3 text-sm uppercase tracking-widest hover:bg-foreground hover:text-background transition-all duration-300"
               >
                 View Full Team
               </Link>
@@ -133,7 +133,7 @@ export default async function Home() {
         </section>
 
         {/* CTA Grid Section */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-20">
               <h2 className="font-serif text-3xl md:text-5xl text-foreground tracking-wide">

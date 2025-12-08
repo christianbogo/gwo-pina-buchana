@@ -15,13 +15,13 @@ export default function AgentContact() {
                     />
                 </div>
                 <h2 className="font-serif text-3xl text-foreground mb-4">Interested in this property?</h2>
-                <p className="text-gray-600 mb-8 max-w-xl mx-auto">
+                <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-xl mx-auto">
                     Contact our team today to schedule a private showing or to request more information.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link
                         href="/contact"
-                        className="inline-block bg-foreground text-white px-8 py-4 text-sm uppercase tracking-widest hover:bg-accent transition-colors duration-300"
+                        className="inline-block bg-neutral-900 dark:bg-white text-white dark:text-black px-8 py-4 text-sm uppercase tracking-widest hover:bg-accent dark:hover:bg-accent hover:text-white dark:hover:text-white transition-colors duration-300"
                     >
                         Schedule Viewing
                     </Link>

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function NewsletterItem() {
     return (
-        <section className="py-32 bg-foreground text-white">
+        <section className="py-32 bg-neutral-900 dark:bg-slate-900 text-white">
             <div className="max-w-4xl mx-auto px-4 text-center">
                 <h2 className="font-serif text-3xl md:text-5xl mb-6 tracking-wide">Elevate Your Real Estate IQ</h2>
                 <p className="text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
@@ -38,7 +38,7 @@ export default function NewsletterItem() {
 
                     <button
                         type="button"
-                        className="bg-white text-foreground px-12 py-4 text-sm uppercase tracking-widest hover:bg-accent hover:text-white transition-all duration-300 font-bold mt-8"
+                        className="bg-white text-black px-12 py-4 text-sm uppercase tracking-widest hover:bg-accent hover:text-white transition-all duration-300 font-bold mt-8"
                     >
                         Subscribe
                     </button>
