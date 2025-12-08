@@ -32,7 +32,7 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
 
     const propertiesLinks = [
         { name: "Exclusive Listings", href: "/properties/exclusive" },
-        { name: "New Developments", href: "/properties/coming-soon" },
+        { name: "New Developments", href: "/properties/new-developments" },
         { name: "Notable Sales", href: "/properties/sales" },
     ];
 
@@ -59,10 +59,10 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
     const isSolid = theme === "solid" || isScrolled;
 
     const headerClasses = isSolid
-        ? "bg-white/90 dark:bg-black/90 backdrop-blur-md border-b border-gray-200 dark:border-white/10 shadow-sm py-0"
+        ? "bg-background/90 backdrop-blur-md border-b border-border shadow-sm py-0"
         : "bg-transparent border-transparent py-4";
 
-    const textColorClass = isSolid ? "text-gray-900 dark:text-white" : "text-white";
+    const textColorClass = isSolid ? "text-foreground" : "text-white";
     const hoverColorClass = isSolid ? "hover:text-accent" : "hover:text-white/80";
 
     return (
@@ -106,14 +106,14 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
 
                                                 {/* Dropdown Menu */}
                                                 <div
-                                                    className={`absolute left-0 top-full mt-0 bg-white shadow-lg border border-gray-100 py-2 transition-all duration-200 origin-top-left ${isOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'
+                                                    className={`absolute left-0 top-full mt-0 bg-background shadow-lg border border-border py-2 transition-all duration-200 origin-top-left ${isOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'
                                                         } ${link.menu === 'search' ? 'w-64' : 'w-56'}`}
                                                 >
                                                     {subLinks.map((subLink) => (
                                                         <Link
                                                             key={subLink.name}
                                                             href={subLink.href}
-                                                            className="block px-6 py-3 text-xs uppercase tracking-[0.1em] text-gray-600 hover:text-accent hover:bg-gray-50 transition-colors"
+                                                            className="block px-6 py-3 text-xs uppercase tracking-[0.1em] text-muted-foreground hover:text-accent hover:bg-muted transition-colors"
                                                         >
                                                             {subLink.name}
                                                         </Link>
@@ -157,28 +157,29 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
                             </button>
                         </div>
                     </div>
-                </div>
-            </header>
+                </div >
+            </header >
 
             {/* Sidebar Navigation */}
-            <div
-                className={`fixed inset-0 z-[60] transition-opacity duration-500 ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+            < div
+                className={`fixed inset-0 z-[60] transition-opacity duration-500 ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`
+                }
             >
                 {/* Backdrop */}
-                <div
+                < div
                     className="absolute inset-0 bg-black/40 backdrop-blur-sm"
                     onClick={() => setIsMenuOpen(false)}
                 />
 
                 {/* Sidebar Panel */}
                 <div
-                    className={`absolute right-0 top-0 h-full w-full sm:w-[400px] bg-white dark:bg-zinc-900 shadow-2xl transform transition-transform duration-500 ease-out flex flex-col ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
+                    className={`absolute right-0 top-0 h-full w-full sm:w-[400px] bg-background shadow-2xl transform transition-transform duration-500 ease-out flex flex-col ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
                 >
                     <div className="flex flex-col h-full p-8 md:p-12 overflow-y-auto w-full">
                         <div className="flex justify-end mb-8">
                             <button
                                 onClick={() => setIsMenuOpen(false)}
-                                className="text-gray-900 dark:text-white hover:text-accent transition-colors p-2"
+                                className="text-foreground hover:text-accent transition-colors p-2"
                                 aria-label="Close menu"
                             >
                                 <svg
@@ -198,23 +199,23 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
                         </div>
 
                         <nav className="flex flex-col space-y-6">
-                            <Link href="/" className="font-serif text-2xl md:text-3xl text-gray-900 hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
+                            <Link href="/" className="font-serif text-2xl md:text-3xl text-foreground hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
                                 Home
                             </Link>
 
-                            <Link href="/team" className="font-serif text-2xl md:text-3xl text-gray-900 hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
+                            <Link href="/team" className="font-serif text-2xl md:text-3xl text-foreground hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
                                 Team
                             </Link>
 
                             {/* Properties specific section for mobile */}
                             <div className="space-y-4">
-                                <p className="font-serif text-2xl md:text-3xl text-gray-900">Properties</p>
-                                <div className="pl-4 flex flex-col space-y-3 border-l-2 border-gray-100">
+                                <p className="font-serif text-2xl md:text-3xl text-foreground">Properties</p>
+                                <div className="pl-4 flex flex-col space-y-3 border-l-2 border-border">
                                     {propertiesLinks.map(link => (
                                         <Link
                                             key={link.name}
                                             href={link.href}
-                                            className="font-sans text-sm uppercase tracking-widest text-gray-600 hover:text-accent transition-colors"
+                                            className="font-sans text-sm uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors"
                                             onClick={() => setIsMenuOpen(false)}
                                         >
                                             {link.name}
@@ -223,36 +224,37 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
                                 </div>
                             </div>
 
-                            <Link href="/search" className="font-serif text-2xl md:text-3xl text-gray-900 hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
+                            <Link href="/search" className="font-serif text-2xl md:text-3xl text-foreground hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
                                 Home Search
                             </Link>
 
-                            <Link href="/valuation" className="font-serif text-2xl md:text-3xl text-gray-900 hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
+                            <Link href="/valuation" className="font-serif text-2xl md:text-3xl text-foreground hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
                                 Home Valuation
                             </Link>
 
-                            <Link href="/sothebys-advantage" className="font-serif text-2xl md:text-3xl text-gray-900 hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
+                            <Link href="/sothebys-advantage" className="font-serif text-2xl md:text-3xl text-foreground hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
                                 The Sotheby's Advantage
                             </Link>
 
-                            <Link href="/in-the-news" className="font-serif text-2xl md:text-3xl text-gray-900 hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
+                            <Link href="/in-the-news" className="font-serif text-2xl md:text-3xl text-foreground hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
                                 In The News
                             </Link>
 
-                            <Link href="/contact" className="font-serif text-2xl md:text-3xl text-gray-900 hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
+                            <Link href="/contact" className="font-serif text-2xl md:text-3xl text-foreground hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
                                 Let's Connect
                             </Link>
                         </nav>
 
-                        <div className="mt-auto pt-10 space-y-4 text-gray-500 text-sm">
-                            <p className="uppercase tracking-widest text-xs font-bold text-gray-900 mb-4">Contact</p>
+                        <div className="mt-auto pt-10 space-y-4 text-muted-foreground text-sm">
+                            <div className="mt-4 w-max"><ThemeToggle /></div>
+                            <p className="uppercase tracking-widest text-xs font-bold text-foreground mb-4">Contact</p>
                             <p>123 Luxury Lane, Beverly Hills, CA 90210</p>
                             <p><a href="tel:+13105550123" className="hover:text-accent">+1 (310) 555-0123</a></p>
                             <p><a href="mailto:contact@gwopinabuchana.com" className="hover:text-accent">contact@gwopinabuchana.com</a></p>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     );
 }

@@ -64,7 +64,7 @@ export default function Footer() {
 
                 <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
                     <div className="flex flex-col md:flex-row items-center gap-4">
-                        <ThemeToggle />
+                        <ThemeToggle forceDark={true} />
                         <p>&copy; {new Date().getFullYear()} Gwo Pina Buchana. All rights reserved.</p>
                     </div>
                     <div className="flex space-x-6 mt-4 md:mt-0">

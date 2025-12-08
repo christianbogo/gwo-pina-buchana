@@ -40,7 +40,7 @@ export default async function ComingSoonPage() {
             <main className="flex-grow">
                 <PageHero
                     image={heroImage}
-                    title="Coming Soon"
+                    title="New Developments"
                 />
 
                 <section className="py-24 bg-background">

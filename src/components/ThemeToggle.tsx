@@ -3,7 +3,11 @@
 import * as React from "react";
 import { useTheme } from "next-themes";
 
-export function ThemeToggle() {
+interface ThemeToggleProps {
+    forceDark?: boolean;
+}
+
+export function ThemeToggle({ forceDark = false }: ThemeToggleProps) {
     const { setTheme, theme } = useTheme();
     const [mounted, setMounted] = React.useState(false);
 
@@ -21,13 +25,25 @@ export function ThemeToggle() {
         );
     }
 
+    const activeClass = forceDark
+        ? "bg-white text-black shadow-sm"
+        : "bg-foreground text-background shadow-sm";
+
+    const inactiveClass = forceDark
+        ? "text-gray-400 hover:text-white"
+        : "text-gray-500 hover:text-foreground";
+
+    const containerClass = forceDark
+        ? "border-white/20 bg-white/10"
+        : "border-border bg-background/50";
+
     return (
-        <div className="flex gap-1 p-1 border border-border rounded-full bg-background/50 backdrop-blur-sm">
+        <div className={`flex gap-1 p-1 border rounded-full backdrop-blur-sm ${containerClass}`}>
             <button
                 onClick={() => setTheme("light")}
                 className={`p-2 rounded-full transition-all duration-300 ${theme === "light"
-                        ? "bg-foreground text-background shadow-sm"
-                        : "text-gray-500 hover:text-foreground"
+                    ? activeClass
+                    : inactiveClass
                     }`}
                 aria-label="Light Mode"
                 title="Light Mode"
@@ -50,8 +66,8 @@ export function ThemeToggle() {
             <button
                 onClick={() => setTheme("system")}
                 className={`p-2 rounded-full transition-all duration-300 ${theme === "system"
-                        ? "bg-foreground text-background shadow-sm"
-                        : "text-gray-500 hover:text-foreground"
+                    ? activeClass
+                    : inactiveClass
                     }`}
                 aria-label="System Mode"
                 title="System Mode"
@@ -75,8 +91,8 @@ export function ThemeToggle() {
             <button
                 onClick={() => setTheme("dark")}
                 className={`p-2 rounded-full transition-all duration-300 ${theme === "dark"
-                        ? "bg-foreground text-background shadow-sm"
-                        : "text-gray-500 hover:text-foreground"
+                    ? activeClass
+                    : inactiveClass
                     }`}
                 aria-label="Dark Mode"
                 title="Dark Mode"
