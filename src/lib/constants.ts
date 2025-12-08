@@ -1,0 +1,1 @@
+export const GREY_PLACEHOLDER = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88P//fwAJ/QP0ws75kAAAAABJRU5ErkJggg=="; // Dark grey #333333 approx

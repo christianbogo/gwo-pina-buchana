@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
+import { GREY_PLACEHOLDER } from "@/lib/constants";
 
 // Revalidate every 60 seconds (or logic you prefer)
 export const revalidate = 60;
@@ -28,15 +29,15 @@ export default async function Home() {
   // Default images if Sanity data is missing
   const searchImage = pageAssets?.homeSearchCardImage
     ? urlForImage(pageAssets.homeSearchCardImage).url()
-    : "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop";
+    : GREY_PLACEHOLDER;
 
   const valuationImage = pageAssets?.homeValuationCardImage
     ? urlForImage(pageAssets.homeValuationCardImage).url()
-    : "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop";
+    : GREY_PLACEHOLDER;
 
   const contactImage = pageAssets?.letsConnectCardImage
     ? urlForImage(pageAssets.letsConnectCardImage).url()
-    : "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1000&auto=format&fit=crop";
+    : GREY_PLACEHOLDER;
 
 
   return (
@@ -66,7 +67,7 @@ export default async function Home() {
               <div className="space-y-6">
                 <div className="relative h-[350px] md:h-[500px] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
                   <Image
-                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop"
+                    src={GREY_PLACEHOLDER}
                     alt="Gwo Pina"
                     fill
                     className="object-cover"
@@ -85,7 +86,7 @@ export default async function Home() {
               <div className="space-y-6">
                 <div className="relative h-[350px] md:h-[500px] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
                   <Image
-                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&auto=format&fit=crop"
+                    src={GREY_PLACEHOLDER}
                     alt="Marcus Buchana"
                     fill
                     className="object-cover"
@@ -104,7 +105,7 @@ export default async function Home() {
               <div className="space-y-6">
                 <div className="relative h-[350px] md:h-[500px] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
                   <Image
-                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1000&auto=format&fit=crop"
+                    src={GREY_PLACEHOLDER}
                     alt="Elena Rossi"
                     fill
                     className="object-cover"

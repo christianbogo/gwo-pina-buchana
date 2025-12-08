@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
+import { GREY_PLACEHOLDER } from "@/lib/constants";
 
 // Mock data - replace with Sanity data later
 const newsItems = [
@@ -9,21 +10,21 @@ const newsItems = [
         title: "Market Trends 2025: Analysis",
         date: "December 01, 2025",
         summary: "An in-depth look at the shifting landscape of luxury real estate in the Pacific Northwest.",
-        image: "https://images.unsplash.com/photo-1460472178825-e5240623afd5?q=80&w=1000&auto=format&fit=crop",
+        image: GREY_PLACEHOLDER,
         slug: "market-trends-2025"
     },
     {
         title: "Record Sale in Medina",
         date: "November 15, 2025",
         summary: "Gwo Pina Buchana facilitates the highest recorded sale in Medina this year.",
-        image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1000&auto=format&fit=crop",
+        image: GREY_PLACEHOLDER,
         slug: "record-sale-medina"
     },
     {
         title: "Architectural Digest Feature",
         date: "October 20, 2025",
         summary: "Our exclusive listing in West Seattle featured for its stunning modern design.",
-        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop",
+        image: GREY_PLACEHOLDER,
         slug: "architectural-digest-feature"
     }
 ];

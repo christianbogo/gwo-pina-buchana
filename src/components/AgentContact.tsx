@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { GREY_PLACEHOLDER } from "@/lib/constants";
 
 export default function AgentContact() {
     return (
@@ -7,7 +8,7 @@ export default function AgentContact() {
             <div className="max-w-4xl mx-auto px-4 text-center">
                 <div className="w-24 h-24 relative mx-auto mb-6 rounded-full overflow-hidden border-2 border-white shadow-lg">
                     <Image
-                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop"
+                        src={GREY_PLACEHOLDER}
                         alt="Agent"
                         fill
                         className="object-cover"
@@ -31,7 +32,7 @@ export default function AgentContact() {
                         +1 (310) 555-0123
                     </Link>
                 </div>
-            </div>
-        </section>
+            </div >
+        </section >
     );
 }

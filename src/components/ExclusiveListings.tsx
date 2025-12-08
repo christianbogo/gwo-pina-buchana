@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { GREY_PLACEHOLDER } from "@/lib/constants";
 
 export default function ExclusiveListings() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -33,7 +34,7 @@ export default function ExclusiveListings() {
             title: "123 Beverly Park",
             location: "Beverly Hills, CA",
             price: "$12,500,000",
-            image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop",
+            image: GREY_PLACEHOLDER,
             tag: "For Sale"
         },
         {
@@ -41,40 +42,40 @@ export default function ExclusiveListings() {
             title: "456 Bel Air Road",
             location: "Bel Air, CA",
             price: "$28,000,000",
-            image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop",
+            image: GREY_PLACEHOLDER,
             tag: "For Sale"
         },
         {
             id: 3,
-            title: "789 Bird Streets",
-            location: "Hollywood Hills, CA",
-            price: "$8,900,000",
-            image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1000&auto=format&fit=crop",
-            tag: "New Listing"
-        },
-        {
-            id: 4,
-            title: "101 Malibu Colony",
-            location: "Malibu, CA",
-            price: "$45,000,000",
-            image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop",
-            tag: "Exclusive"
-        },
-        {
-            id: 5,
             title: "202 Trousdale Estates",
             location: "Beverly Hills, CA",
             price: "$18,500,000",
-            image: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=1000&auto=format&fit=crop",
+            image: GREY_PLACEHOLDER,
             tag: "For Sale"
         },
         {
+            id: 4,
+            title: "Sunset Plaza Estate",
+            location: "Hollywood Hills, CA",
+            price: "$14,950,000",
+            image: GREY_PLACEHOLDER,
+            tag: "Sold"
+        },
+        {
+            id: 5,
+            title: "Carbon Beach Modern",
+            location: "Malibu, CA",
+            price: "$45,000,000",
+            image: GREY_PLACEHOLDER,
+            tag: "Sold"
+        },
+        {
             id: 6,
-            title: "303 Hidden Hills",
+            title: "Hidden Hills Estate",
             location: "Hidden Hills, CA",
             price: "$15,200,000",
-            image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b91d?q=80&w=1000&auto=format&fit=crop",
-            tag: "Pending"
+            image: GREY_PLACEHOLDER,
+            tag: "New Listing"
         }
     ];
 

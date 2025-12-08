@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
+import { GREY_PLACEHOLDER } from "@/lib/constants";
 
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
@@ -12,7 +13,7 @@ export default async function NotableSalesPage() {
     const pageAssets = await client.fetch(`*[_type == "pageAssets"][0]{ notableSalesImage }`);
     const heroImage = pageAssets?.notableSalesImage
         ? urlForImage(pageAssets.notableSalesImage).url()
-        : "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2940&auto=format&fit=crop";
+        : GREY_PLACEHOLDER;
 
     const listings = [
         {
@@ -20,7 +21,7 @@ export default async function NotableSalesPage() {
             title: "Carbon Beach Modern",
             location: "Malibu, CA",
             price: "$45,000,000",
-            image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop",
+            image: GREY_PLACEHOLDER,
             tag: "Sold"
         },
         {
@@ -28,7 +29,7 @@ export default async function NotableSalesPage() {
             title: "Hidden Hills Estate",
             location: "Hidden Hills, CA",
             price: "$15,200,000",
-            image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b91d?q=80&w=1000&auto=format&fit=crop",
+            image: GREY_PLACEHOLDER,
             tag: "Sold"
         },
         {
@@ -36,7 +37,7 @@ export default async function NotableSalesPage() {
             title: "Brentwood Oasis",
             location: "Brentwood, CA",
             price: "$10,500,000",
-            image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop",
+            image: GREY_PLACEHOLDER,
             tag: "Sold"
         },
         {
@@ -44,7 +45,7 @@ export default async function NotableSalesPage() {
             title: "Pacific Palisades Gem",
             location: "Pacific Palisades, CA",
             price: "$8,250,000",
-            image: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=1000&auto=format&fit=crop",
+            image: GREY_PLACEHOLDER,
             tag: "Sold"
         }
     ];
@@ -79,7 +80,7 @@ export default async function NotableSalesPage() {
                 <section className="py-24 bg-foreground text-white relative overflow-hidden">
                     <div className="absolute inset-0 opacity-20">
                         <Image
-                            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop"
+                            src={GREY_PLACEHOLDER}
                             alt="Valuation Background"
                             fill
                             className="object-cover"

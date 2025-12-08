@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
+import { GREY_PLACEHOLDER } from "@/lib/constants";
 
 export default async function NeighborhoodsPage() {
     const pageAssets = await client.fetch(`* [_type == "pageAssets"][0]{ neighborhoodImages } `);
@@ -18,74 +19,74 @@ export default async function NeighborhoodsPage() {
         {
             name: "Downtown Seattle",
             slug: "downtown-seattle",
-            image: getNeighborhoodImage("downtown-seattle", "https://images.unsplash.com/photo-1444723121867-26b5d63e9d78?q=80&w=1000&auto=format&fit=crop"),
+            image: getNeighborhoodImage("downtown-seattle", GREY_PLACEHOLDER),
             desc: "Urban living at its finest with luxury condos and penthouses."
         },
         {
             name: "Madison Park - Washington Park",
             slug: "madison-park-washington-park",
-            image: getNeighborhoodImage("madison-park-washington-park", "https://images.unsplash.com/photo-1583009949673-db0f01d7e297?q=80&w=1000&auto=format&fit=crop"),
+            image: getNeighborhoodImage("madison-park-washington-park", GREY_PLACEHOLDER),
             desc: "Historic charm, lush greenery, and stunning lake views."
         },
         {
             name: "Laurelhurst - Windermere",
             slug: "laurelhurst-windermere",
-            image: getNeighborhoodImage("laurelhurst-windermere", "https://images.unsplash.com/photo-1599809275372-b40c7e9379d4?q=80&w=1000&auto=format&fit=crop"),
+            image: getNeighborhoodImage("laurelhurst-windermere", GREY_PLACEHOLDER),
             desc: "Exclusive waterfront communities with private beach clubs."
         },
         {
             name: "West Seattle",
             slug: "west-seattle",
-            image: getNeighborhoodImage("west-seattle", "https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1000&auto=format&fit=crop"),
+            image: getNeighborhoodImage("west-seattle", GREY_PLACEHOLDER),
             desc: "Laid-back vibe with Alki Beach and panoramic skyline views."
         },
         {
             name: "West Bellevue - Downtown Bellevue",
             slug: "west-bellevue-downtown-bellevue",
-            image: getNeighborhoodImage("west-bellevue-downtown-bellevue", "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=1000&auto=format&fit=crop"),
+            image: getNeighborhoodImage("west-bellevue-downtown-bellevue", GREY_PLACEHOLDER),
             desc: "A sophisticated urban center with world-class shopping and dining."
         },
         {
             name: "Medina - Clyde Hill",
             slug: "medina-clyde-hill",
-            image: getNeighborhoodImage("medina-clyde-hill", "https://images.unsplash.com/photo-1580587771525-78b9dba3b91d?q=80&w=1000&auto=format&fit=crop"),
+            image: getNeighborhoodImage("medina-clyde-hill", GREY_PLACEHOLDER),
             desc: "Prestigious enclaves known for expansive estates and privacy."
         },
         {
             name: "Kirkland",
             slug: "kirkland",
-            image: getNeighborhoodImage("kirkland", "https://images.unsplash.com/photo-1572979268688-29470c153835?q=80&w=1000&auto=format&fit=crop"),
+            image: getNeighborhoodImage("kirkland", GREY_PLACEHOLDER),
             desc: "Vibrant waterfront downtown with a strong community feel."
         },
         {
             name: "Mercer Island",
             slug: "mercer-island",
-            image: getNeighborhoodImage("mercer-island", "https://images.unsplash.com/photo-1560520653-9e0e4c890331?q=80&w=1000&auto=format&fit=crop"),
+            image: getNeighborhoodImage("mercer-island", GREY_PLACEHOLDER),
             desc: "An island oasis located conveniently between Seattle and Bellevue."
         },
         {
             name: "Sammamish",
             slug: "sammamish",
-            image: getNeighborhoodImage("sammamish", "https://images.unsplash.com/photo-1576402187878-974f70c890a5?q=80&w=1000&auto=format&fit=crop"),
+            image: getNeighborhoodImage("sammamish", GREY_PLACEHOLDER),
             desc: "Family-friendly with top-rated schools and outdoor recreation."
         },
         {
             name: "Issaquah",
             slug: "issaquah",
-            image: getNeighborhoodImage("issaquah", "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1000&auto=format&fit=crop"),
+            image: getNeighborhoodImage("issaquah", GREY_PLACEHOLDER),
             desc: "Where the mountains meet the city, offering a unique lifestyle."
         },
         {
             name: "Redmond",
             slug: "redmond",
-            image: getNeighborhoodImage("redmond", "https://images.unsplash.com/photo-1436450412740-6b988f486c6b?q=80&w=1000&auto=format&fit=crop"),
+            image: getNeighborhoodImage("redmond", GREY_PLACEHOLDER),
             desc: "The bicycle capital of the Northwest and a tech hub."
         },
     ];
 
     return (
         <div className="min-h-screen flex flex-col">
-            <Header />
+            <Header theme="solid" />
             <main className="flex-grow pt-24">
                 <section className="bg-white py-24">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

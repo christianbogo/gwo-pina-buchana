@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import { GREY_PLACEHOLDER } from "@/lib/constants";
 
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
@@ -9,7 +10,7 @@ export default async function SothebysAdvantagePage() {
     const pageAssets = await client.fetch(`*[_type == "pageAssets"][0]{ sothebysAdvantageImage }`);
     const heroImage = pageAssets?.sothebysAdvantageImage
         ? urlForImage(pageAssets.sothebysAdvantageImage).url()
-        : "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2940&auto=format&fit=crop";
+        : GREY_PLACEHOLDER;
 
     return (
         <div className="min-h-screen flex flex-col">

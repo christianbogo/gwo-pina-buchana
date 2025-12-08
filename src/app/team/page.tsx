@@ -2,25 +2,26 @@ import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { GREY_PLACEHOLDER } from "@/lib/constants";
 
 const teamMembers = [
     {
         name: "Gwo Pina",
         role: "Founder & Principal",
-        bio: "With over 15 years of experience in the luxury market, Gwo has established a reputation for discretion, integrity, and record-breaking results.",
-        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop"
+        bio: "With over 15 years of experience in the luxury market.",
+        image: GREY_PLACEHOLDER
     },
     {
         name: "Marcus Buchana",
         role: "Managing Partner",
-        bio: "Marcus brings a background in architectural design and finance, offering clients a unique perspective on value and potential in every property.",
-        image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&auto=format&fit=crop"
+        bio: "Marcus brings a background in architectural design and finance.",
+        image: GREY_PLACEHOLDER
     },
     {
         name: "Elena Rossi",
         role: "Senior Associate",
-        bio: "Elena specializes in international clientele and off-market properties, ensuring seamless transactions for buyers and sellers from around the globe.",
-        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1000&auto=format&fit=crop"
+        bio: "Specializes in international clientele and off-market properties.",
+        image: GREY_PLACEHOLDER
     }
 ];
 

@@ -3,6 +3,7 @@ import ListingCard from "@/components/ListingCard";
 import AgentContact from "@/components/AgentContact";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { GREY_PLACEHOLDER } from "@/lib/constants";
 
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
@@ -11,7 +12,7 @@ export default async function ExclusiveListingsPage() {
     const pageAssets = await client.fetch(`*[_type == "pageAssets"][0]{ exclusiveListingsImage }`);
     const heroImage = pageAssets?.exclusiveListingsImage
         ? urlForImage(pageAssets.exclusiveListingsImage).url()
-        : "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2940&auto=format&fit=crop";
+        : GREY_PLACEHOLDER;
 
     const listings = [
         {
@@ -19,7 +20,7 @@ export default async function ExclusiveListingsPage() {
             title: "123 Beverly Park",
             location: "Beverly Hills, CA",
             price: "$12,500,000",
-            image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop",
+            image: GREY_PLACEHOLDER,
             tag: "For Sale"
         },
         {
@@ -27,7 +28,7 @@ export default async function ExclusiveListingsPage() {
             title: "456 Bel Air Road",
             location: "Bel Air, CA",
             price: "$28,000,000",
-            image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop",
+            image: GREY_PLACEHOLDER,
             tag: "For Sale"
         },
         {
@@ -35,7 +36,7 @@ export default async function ExclusiveListingsPage() {
             title: "202 Trousdale Estates",
             location: "Beverly Hills, CA",
             price: "$18,500,000",
-            image: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=1000&auto=format&fit=crop",
+            image: GREY_PLACEHOLDER,
             tag: "For Sale"
         },
         {
@@ -43,7 +44,7 @@ export default async function ExclusiveListingsPage() {
             title: "Sunset Plaza Estate",
             location: "Hollywood Hills, CA",
             price: "$14,950,000",
-            image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1000&auto=format&fit=crop",
+            image: GREY_PLACEHOLDER,
             tag: "New Listing"
         }
 

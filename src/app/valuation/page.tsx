@@ -7,7 +7,7 @@ export default function HomeValuationPage() {
     return (
         <div className="min-h-screen flex flex-col">
             <Header theme="solid" />
-            <main className="flex-grow pt-24 pb-12 bg-white">
+            <main className="flex-grow pt-40 pb-12 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                         <h1 className="font-serif text-4xl md:text-6xl text-foreground mb-6">Home Valuation</h1>

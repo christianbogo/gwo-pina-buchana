@@ -4,6 +4,7 @@ import AgentContact from "@/components/AgentContact";
 import MortgageCalculator from "@/components/MortgageCalculator";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { GREY_PLACEHOLDER } from "@/lib/constants";
 
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
@@ -12,7 +13,7 @@ export default async function ComingSoonPage() {
     const pageAssets = await client.fetch(`*[_type == "pageAssets"][0]{ comingSoonImage }`);
     const heroImage = pageAssets?.comingSoonImage
         ? urlForImage(pageAssets.comingSoonImage).url()
-        : "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=2940&auto=format&fit=crop";
+        : GREY_PLACEHOLDER;
 
     const listings = [
         {
@@ -20,7 +21,7 @@ export default async function ComingSoonPage() {
             title: "Encino Modern Farmhouse",
             location: "Encino, CA",
             price: "$8,995,000",
-            image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1000&auto=format&fit=crop",
+            image: GREY_PLACEHOLDER,
             tag: "Coming Soon"
         },
         {
@@ -28,7 +29,7 @@ export default async function ComingSoonPage() {
             title: "Venice Canal Compound",
             location: "Venice, CA",
             price: "$5,495,000",
-            image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b91d?q=80&w=1000&auto=format&fit=crop",
+            image: GREY_PLACEHOLDER,
             tag: "Coming Soon"
         }
     ];
