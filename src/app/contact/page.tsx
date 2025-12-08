@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function ContactPage() {
     return (
         <div className="min-h-screen flex flex-col">
-            <Header />
+            <Header theme="solid" />
             <main className="flex-grow pt-24 pb-12 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 h-full">

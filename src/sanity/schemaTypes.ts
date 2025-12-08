@@ -1,12 +1,8 @@
 import { type SchemaTypeDefinition } from 'sanity'
 import blockContent from './schemas/blockContent'
-import category from './schemas/category'
-import post from './schemas/post'
-import project from './schemas/project'
 import teamMember from './schemas/teamMember'
-import neighborhood from './schemas/neighborhood'
-import property from './schemas/property'
+import pageAssets from './schemas/pageAssets'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-    types: [post, project, teamMember, neighborhood, property, category, blockContent],
+    types: [pageAssets, teamMember, blockContent],
 }

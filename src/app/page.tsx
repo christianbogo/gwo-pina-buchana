@@ -2,44 +2,50 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ExclusiveListings from "@/components/ExclusiveListings";
 import NewsletterItem from "@/components/NewsletterItem";
+import HomeHero from "@/components/HomeHero";
 import Image from "next/image";
 import Link from "next/link";
+import { client } from "@/sanity/lib/client";
+import { urlForImage } from "@/sanity/lib/image";
 
-export default function Home() {
+// Revalidate every 60 seconds (or logic you prefer)
+export const revalidate = 60;
+
+export default async function Home() {
+  const pageAssets = await client.fetch(`*[_type == "pageAssets"][0] {
+    homeVideo {
+        asset->{
+            url
+        }
+    },
+    homeSearchCardImage,
+    homeValuationCardImage,
+    letsConnectCardImage
+  }`);
+
+  const videoUrl = pageAssets?.homeVideo?.asset?.url;
+
+  // Default images if Sanity data is missing
+  const searchImage = pageAssets?.homeSearchCardImage
+    ? urlForImage(pageAssets.homeSearchCardImage).url()
+    : "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop";
+
+  const valuationImage = pageAssets?.homeValuationCardImage
+    ? urlForImage(pageAssets.homeValuationCardImage).url()
+    : "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop";
+
+  const contactImage = pageAssets?.letsConnectCardImage
+    ? urlForImage(pageAssets.letsConnectCardImage).url()
+    : "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1000&auto=format&fit=crop";
+
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            {/* Placeholder for Hero Image/Video */}
-            <div className="w-full h-full bg-gray-900/40 absolute z-10" />
-            <Image
-              src="https://images.unsplash.com/photo-1600596542815-2495db98dada?q=80&w=2940&auto=format&fit=crop"
-              alt="Luxury Home"
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-
-          <div className="relative z-20 text-center text-white px-4">
-            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl mb-6 tracking-wide">
-              Experience the Exceptional
-            </h1>
-            <p className="text-lg md:text-xl tracking-widest uppercase mb-8">
-              Luxury Real Estate in Los Angeles
-            </p>
-            <Link
-              href="/properties"
-              className="inline-block border border-white px-8 py-3 text-sm uppercase tracking-widest hover:bg-white hover:text-foreground transition-all duration-300"
-            >
-              View Properties
-            </Link>
-          </div>
-        </section>
+        <HomeHero videoUrl={videoUrl} />
 
         {/* Exclusive Listings Section */}
         <ExclusiveListings />
@@ -55,7 +61,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
               {/* Team Member 1 */}
               <div className="space-y-6">
                 <div className="relative h-[350px] md:h-[500px] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
@@ -113,6 +119,15 @@ export default function Home() {
                 </div>
               </div>
             </div>
+
+            <div className="text-center">
+              <Link
+                href="/team"
+                className="inline-block border border-gray-900 px-8 py-3 text-sm uppercase tracking-widest hover:bg-gray-900 hover:text-white transition-all duration-300"
+              >
+                View Full Team
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -127,9 +142,9 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { title: "Home Search", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop", link: "/search" },
-                { title: "Home Valuation", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop", link: "/valuation" },
-                { title: "Let's Connect", image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1000&auto=format&fit=crop", link: "/contact" }
+                { title: "Home Search", image: searchImage, link: "/search" },
+                { title: "Home Valuation", image: valuationImage, link: "/valuation" },
+                { title: "Let's Connect", image: contactImage, link: "/contact" }
               ].map((item) => (
                 <Link key={item.title} href={item.link} className="group relative h-[300px] md:h-[500px] overflow-hidden">
                   <Image

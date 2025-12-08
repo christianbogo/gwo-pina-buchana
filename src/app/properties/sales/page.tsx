@@ -5,7 +5,15 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function NotableSalesPage() {
+import { client } from "@/sanity/lib/client";
+import { urlForImage } from "@/sanity/lib/image";
+
+export default async function NotableSalesPage() {
+    const pageAssets = await client.fetch(`*[_type == "pageAssets"][0]{ notableSalesImage }`);
+    const heroImage = pageAssets?.notableSalesImage
+        ? urlForImage(pageAssets.notableSalesImage).url()
+        : "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2940&auto=format&fit=crop";
+
     const listings = [
         {
             id: 1,
@@ -44,9 +52,9 @@ export default function NotableSalesPage() {
     return (
         <div className="min-h-screen flex flex-col">
             <Header />
-            <main className="flex-grow pt-20">
+            <main className="flex-grow">
                 <PageHero
-                    image="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2940&auto=format&fit=crop"
+                    image={heroImage}
                     title="Notable Sales"
                 />
 

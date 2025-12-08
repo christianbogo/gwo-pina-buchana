@@ -5,7 +5,15 @@ import MortgageCalculator from "@/components/MortgageCalculator";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-export default function ComingSoonPage() {
+import { client } from "@/sanity/lib/client";
+import { urlForImage } from "@/sanity/lib/image";
+
+export default async function ComingSoonPage() {
+    const pageAssets = await client.fetch(`*[_type == "pageAssets"][0]{ comingSoonImage }`);
+    const heroImage = pageAssets?.comingSoonImage
+        ? urlForImage(pageAssets.comingSoonImage).url()
+        : "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=2940&auto=format&fit=crop";
+
     const listings = [
         {
             id: 1,
@@ -28,9 +36,9 @@ export default function ComingSoonPage() {
     return (
         <div className="min-h-screen flex flex-col">
             <Header />
-            <main className="flex-grow pt-20">
+            <main className="flex-grow">
                 <PageHero
-                    image="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=2940&auto=format&fit=crop"
+                    image={heroImage}
                     title="Coming Soon"
                 />
 

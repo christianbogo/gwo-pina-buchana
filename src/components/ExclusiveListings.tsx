@@ -164,10 +164,10 @@ export default function ExclusiveListings() {
 
                 <div className="text-center mt-16">
                     <Link
-                        href="/properties"
+                        href="/properties/exclusive"
                         className="inline-block border-b border-foreground pb-1 text-sm uppercase tracking-widest hover:text-accent hover:border-accent transition-all duration-300"
                     >
-                        View All Properties
+                        Explore Exclusive Listings
                     </Link>
                 </div>
             </div>
