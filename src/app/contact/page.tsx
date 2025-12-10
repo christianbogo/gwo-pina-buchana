@@ -13,9 +13,9 @@ export default function ContactPage() {
                         {/* Contact Info Side */}
                         <div className="flex flex-col justify-center space-y-12 py-12">
                             <div>
-                                <h1 className="font-serif text-5xl md:text-7xl text-foreground mb-8">Let's Connect</h1>
+                                <h1 className="font-serif text-5xl md:text-7xl text-foreground mb-8">Start the Conversation</h1>
                                 <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
-                                    Whether you're looking to buy, sell, or simply have a question about the market, our team is here to assist you with the highest level of service and discretion.
+                                    Real estate is a journey, and every journey begins with a single step. Whether you are exploring the value of your current home, looking for unparalleled investment opportunities, or ready to find your dream residence in the Pacific Northwest, the Gwo Pina Buchanan team is here to guide you.
                                 </p>
                             </div>
 

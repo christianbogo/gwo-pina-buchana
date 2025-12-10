@@ -17,16 +17,19 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
 
     const slides = [
         {
-            title: "Experience the Exceptional",
-            subtitle: "Luxury Real Estate in Los Angeles"
+            eyebrow: "Seattle & Bellevue",
+            title: "Gwo Pina Buchanan",
+            subtitle: "Defining the New Pacific Northwest."
         },
         {
-            title: "Global Reach, Local Expertise",
-            subtitle: "Connecting you to the world's finest properties"
+            eyebrow: "Sotheby's International Realty",
+            title: "Global Vision",
+            subtitle: "Luxury Real Estate Advisory."
         },
         {
-            title: "Your Dream, Our Mission",
-            subtitle: "Personalized service for the discerning client"
+            eyebrow: "Modern Living",
+            title: "Curated Design",
+            subtitle: "Urban Sanctuaries & Coastal Retreats."
         }
     ];
 
@@ -71,10 +74,13 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
                 <div
                     className={`flex flex-col justify-center items-center transition-opacity duration-500 ease-in-out ${isVisible ? "opacity-100" : "opacity-0"}`}
                 >
-                    <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl mb-6 tracking-wide drop-shadow-lg">
+                    <p className="text-sm md:text-base tracking-[0.2em] uppercase mb-4 text-gray-200 drop-shadow-sm font-medium">
+                        {slides[currentSlide].eyebrow}
+                    </p>
+                    <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl mb-6 tracking-wide drop-shadow-lg leading-tight">
                         {slides[currentSlide].title}
                     </h1>
-                    <p className="text-lg md:text-xl tracking-widest uppercase drop-shadow-md">
+                    <p className="text-lg md:text-xl tracking-widest uppercase drop-shadow-md text-gray-100 max-w-3xl mx-auto">
                         {slides[currentSlide].subtitle}
                     </p>
                 </div>

@@ -18,19 +18,51 @@ export default async function ComingSoonPage() {
     const listings = [
         {
             id: 1,
-            title: "Encino Modern Farmhouse",
-            location: "Encino, CA",
-            price: "$8,995,000",
+            title: "Infinity Shore Club Residences",
+            location: "Alki Beach, Seattle",
+            price: "Peerless Beachfront Luxury",
             image: GREY_PLACEHOLDER,
-            tag: "Coming Soon"
+            tag: "New Development"
         },
         {
             id: 2,
-            title: "Venice Canal Compound",
-            location: "Venice, CA",
-            price: "$5,495,000",
+            title: "Graystone",
+            location: "First Hill, Seattle",
+            price: "A Modern Classic",
             image: GREY_PLACEHOLDER,
-            tag: "Coming Soon"
+            tag: "New Development"
+        },
+        {
+            id: 3,
+            title: "GIS Plaza Bellevue",
+            location: "Downtown Bellevue",
+            price: "Innovation at Intimate Scale",
+            image: GREY_PLACEHOLDER,
+            tag: "New Development"
+        },
+        {
+            id: 4,
+            title: "Wallingford 9",
+            location: "Wallingford, Seattle",
+            price: "Smart Urban Density",
+            image: GREY_PLACEHOLDER,
+            tag: "New Development"
+        },
+        {
+            id: 5,
+            title: "Rainier Chalet Condominiums",
+            location: "Enumclaw, WA",
+            price: "Basecamp for Adventure",
+            image: GREY_PLACEHOLDER,
+            tag: "New Development"
+        },
+        {
+            id: 6,
+            title: "Crescent Ridge",
+            location: "Quincy, WA",
+            price: "Sun-Soaked Sanctuary",
+            image: GREY_PLACEHOLDER,
+            tag: "New Development"
         }
     ];
 
@@ -40,7 +72,7 @@ export default async function ComingSoonPage() {
             <main className="flex-grow">
                 <PageHero
                     image={heroImage}
-                    title="New Developments"
+                    title='The "New Pacific Northwest" Development Portfolio'
                 />
 
                 <section className="py-24 bg-background">

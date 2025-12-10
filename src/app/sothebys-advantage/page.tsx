@@ -30,10 +30,10 @@ export default async function SothebysAdvantagePage() {
                     </div>
                     <div className="relative z-20 text-center text-white px-4">
                         <h1 className="font-serif text-4xl md:text-6xl mb-4 tracking-wide">
-                            The Sotheby's Advantage
+                            Unrivaled Marketing. Unlimited Reach.
                         </h1>
                         <p className="text-lg md:text-xl tracking-widest uppercase">
-                            Unrivaled Access. Unmatched Prestige.
+                            Why the Brand Matters in the "New Pacific Northwest."
                         </p>
                     </div>
                 </section>
@@ -45,23 +45,23 @@ export default async function SothebysAdvantagePage() {
                             A Legacy of Excellence
                         </h2>
                         <p className="text-muted-foreground leading-relaxed mb-6">
-                            For centuries, the Sotheby’s name has been synonymous with the exceptional. A tradition of continued excellence, built on a foundation of integrity and expertise, defines the Sotheby’s International Realty® brand.
+                            When you list your home with Gwo Pina Buchanan, you are not just hiring a team; you are activating a global infrastructure. The "New Pacific Northwest" is an international destination, and to achieve the highest value for your property, you must reach beyond the local market.
                         </p>
                         <p className="text-muted-foreground leading-relaxed mb-6">
-                            Our affiliation with Sotheby’s International Realty provides our clients with exclusive access to a global network of real estate professionals, innovative marketing tools, and a qualified audience of international buyers.
+                            Realogics Sotheby’s International Realty (RSIR) provides the platform to do exactly that. We don't just wait for buyers to find us; we actively push your property to a network of high-net-worth individuals who trust the Sotheby's name.
                         </p>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 my-16">
                             <div className="text-center p-8 bg-muted">
-                                <h3 className="font-serif text-2xl mb-4">Global Network</h3>
+                                <h3 className="font-serif text-2xl mb-4">26,500+</h3>
                                 <p className="text-sm text-gray-500">
-                                    Connecting the finest independent real estate companies to the most prestigious clientele in the world.
+                                    Sales Associates<br />across 1,115+ Offices
                                 </p>
                             </div>
                             <div className="text-center p-8 bg-muted dark:bg-card">
-                                <h3 className="font-serif text-2xl mb-4">Brand Heritage</h3>
+                                <h3 className="font-serif text-2xl mb-4">$143 Billion</h3>
                                 <p className="text-sm text-gray-500">
-                                    Distinguished by a commitment to art, culture, and high standards of service.
+                                    In Global Sales Volume (Annual)
                                 </p>
                             </div>
                         </div>

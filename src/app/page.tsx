@@ -8,9 +8,15 @@ import Link from "next/link";
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 import { GREY_PLACEHOLDER } from "@/lib/constants";
+import ImagePreloader from "@/components/ImagePreloader";
 
 // Revalidate every 60 seconds (or logic you prefer)
 export const revalidate = 60;
+
+export const metadata = {
+  title: "Gwo Pina Buchanan | New Developments & Luxury Real Estate Seattle",
+  description: "Dehlan Gwo, Yael Pina, and Rachel Buchanan present the region's most comprehensive portfolio of new homes. From Alki Beach to Bellevue high-rises, discover the future of living in the Pacific Northwest.",
+};
 
 export default async function Home() {
   const pageAssets = await client.fetch(`*[_type == "pageAssets"][0] {
@@ -21,7 +27,9 @@ export default async function Home() {
     },
     homeSearchCardImage,
     homeValuationCardImage,
-    letsConnectCardImage
+    letsConnectCardImage,
+    comingSoonImage,
+    sothebysAdvantageImage
   }`);
 
   const videoUrl = pageAssets?.homeVideo?.asset?.url;
@@ -39,6 +47,17 @@ export default async function Home() {
     ? urlForImage(pageAssets.letsConnectCardImage).url()
     : GREY_PLACEHOLDER;
 
+  // Preload images for other pages to improve navigation speed
+  const comingSoonImage = pageAssets?.comingSoonImage
+    ? urlForImage(pageAssets.comingSoonImage).url()
+    : null;
+
+  const sothebysImage = pageAssets?.sothebysAdvantageImage
+    ? urlForImage(pageAssets.sothebysAdvantageImage).url()
+    : null;
+
+  const imagesToPreload = [comingSoonImage, sothebysImage].filter(Boolean) as string[];
+
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -55,10 +74,10 @@ export default async function Home() {
         <section className="py-24 bg-muted">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6">Meet The Team</h2>
+              <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6">A Convergence of Expertise</h2>
               <div className="w-24 h-1 bg-accent mx-auto mb-8" />
               <p className="max-w-2xl mx-auto text-muted-foreground leading-relaxed text-lg">
-                Gwo Pina Buchana represents the pinnacle of luxury real estate. Our team combines decades of market expertise with an unwavering commitment to our clients.
+                Real estate excellence is no longer a solo endeavor. The Gwo Pina Buchanan team unites distinct disciplines—development strategy, luxury hospitality, and visual design—to offer a holistic, concierge-level advisory service.
               </p>
             </div>
 
@@ -68,16 +87,16 @@ export default async function Home() {
                 <div className="relative h-[350px] md:h-[500px] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
                   <Image
                     src={GREY_PLACEHOLDER}
-                    alt="Gwo Pina"
+                    alt="Dehlan Gwo"
                     fill
                     className="object-cover"
                   />
                 </div>
                 <div>
-                  <h3 className="font-serif text-2xl text-foreground mb-1">Gwo Pina</h3>
-                  <p className="text-accent text-sm uppercase tracking-widest mb-4">Founder & Principal</p>
+                  <h3 className="font-serif text-2xl text-foreground mb-1">Dehlan Gwo</h3>
+                  <p className="text-accent text-sm uppercase tracking-widest mb-4">Vice President of New Developments</p>
                   <p className="text-muted-foreground leading-relaxed text-sm">
-                    With over 15 years of experience in the luxury market, Gwo has established a reputation for discretion, integrity, and record-breaking results.
+                    Moving beyond brokerage to offer strategic advisory on zoning, value engineering, and long-term asset appreciation.
                   </p>
                 </div>
               </div>
@@ -87,16 +106,16 @@ export default async function Home() {
                 <div className="relative h-[350px] md:h-[500px] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
                   <Image
                     src={GREY_PLACEHOLDER}
-                    alt="Marcus Buchana"
+                    alt="Yael Pina"
                     fill
                     className="object-cover"
                   />
                 </div>
                 <div>
-                  <h3 className="font-serif text-2xl text-foreground mb-1">Marcus Buchana</h3>
-                  <p className="text-accent text-sm uppercase tracking-widest mb-4">Managing Partner</p>
+                  <h3 className="font-serif text-2xl text-foreground mb-1">Yael Pina</h3>
+                  <p className="text-accent text-sm uppercase tracking-widest mb-4">Global Real Estate Advisor</p>
                   <p className="text-muted-foreground leading-relaxed text-sm">
-                    Marcus brings a background in architectural design and finance, offering clients a unique perspective on value and potential in every property.
+                    Importing the rigorous service standards of luxury hospitality to ensure every transaction is managed with white-glove precision.
                   </p>
                 </div>
               </div>
@@ -106,16 +125,16 @@ export default async function Home() {
                 <div className="relative h-[350px] md:h-[500px] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
                   <Image
                     src={GREY_PLACEHOLDER}
-                    alt="Elena Rossi"
+                    alt="Rachel Buchanan"
                     fill
                     className="object-cover"
                   />
                 </div>
                 <div>
-                  <h3 className="font-serif text-2xl text-foreground mb-1">Elena Rossi</h3>
-                  <p className="text-accent text-sm uppercase tracking-widest mb-4">Senior Associate</p>
+                  <h3 className="font-serif text-2xl text-foreground mb-1">Rachel Buchanan</h3>
+                  <p className="text-accent text-sm uppercase tracking-widest mb-4">Real Estate Associate</p>
                   <p className="text-muted-foreground leading-relaxed text-sm">
-                    Elena specializes in international clientele and off-market properties, ensuring seamless transactions for buyers and sellers from around the globe.
+                    Applying a decade of visual merchandising expertise to present every home as a masterpiece and drive emotional engagement.
                   </p>
                 </div>
               </div>
@@ -172,6 +191,7 @@ export default async function Home() {
       </main>
 
       <Footer />
+      <ImagePreloader images={imagesToPreload} />
     </div>
   );
 }
