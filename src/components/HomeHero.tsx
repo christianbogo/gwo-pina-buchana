@@ -1,16 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { urlForImage } from "@/sanity/lib/image";
-import { GREY_PLACEHOLDER } from "@/lib/constants";
 
 interface HomeHeroProps {
     videoUrl?: string | null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     posterImage?: any; // Sanity image object
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isVisible, setIsVisible] = useState(true);
@@ -90,16 +89,16 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
                         Exclusive Listings
                     </Link>
                     <Link
-                        href="/properties/sales"
-                        className="inline-block border border-white bg-black/20 backdrop-blur-sm px-6 py-3 md:px-8 md:py-4 text-xs md:text-sm uppercase tracking-widest hover:bg-white hover:text-foreground transition-all duration-300 w-auto min-w-[200px] md:w-64 text-center"
-                    >
-                        Notable Sales
-                    </Link>
-                    <Link
                         href="/properties/new-developments"
                         className="inline-block border border-white bg-black/20 backdrop-blur-sm px-6 py-3 md:px-8 md:py-4 text-xs md:text-sm uppercase tracking-widest hover:bg-white hover:text-foreground transition-all duration-300 w-auto min-w-[200px] md:w-64 text-center"
                     >
                         New Developments
+                    </Link>
+                    <Link
+                        href="/properties/sales"
+                        className="inline-block border border-white bg-black/20 backdrop-blur-sm px-6 py-3 md:px-8 md:py-4 text-xs md:text-sm uppercase tracking-widest hover:bg-white hover:text-foreground transition-all duration-300 w-auto min-w-[200px] md:w-64 text-center"
+                    >
+                        Notable Sales
                     </Link>
                 </div>
             </div>
