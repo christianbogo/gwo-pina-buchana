@@ -4,6 +4,8 @@ import teamMember from './schemas/teamMember'
 import pageAssets from './schemas/pageAssets'
 import development from './schemas/development'
 
+import brand from './schemas/brand'
+
 export const schema: { types: SchemaTypeDefinition[] } = {
-    types: [pageAssets, teamMember, blockContent, development],
+    types: [pageAssets, teamMember, blockContent, development, brand],
 }

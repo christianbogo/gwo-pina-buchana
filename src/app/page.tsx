@@ -31,7 +31,7 @@ export default async function Home() {
     homeValuationCardImage,
     letsConnectCardImage,
     teamGroupPhoto,
-    comingSoonImage,
+    newDevelopmentsPageImage,
     sothebysAdvantageImage
   }`);
 
@@ -51,15 +51,15 @@ export default async function Home() {
     : GREY_PLACEHOLDER;
 
   // Preload images for other pages to improve navigation speed
-  const comingSoonImage = pageAssets?.comingSoonImage
-    ? urlForImage(pageAssets.comingSoonImage).url()
+  const newDevelopmentsImage = pageAssets?.newDevelopmentsPageImage
+    ? urlForImage(pageAssets.newDevelopmentsPageImage).url()
     : null;
 
   const sothebysImage = pageAssets?.sothebysAdvantageImage
     ? urlForImage(pageAssets.sothebysAdvantageImage).url()
     : null;
 
-  const imagesToPreload = [comingSoonImage, sothebysImage].filter(Boolean) as string[];
+  const imagesToPreload = [newDevelopmentsImage, sothebysImage].filter(Boolean) as string[];
 
 
   return (
@@ -85,7 +85,7 @@ export default async function Home() {
                 <div className="w-24 h-1 bg-accent mx-auto mb-8" />
 
                 {pageAssets?.teamGroupPhoto && (
-                  <div className="relative w-full aspect-[21/9] mb-8 overflow-hidden max-w-5xl mx-auto">
+                  <div className="relative w-full aspect-[21/9] mb-8 overflow-hidden mx-auto">
                     <Image
                       src={urlForImage(pageAssets.teamGroupPhoto).url()}
                       alt="Gwo Piña Buchanan Team"

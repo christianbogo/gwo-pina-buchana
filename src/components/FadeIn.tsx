@@ -31,7 +31,7 @@ export default function FadeIn({
         <motion.div
             initial={initial}
             whileInView={{ opacity: 1, x: 0, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, margin: "0px", amount: 0.1 }}
             transition={{
                 duration: 0.7,
                 ease: "easeOut",

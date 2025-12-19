@@ -51,7 +51,7 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
     ];
 
     const desktopLinks = [
-        { name: "Properties", href: "#", type: "dropdown", menu: "properties" },
+        { name: "New Developments", href: "/properties/new-developments" },
         { name: "Home Search", href: "/search", type: "dropdown", menu: "search" },
         { name: "Let's Connect", href: "/contact" },
     ];
@@ -82,9 +82,9 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
                             <nav className="hidden lg:flex space-x-8 items-center">
                                 {desktopLinks.map((link) => {
                                     if (link.type === "dropdown") {
-                                        const isOpen = link.menu === "properties" ? isPropertiesOpen : isSearchOpen;
-                                        const setOpen = link.menu === "properties" ? setIsPropertiesOpen : setIsSearchOpen;
-                                        const subLinks = link.menu === "properties" ? propertiesLinks : neighborhoodLinks;
+                                        const isOpen = isSearchOpen;
+                                        const setOpen = setIsSearchOpen;
+                                        const subLinks = neighborhoodLinks;
 
                                         return (
                                             <div

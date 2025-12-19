@@ -44,8 +44,8 @@ export default {
             },
         },
         {
-            name: 'comingSoonImage',
-            title: 'Coming Soon Page Image',
+            name: 'newDevelopmentsPageImage',
+            title: 'New Developments Page Image',
             type: 'image',
             options: {
                 hotspot: true,

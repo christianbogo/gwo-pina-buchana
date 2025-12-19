@@ -81,25 +81,34 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
                     </p>
                 </div>
 
-                <div className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-center w-full flex-wrap">
-                    <Link
-                        href="/properties/exclusive"
-                        className="inline-block border border-white bg-black/20 backdrop-blur-sm px-6 py-3 md:px-8 md:py-4 text-xs md:text-sm uppercase tracking-widest hover:bg-white hover:text-foreground transition-all duration-300 w-auto min-w-[200px] md:w-64 text-center"
-                    >
-                        Exclusive Listings
-                    </Link>
+                <div className="flex flex-col md:flex-row md:flex-nowrap gap-8 md:gap-12 justify-center items-center w-full max-w-7xl mx-auto">
+                    {/* Left Spacer/Link */}
+                    <div className="hidden md:flex flex-1 justify-end">
+                        <Link
+                            href="/properties/exclusive"
+                            className="text-white text-sm uppercase tracking-[0.2em] hover:underline underline-offset-8 transition-all duration-300 font-medium whitespace-nowrap"
+                        >
+                            Exclusive Listings
+                        </Link>
+                    </div>
+
+                    {/* Center Button */}
                     <Link
                         href="/properties/new-developments"
-                        className="inline-block border border-white bg-black/20 backdrop-blur-sm px-6 py-3 md:px-8 md:py-4 text-xs md:text-sm uppercase tracking-widest hover:bg-white hover:text-foreground transition-all duration-300 w-auto min-w-[200px] md:w-64 text-center"
+                        className="inline-block border border-white bg-black/20 backdrop-blur-sm px-10 py-4 text-xs md:text-sm uppercase tracking-widest hover:bg-white hover:text-foreground transition-all duration-300 min-w-[240px] text-center font-bold flex-shrink-0"
                     >
                         New Developments
                     </Link>
-                    <Link
-                        href="/properties/sales"
-                        className="inline-block border border-white bg-black/20 backdrop-blur-sm px-6 py-3 md:px-8 md:py-4 text-xs md:text-sm uppercase tracking-widest hover:bg-white hover:text-foreground transition-all duration-300 w-auto min-w-[200px] md:w-64 text-center"
-                    >
-                        Notable Sales
-                    </Link>
+
+                    {/* Right Spacer/Link */}
+                    <div className="hidden md:flex flex-1 justify-start">
+                        <Link
+                            href="/properties/sales"
+                            className="text-white text-sm uppercase tracking-[0.2em] hover:underline underline-offset-8 transition-all duration-300 font-medium whitespace-nowrap"
+                        >
+                            Notable Sales
+                        </Link>
+                    </div>
                 </div>
             </div>
 
