@@ -15,7 +15,7 @@ export default function ContactPage() {
                             <div>
                                 <h1 className="font-serif text-5xl md:text-7xl text-foreground mb-8">Start the Conversation</h1>
                                 <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
-                                    Real estate is a journey, and every journey begins with a single step. Whether you are exploring the value of your current home, looking for unparalleled investment opportunities, or ready to find your dream residence in the Pacific Northwest, the Gwo Pina Buchanan team is here to guide you.
+                                    Real estate is a journey, and every journey begins with a single step. Whether you are exploring the value of your current home, looking for unparalleled investment opportunities, or ready to find your dream residence in the Pacific Northwest, the Gwo Piña Buchanan team is here to guide you.
                                 </p>
                             </div>
 
@@ -27,7 +27,7 @@ export default function ContactPage() {
                                 <div>
                                     <h3 className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Contact</h3>
                                     <p className="text-xl text-foreground mb-1">
-                                        <a href="mailto:contact@gwopinabuchana.com" className="hover:text-accent transition-colors">contact@gwopinabuchana.com</a>
+                                        <a href="mailto:contact@gwopiñabuchanan.com" className="hover:text-accent transition-colors">contact@gwopiñabuchanan.com</a>
                                     </p>
                                     <p className="text-xl text-foreground">
                                         <a href="tel:+13105550123" className="hover:text-accent transition-colors">+1 (310) 555-0123</a>

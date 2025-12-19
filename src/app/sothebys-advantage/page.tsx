@@ -45,7 +45,7 @@ export default async function SothebysAdvantagePage() {
                             A Legacy of Excellence
                         </h2>
                         <p className="text-muted-foreground leading-relaxed mb-6">
-                            When you list your home with Gwo Pina Buchanan, you are not just hiring a team; you are activating a global infrastructure. The "New Pacific Northwest" is an international destination, and to achieve the highest value for your property, you must reach beyond the local market.
+                            When you list your home with Gwo Piña Buchanan, you are not just hiring a team; you are activating a global infrastructure. The "New Pacific Northwest" is an international destination, and to achieve the highest value for your property, you must reach beyond the local market.
                         </p>
                         <p className="text-muted-foreground leading-relaxed mb-6">
                             Realogics Sotheby’s International Realty (RSIR) provides the platform to do exactly that. We don't just wait for buyers to find us; we actively push your property to a network of high-net-worth individuals who trust the Sotheby's name.
@@ -67,7 +67,7 @@ export default async function SothebysAdvantagePage() {
                         </div>
 
                         <p className="text-muted-foreground leading-relaxed">
-                            When you list with Gwo Pina Buchana, your home is presented to a highly qualified global audience through exclusive channels and proprietary marketing relationships.
+                            When you list with Gwo Piña Buchanan, your home is presented to a highly qualified global audience through exclusive channels and proprietary marketing relationships.
                         </p>
                     </div>
                 </section>

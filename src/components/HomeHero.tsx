@@ -18,7 +18,7 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
     const slides = [
         {
             eyebrow: "Seattle & Bellevue",
-            title: "Gwo Pina Buchanan",
+            title: "Gwo Piña Buchanan",
             subtitle: "Defining the New Pacific Northwest."
         },
         {
@@ -46,28 +46,25 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
 
     return (
         <section className="relative h-screen flex items-center justify-center overflow-hidden">
-            <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 z-0 select-none pointer-events-none">
                 <div className="w-full h-full bg-gray-900/40 absolute z-10" />
 
-                {videoUrl ? (
-                    <video
-                        className="w-full h-full object-cover"
-                        src={videoUrl}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        poster={posterImage ? urlForImage(posterImage).url() : GREY_PLACEHOLDER}
-                    />
-                ) : (
-                    <Image
-                        src={posterImage ? urlForImage(posterImage).url() : GREY_PLACEHOLDER}
-                        alt=""
-                        fill
-                        className="object-cover"
-                        priority
-                    />
-                )}
+                <iframe
+                    src="https://iframe.mediadelivery.net/embed/567649/34eadf58-eb06-4bfc-b76c-b836fd280046?autoplay=true&loop=true&muted=true&preload=true&controls=0&playsinline=true"
+                    loading="eager"
+                    className="absolute top-1/2 left-1/2 w-[177.77777778vh] h-[56.25vw] min-w-full min-h-full object-cover"
+                    allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer"
+                    allowFullScreen
+                    style={{
+                        border: 'none',
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        objectFit: 'cover',
+                        pointerEvents: 'none',
+                    }}
+                />
             </div>
 
             <div className="relative z-20 text-center text-white px-4 max-w-5xl mx-auto w-full flex flex-col items-center gap-12">
@@ -85,7 +82,7 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
                     </p>
                 </div>
 
-                <div className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-center w-full">
+                <div className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-center w-full flex-wrap">
                     <Link
                         href="/properties/exclusive"
                         className="inline-block border border-white bg-black/20 backdrop-blur-sm px-6 py-3 md:px-8 md:py-4 text-xs md:text-sm uppercase tracking-widest hover:bg-white hover:text-foreground transition-all duration-300 w-auto min-w-[200px] md:w-64 text-center"
@@ -97,6 +94,12 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
                         className="inline-block border border-white bg-black/20 backdrop-blur-sm px-6 py-3 md:px-8 md:py-4 text-xs md:text-sm uppercase tracking-widest hover:bg-white hover:text-foreground transition-all duration-300 w-auto min-w-[200px] md:w-64 text-center"
                     >
                         Notable Sales
+                    </Link>
+                    <Link
+                        href="/properties/new-developments"
+                        className="inline-block border border-white bg-black/20 backdrop-blur-sm px-6 py-3 md:px-8 md:py-4 text-xs md:text-sm uppercase tracking-widest hover:bg-white hover:text-foreground transition-all duration-300 w-auto min-w-[200px] md:w-64 text-center"
+                    >
+                        New Developments
                     </Link>
                 </div>
             </div>

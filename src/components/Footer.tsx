@@ -9,7 +9,7 @@ export default function Footer() {
                     {/* Brand / Contact */}
                     <div className="space-y-4">
                         <h3 className="font-serif text-2xl tracking-widest uppercase text-white">
-                            Gwo Pina Buchana
+                            Gwo Piña Buchanan
                         </h3>
                         <p className="text-gray-400 text-sm leading-relaxed">
                             Luxury Real Estate Team<br />
@@ -18,8 +18,8 @@ export default function Footer() {
                         <div className="pt-4 space-y-2 text-sm text-gray-400">
                             <p>123 Luxury Lane, Beverly Hills, CA 90210</p>
                             <p>
-                                <a href="mailto:contact@gwopinabuchana.com" className="hover:text-accent transition-colors">
-                                    contact@gwopinabuchana.com
+                                <a href="mailto:contact@gwopiñabuchanan.com" className="hover:text-accent transition-colors">
+                                    contact@gwopiñabuchanan.com
                                 </a>
                             </p>
                             <p>
@@ -62,14 +62,25 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-                    <div className="flex flex-col md:flex-row items-center gap-4">
-                        <ThemeToggle forceDark={true} />
-                        <p>&copy; {new Date().getFullYear()} Gwo Pina Buchana. All rights reserved.</p>
+                <div className="mt-16 pt-8 border-t border-white/10 flex flex-col items-center text-center">
+                    <div className="max-w-4xl mx-auto space-y-4 text-[10px] text-gray-500 leading-relaxed mb-8">
+                        <p>
+                            Legal & Compliance fine print: Dehlan Gwo, Yael Piña, and Rachel Buchanan are licensed real estate brokers in Washington State and abide by equal housing opportunity laws. All material presented herein is intended for informational purposes only. Information is compiled from sources deemed reliable but is subject to errors, omissions, changes in price, condition, sale, or withdrawal without notice. No statement is made as to the accuracy of any description. All measurements and square footages are approximate. This is not intended to solicit property already listed. Nothing herein shall be construed as legal, accounting, or other professional advice outside the realm of real estate brokerage.
+                        </p>
+                        <p>
+                            © 2025 Realogics Brokerage, LLC. All rights reserved. Sotheby’s International Realty® and the Sotheby’s International Realty Logo are service marks licensed to Sotheby’s International Realty Affiliates LLC and used with permission. Realogics Brokerage, LLC fully supports the principles of the Fair Housing Act and the Equal Opportunity Act. Each franchise is independently owned and operated. Any services or products provided by independently owned and operated franchisees are not provided by, affiliated with or related to Sotheby’s International Realty Affiliates LLC nor any of its affiliated companies. *Seller reserves the right to change product offering without notice. All information provided is deemed reliable but is not guaranteed and should be independently verified. <a href="https://www.rsir.com/dmca-notice/" className="hover:text-gray-400 transition-colors underline decoration-dotted">Please click here to review our Digital Millennium Copyright Act (&quot;DMCA&quot;) policy.</a>
+                        </p>
                     </div>
-                    <div className="flex space-x-6 mt-4 md:mt-0">
-                        <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-                        <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+
+                    <div className="flex flex-col md:flex-row justify-between items-center w-full text-xs text-gray-500">
+                        <div className="flex flex-col md:flex-row items-center gap-4">
+                            <ThemeToggle forceDark={true} />
+                            <p>&copy; {new Date().getFullYear()} Gwo Piña Buchanan. All rights reserved.</p>
+                        </div>
+                        <div className="flex space-x-6 mt-4 md:mt-0">
+                            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+                            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+                        </div>
                     </div>
                 </div>
             </div>

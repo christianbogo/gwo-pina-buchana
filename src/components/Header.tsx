@@ -73,7 +73,7 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
                         {/* Logo */}
                         <div className="flex-shrink-0 flex items-center">
                             <Link href="/" className={`font-serif text-2xl tracking-[0.2em] uppercase transition-colors duration-300 ${textColorClass} hover:opacity-80`}>
-                                Gwo Pina Buchana
+                                Gwo Piña Buchanan
                             </Link>
                         </div>
 
@@ -250,7 +250,7 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
                             <p className="uppercase tracking-widest text-xs font-bold text-foreground mb-4">Contact</p>
                             <p>123 Luxury Lane, Beverly Hills, CA 90210</p>
                             <p><a href="tel:+13105550123" className="hover:text-accent">+1 (310) 555-0123</a></p>
-                            <p><a href="mailto:contact@gwopinabuchana.com" className="hover:text-accent">contact@gwopinabuchana.com</a></p>
+                            <p><a href="mailto:contact@gwopiñabuchanan.com" className="hover:text-accent">contact@gwopiñabuchanan.com</a></p>
                         </div>
                     </div>
                 </div>

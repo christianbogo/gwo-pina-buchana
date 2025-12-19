@@ -20,6 +20,14 @@ export default {
             },
         },
         {
+            name: 'teamGroupPhoto',
+            title: 'Team Group Photo (Home Page)',
+            type: 'image',
+            options: {
+                hotspot: true,
+            },
+        },
+        {
             name: 'exclusiveListingsImage',
             title: 'Exclusive Listings Page Image',
             type: 'image',

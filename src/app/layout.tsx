@@ -18,7 +18,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Gwo Pina Buchana",
+  title: "Gwo Piña Buchanan",
   description: "Luxury Real Estate Group",
 };
 

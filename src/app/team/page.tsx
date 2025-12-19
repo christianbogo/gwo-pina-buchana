@@ -14,9 +14,9 @@ Prior to rejoining RSIR, Dehlan served as a Director at Create World Real Estate
         image: GREY_PLACEHOLDER
     },
     {
-        name: "Yael Pina",
+        name: "Yael Piña",
         role: "Global Real Estate Advisor",
-        bio: `Yael Pina believes that luxury is not a price point; it is a quality of experience. As a Global Real Estate Advisor with Gwo Pina Buchanan, Yael brings a "concierge-first" philosophy to the real estate industry. Born in Guadalajara, Mexico, and raised in West Seattle from the age of three, Yael embodies the multicultural, globally connected spirit of the modern Pacific Northwest. He is fluent in both Spanish and English.
+        bio: `Yael Piña believes that luxury is not a price point; it is a quality of experience. As a Global Real Estate Advisor with Gwo Piña Buchanan, Yael brings a "concierge-first" philosophy to the real estate industry. Born in Guadalajara, Mexico, and raised in West Seattle from the age of three, Yael embodies the multicultural, globally connected spirit of the modern Pacific Northwest. He is fluent in both Spanish and English.
 
 Yael’s professional DNA was formed in the demanding world of luxury hospitality. Rising quickly through the ranks of management, he learned that true service is about anticipation—solving problems before the client even knows they exist.`,
         image: GREY_PLACEHOLDER

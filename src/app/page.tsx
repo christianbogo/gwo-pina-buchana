@@ -14,8 +14,8 @@ import ImagePreloader from "@/components/ImagePreloader";
 export const revalidate = 60;
 
 export const metadata = {
-  title: "Gwo Pina Buchanan | New Developments & Luxury Real Estate Seattle",
-  description: "Dehlan Gwo, Yael Pina, and Rachel Buchanan present the region's most comprehensive portfolio of new homes. From Alki Beach to Bellevue high-rises, discover the future of living in the Pacific Northwest.",
+  title: "Gwo Piña Buchanan | New Developments & Luxury Real Estate Seattle",
+  description: "Dehlan Gwo, Yael Piña, and Rachel Buchanan present the region's most comprehensive portfolio of new homes. From Alki Beach to Bellevue high-rises, discover the future of living in the Pacific Northwest.",
 };
 
 export default async function Home() {
@@ -28,6 +28,7 @@ export default async function Home() {
     homeSearchCardImage,
     homeValuationCardImage,
     letsConnectCardImage,
+    teamGroupPhoto,
     comingSoonImage,
     sothebysAdvantageImage
   }`);
@@ -76,8 +77,20 @@ export default async function Home() {
             <div className="text-center mb-16">
               <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6">A Convergence of Expertise</h2>
               <div className="w-24 h-1 bg-accent mx-auto mb-8" />
+
+              {pageAssets?.teamGroupPhoto && (
+                <div className="relative w-full aspect-[21/9] mb-8 overflow-hidden max-w-5xl mx-auto">
+                  <Image
+                    src={urlForImage(pageAssets.teamGroupPhoto).url()}
+                    alt="Gwo Piña Buchanan Team"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              )}
+
               <p className="max-w-2xl mx-auto text-muted-foreground leading-relaxed text-lg">
-                Real estate excellence is no longer a solo endeavor. The Gwo Pina Buchanan team unites distinct disciplines—development strategy, luxury hospitality, and visual design—to offer a holistic, concierge-level advisory service.
+                Real estate excellence is no longer a solo endeavor. The Gwo Piña Buchanan team unites distinct disciplines—development strategy, luxury hospitality, and visual design—to offer a holistic, concierge-level advisory service.
               </p>
             </div>
 
@@ -106,13 +119,13 @@ export default async function Home() {
                 <div className="relative h-[350px] md:h-[500px] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
                   <Image
                     src={GREY_PLACEHOLDER}
-                    alt="Yael Pina"
+                    alt="Yael Piña"
                     fill
                     className="object-cover"
                   />
                 </div>
                 <div>
-                  <h3 className="font-serif text-2xl text-foreground mb-1">Yael Pina</h3>
+                  <h3 className="font-serif text-2xl text-foreground mb-1">Yael Piña</h3>
                   <p className="text-accent text-sm uppercase tracking-widest mb-4">Global Real Estate Advisor</p>
                   <p className="text-muted-foreground leading-relaxed text-sm">
                     Importing the rigorous service standards of luxury hospitality to ensure every transaction is managed with white-glove precision.

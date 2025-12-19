@@ -16,7 +16,7 @@ const newsItems = [
     {
         title: "Record Sale in Medina",
         date: "November 15, 2025",
-        summary: "Gwo Pina Buchana facilitates the highest recorded sale in Medina this year.",
+        summary: "Gwo Piña Buchanan facilitates the highest recorded sale in Medina this year.",
         image: GREY_PLACEHOLDER,
         slug: "record-sale-medina"
     },
