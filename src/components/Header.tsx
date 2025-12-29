@@ -51,6 +51,7 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
     ];
 
     const desktopLinks = [
+        { name: "Exclusive Listings", href: "/properties/exclusive" },
         { name: "New Developments", href: "/properties/new-developments" },
         { name: "Home Search", href: "/search", type: "dropdown", menu: "search" },
         { name: "Let's Connect", href: "/contact" },

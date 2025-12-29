@@ -58,7 +58,7 @@ export default function DevelopmentTabs() {
     return (
         <div className="w-full max-w-5xl mx-auto my-12">
             <h2 className="font-serif text-3xl md:text-4xl text-center mb-12 text-foreground">
-                The Field Team Scope of Services
+                Gwo Piña Buchanan Scope of Services
             </h2>
 
             <div className="flex flex-col">

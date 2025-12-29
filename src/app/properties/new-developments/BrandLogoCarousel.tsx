@@ -35,7 +35,7 @@ export default function BrandLogoCarousel() {
         <section className="py-20 bg-muted overflow-hidden border-t border-border">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center">
                 <h3 className="font-serif text-2xl md:text-3xl text-foreground">
-                    Our Partners & Success Stories
+                    Our Partners & Case Studies
                 </h3>
             </div>
 

@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
 import { GREY_PLACEHOLDER } from "@/lib/constants";
+import CondensedContactForm from "@/components/CondensedContactForm";
 
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
@@ -99,8 +100,9 @@ export default async function NotableSalesPage() {
                         </Link>
                     </div>
                 </section>
+                <CondensedContactForm />
             </main>
             <Footer />
-        </div>
+        </div >
     );
 }

@@ -9,6 +9,7 @@ import { GREY_PLACEHOLDER } from "@/lib/constants";
 import DevelopmentTabs from "./DevelopmentTabs";
 import PageHero from "@/components/PageHero";
 import BrandLogoCarousel from "./BrandLogoCarousel";
+import CondensedContactForm from "@/components/CondensedContactForm";
 
 // Revalidate every 60 seconds
 export const revalidate = 60;
@@ -195,12 +196,12 @@ export default async function NewDevelopments() {
                 {/* INFO: Section 3.5 - Brand Logos */}
                 <BrandLogoCarousel />
 
-                {/* INFO: Section 4 - Success Stories (List) */}
+                {/* INFO: Section 4 - Case Studies (List) */}
                 <section className="py-24 bg-background">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <FadeIn delay={0.3}>
                             <div className="text-center mb-16 px-4">
-                                <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6">Success Stories</h2>
+                                <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6">Case Studies</h2>
                                 <div className="w-16 h-0.5 bg-accent mx-auto" />
                             </div>
 
@@ -237,9 +238,7 @@ export default async function NewDevelopments() {
                                                     <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-3">
                                                         {dev.description}
                                                     </p>
-                                                    <span className="inline-block border-b border-foreground pb-1 text-sm uppercase tracking-widest group-hover:border-accent group-hover:text-accent transition-colors duration-300">
-                                                        Learn More
-                                                    </span>
+
                                                 </div>
                                             </Link>
                                         </FadeIn>
@@ -295,9 +294,11 @@ export default async function NewDevelopments() {
                     )}
 
                 </div>
-            </main>
+
+                <CondensedContactForm />
+            </main >
 
             <Footer />
-        </div>
+        </div >
     );
 }

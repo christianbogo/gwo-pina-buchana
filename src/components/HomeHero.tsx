@@ -49,7 +49,7 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
                 <div className="w-full h-full bg-gray-900/40 absolute z-10" />
 
                 <iframe
-                    src="https://iframe.mediadelivery.net/embed/567649/34eadf58-eb06-4bfc-b76c-b836fd280046?autoplay=true&loop=true&muted=true&preload=true&controls=0&playsinline=true"
+                    src="https://iframe.mediadelivery.net/embed/567649/34eadf58-eb06-4bfc-b76c-b836fd280046?autoplay=true&loop=true&muted=true&preload=true&controls=0&playsinline=true&playlist=34eadf58-eb06-4bfc-b76c-b836fd280046"
                     loading="eager"
                     className="absolute top-1/2 left-1/2 w-[177.77777778vh] h-[56.25vw] min-w-full min-h-full object-cover"
                     allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer"
@@ -81,12 +81,12 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
                     </p>
                 </div>
 
-                <div className="flex flex-col md:flex-row md:flex-nowrap gap-8 md:gap-12 justify-center items-center w-full max-w-7xl mx-auto">
-                    {/* Left Spacer/Link */}
-                    <div className="hidden md:flex flex-1 justify-end">
+                <div className="flex flex-col md:flex-row md:flex-nowrap gap-4 md:gap-12 justify-center items-center w-full max-w-7xl mx-auto">
+                    {/* Left Button */}
+                    <div className="flex flex-1 justify-center md:justify-end w-full md:w-auto">
                         <Link
                             href="/properties/exclusive"
-                            className="text-white text-sm uppercase tracking-[0.2em] hover:underline underline-offset-8 transition-all duration-300 font-medium whitespace-nowrap"
+                            className="inline-block border border-white bg-black/20 backdrop-blur-sm px-10 py-4 text-xs md:text-sm uppercase tracking-widest hover:bg-white hover:text-foreground transition-all duration-300 min-w-[240px] text-center font-bold flex-shrink-0"
                         >
                             Exclusive Listings
                         </Link>
@@ -100,11 +100,11 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
                         New Developments
                     </Link>
 
-                    {/* Right Spacer/Link */}
-                    <div className="hidden md:flex flex-1 justify-start">
+                    {/* Right Button */}
+                    <div className="flex flex-1 justify-center md:justify-start w-full md:w-auto">
                         <Link
                             href="/properties/sales"
-                            className="text-white text-sm uppercase tracking-[0.2em] hover:underline underline-offset-8 transition-all duration-300 font-medium whitespace-nowrap"
+                            className="inline-block border border-white bg-black/20 backdrop-blur-sm px-10 py-4 text-xs md:text-sm uppercase tracking-widest hover:bg-white hover:text-foreground transition-all duration-300 min-w-[240px] text-center font-bold flex-shrink-0"
                         >
                             Notable Sales
                         </Link>

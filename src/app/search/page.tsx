@@ -94,7 +94,7 @@ export default async function NeighborhoodsPage() {
                             <h1 className="font-serif text-4xl md:text-6xl text-foreground mb-6">Home Search</h1>
                             <div className="w-24 h-1 bg-accent mx-auto mb-8" />
                             <p className="max-w-2xl mx-auto text-muted-foreground leading-relaxed text-lg">
-                                Explore the finest neighborhoods in the Pacific Northwest.
+                                Explore the finest neighborhoods in the Pacific Northwest, our area of expertise.
                             </p>
                         </div>
 

@@ -7,6 +7,7 @@ import { GREY_PLACEHOLDER } from "@/lib/constants";
 
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
+import CondensedContactForm from "@/components/CondensedContactForm";
 
 export default async function ExclusiveListingsPage() {
     const pageAssets = await client.fetch(`*[_type == "pageAssets"][0]{ exclusiveListingsImage }`);
@@ -77,6 +78,7 @@ export default async function ExclusiveListingsPage() {
                 </section>
 
                 <AgentContact />
+                <CondensedContactForm />
             </main>
             <Footer />
         </div>
