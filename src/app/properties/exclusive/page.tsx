@@ -10,46 +10,26 @@ import { urlForImage } from "@/sanity/lib/image";
 import CondensedContactForm from "@/components/CondensedContactForm";
 
 export default async function ExclusiveListingsPage() {
-    const pageAssets = await client.fetch(`*[_type == "pageAssets"][0]{ exclusiveListingsImage }`);
+
+
+    // Fetch sorting by renderOrder (pinned > default) then price
+    const [listings, pageAssets] = await Promise.all([
+        client.fetch(`*[_type == "listing" && type == "exclusive"] {
+            _id,
+            title,
+            subtitle,
+            price,
+            status,
+            coverImage,
+            renderOrder,
+            slug
+        } | order(renderOrder desc, price desc)`),
+        client.fetch(`*[_type == "pageAssets"][0]{ exclusiveListingsImage }`)
+    ]);
+
     const heroImage = pageAssets?.exclusiveListingsImage
         ? urlForImage(pageAssets.exclusiveListingsImage).url()
         : GREY_PLACEHOLDER;
-
-    const listings = [
-        {
-            id: 1,
-            title: "123 Beverly Park",
-            location: "Beverly Hills, CA",
-            price: "$12,500,000",
-            image: GREY_PLACEHOLDER,
-            tag: "For Sale"
-        },
-        {
-            id: 2,
-            title: "456 Bel Air Road",
-            location: "Bel Air, CA",
-            price: "$28,000,000",
-            image: GREY_PLACEHOLDER,
-            tag: "For Sale"
-        },
-        {
-            id: 3,
-            title: "202 Trousdale Estates",
-            location: "Beverly Hills, CA",
-            price: "$18,500,000",
-            image: GREY_PLACEHOLDER,
-            tag: "For Sale"
-        },
-        {
-            id: 4,
-            title: "Sunset Plaza Estate",
-            location: "Hollywood Hills, CA",
-            price: "$14,950,000",
-            image: GREY_PLACEHOLDER,
-            tag: "New Listing"
-        }
-
-    ];
 
     return (
         <div className="min-h-screen flex flex-col">
@@ -63,14 +43,16 @@ export default async function ExclusiveListingsPage() {
                 <section className="py-24 bg-background">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {listings.map((listing) => (
+                            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                            {listings.map((listing: any) => (
                                 <ListingCard
-                                    key={listing.id}
-                                    image={listing.image}
+                                    key={listing._id}
+                                    image={listing.coverImage ? urlForImage(listing.coverImage).url() : GREY_PLACEHOLDER}
                                     title={listing.title}
-                                    location={listing.location}
+                                    location={listing.subtitle}
                                     price={listing.price}
-                                    status={listing.tag}
+                                    status={listing.status}
+                                    link={`/properties/listings/${listing.slug.current}`}
                                 />
                             ))}
                         </div>

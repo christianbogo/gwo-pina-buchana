@@ -11,45 +11,26 @@ import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 
 export default async function NotableSalesPage() {
-    const pageAssets = await client.fetch(`*[_type == "pageAssets"][0]{ notableSalesImage }`);
+
+
+    // Fetch sorting by renderOrder (pinned > default) then price
+    const [listings, pageAssets] = await Promise.all([
+        client.fetch(`*[_type == "listing" && type == "notable"] {
+            _id,
+            title,
+            subtitle,
+            price,
+            status,
+            coverImage,
+            renderOrder,
+            slug
+        } | order(renderOrder desc, price desc)`),
+        client.fetch(`*[_type == "pageAssets"][0]{ notableSalesImage }`)
+    ]);
+
     const heroImage = pageAssets?.notableSalesImage
         ? urlForImage(pageAssets.notableSalesImage).url()
         : GREY_PLACEHOLDER;
-
-    const listings = [
-        {
-            id: 1,
-            title: "Carbon Beach Modern",
-            location: "Malibu, CA",
-            price: "$45,000,000",
-            image: GREY_PLACEHOLDER,
-            tag: "Sold"
-        },
-        {
-            id: 2,
-            title: "Hidden Hills Estate",
-            location: "Hidden Hills, CA",
-            price: "$15,200,000",
-            image: GREY_PLACEHOLDER,
-            tag: "Sold"
-        },
-        {
-            id: 3,
-            title: "Brentwood Oasis",
-            location: "Brentwood, CA",
-            price: "$10,500,000",
-            image: GREY_PLACEHOLDER,
-            tag: "Sold"
-        },
-        {
-            id: 4,
-            title: "Pacific Palisades Gem",
-            location: "Pacific Palisades, CA",
-            price: "$8,250,000",
-            image: GREY_PLACEHOLDER,
-            tag: "Sold"
-        }
-    ];
 
     return (
         <div className="min-h-screen flex flex-col">
@@ -63,14 +44,16 @@ export default async function NotableSalesPage() {
                 <section className="py-24 bg-background">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {listings.map((listing) => (
+                            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                            {listings.map((listing: any) => (
                                 <ListingCard
-                                    key={listing.id}
-                                    image={listing.image}
+                                    key={listing._id}
+                                    image={listing.coverImage ? urlForImage(listing.coverImage).url() : GREY_PLACEHOLDER}
                                     title={listing.title}
-                                    location={listing.location}
+                                    location={listing.subtitle}
                                     price={listing.price}
-                                    status={listing.tag}
+                                    status={listing.status}
+                                    link={`/properties/listings/${listing.slug.current}`}
                                 />
                             ))}
                         </div>

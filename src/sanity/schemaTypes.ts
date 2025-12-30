@@ -6,6 +6,8 @@ import development from './schemas/development'
 
 import brand from './schemas/brand'
 
+import listing from './schemas/listing'
+
 export const schema: { types: SchemaTypeDefinition[] } = {
-    types: [pageAssets, teamMember, blockContent, development, brand],
+    types: [pageAssets, teamMember, blockContent, development, brand, listing],
 }
