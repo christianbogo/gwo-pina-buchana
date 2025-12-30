@@ -101,67 +101,20 @@ export default async function Home() {
               </div>
             </FadeIn>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-              {/* Team Member 1 */}
-              <FadeIn delay={0.1} className="h-full">
-                <div className="space-y-6 h-full">
-                  <div className="relative h-[350px] md:h-[500px] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
-                    <Image
-                      src={GREY_PLACEHOLDER}
-                      alt="Dehlan Gwo"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-2xl text-foreground mb-1">Dehlan Gwo</h3>
-                    <p className="text-accent text-sm uppercase tracking-widest mb-4">Vice President of New Developments</p>
-                    <p className="text-muted-foreground leading-relaxed text-sm">
-                      Moving beyond brokerage to offer strategic advisory on zoning, value engineering, and long-term asset appreciation.
-                    </p>
-                  </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 max-w-5xl mx-auto">
+              <FadeIn delay={0.1}>
+                <div className="text-center p-8 md:p-12 border border-border bg-background hover:shadow-lg transition-shadow duration-300">
+                  <p className="text-4xl md:text-5xl lg:text-6xl font-serif text-foreground mb-4">$350 Million+</p>
+                  <p className="text-sm md:text-base uppercase tracking-widest text-muted-foreground">Career Sales</p>
+                  <p className="text-xs text-muted-foreground mt-2">(Total Combined Sales Volume Since 2016)</p>
                 </div>
               </FadeIn>
 
-              {/* Team Member 2 */}
-              <FadeIn delay={0.2} className="h-full">
-                <div className="space-y-6 h-full">
-                  <div className="relative h-[350px] md:h-[500px] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
-                    <Image
-                      src={GREY_PLACEHOLDER}
-                      alt="Yael Piña"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-2xl text-foreground mb-1">Yael Piña</h3>
-                    <p className="text-accent text-sm uppercase tracking-widest mb-4">Global Real Estate Advisor</p>
-                    <p className="text-muted-foreground leading-relaxed text-sm">
-                      Importing the rigorous service standards of luxury hospitality to ensure every transaction is managed with white-glove precision.
-                    </p>
-                  </div>
-                </div>
-              </FadeIn>
-
-              {/* Team Member 3 */}
-              <FadeIn delay={0.3} className="h-full">
-                <div className="space-y-6 h-full">
-                  <div className="relative h-[350px] md:h-[500px] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
-                    <Image
-                      src={GREY_PLACEHOLDER}
-                      alt="Rachel Buchanan"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-2xl text-foreground mb-1">Rachel Buchanan</h3>
-                    <p className="text-accent text-sm uppercase tracking-widest mb-4">Real Estate Associate</p>
-                    <p className="text-muted-foreground leading-relaxed text-sm">
-                      Applying a decade of visual merchandising expertise to present every home as a masterpiece and drive emotional engagement.
-                    </p>
-                  </div>
+              <FadeIn delay={0.2}>
+                <div className="text-center p-8 md:p-12 border border-border bg-background hover:shadow-lg transition-shadow duration-300 h-full flex flex-col justify-center">
+                  <p className="text-4xl md:text-5xl lg:text-6xl font-serif text-foreground mb-4">Top 1.5%</p>
+                  <p className="text-sm md:text-base uppercase tracking-widest text-muted-foreground">Annually Ranked</p>
+                  <p className="text-xs text-muted-foreground mt-2">Real Estate Professionals in America<br />(via RealTrends | The Wall Street Journal)</p>
                 </div>
               </FadeIn>
             </div>

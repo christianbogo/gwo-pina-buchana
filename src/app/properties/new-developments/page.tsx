@@ -83,8 +83,9 @@ export default async function NewDevelopments() {
             description,
             link,
             category,
-            imageCaption
-        }`),
+            imageCaption,
+            order
+        } | order(order asc)`),
         client.fetch(`*[_type == "pageAssets"][0]{ newDevelopmentsPageImage }`)
     ]);
 
@@ -193,8 +194,7 @@ export default async function NewDevelopments() {
                     </div>
                 </section>
 
-                {/* INFO: Section 3.5 - Brand Logos */}
-                <BrandLogoCarousel />
+
 
                 {/* INFO: Section 4 - Case Studies (List) */}
                 <section className="py-24 bg-background">
@@ -222,7 +222,7 @@ export default async function NewDevelopments() {
 
                                                     {/* Image Caption - e.g. SOLD 3 UNITS */}
                                                     {dev.imageCaption && (
-                                                        <div className="absolute bottom-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-3 py-1.5 text-xs font-bold tracking-widest uppercase text-foreground border border-border">
+                                                        <div className="absolute bottom-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-3 py-1.5 text-xs font-bold tracking-widest uppercase text-black dark:text-white border border-border shadow-md">
                                                             {dev.imageCaption}
                                                         </div>
                                                     )}
@@ -235,7 +235,7 @@ export default async function NewDevelopments() {
                                                     <h2 className="font-serif text-3xl text-foreground mb-4 group-hover:text-accent transition-colors duration-300">
                                                         {dev.title}
                                                     </h2>
-                                                    <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-3">
+                                                    <p className="text-muted-foreground leading-relaxed mb-6">
                                                         {dev.description}
                                                     </p>
 
@@ -249,10 +249,13 @@ export default async function NewDevelopments() {
                     </div>
                 </section>
 
+                {/* INFO: Section 3.5 - Brand Logos */}
+                <BrandLogoCarousel />
+
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
                     {/* INFO: Section 5 - Sotheby's Global */}
                     {sothebysDevelopments.length > 0 && (
-                        <div className="mt-40 border-t border-border pt-24">
+                        <div className="border-border pt-24">
                             <FadeIn>
                                 <div className="text-center mb-16 max-w-4xl mx-auto">
                                     <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-6">

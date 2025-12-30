@@ -73,7 +73,7 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
                     <div className="flex justify-between items-center h-24">
                         {/* Logo */}
                         <div className="flex-shrink-0 flex items-center">
-                            <Link href="/" className={`font-serif text-2xl tracking-[0.2em] uppercase transition-colors duration-300 ${textColorClass} hover:opacity-80`}>
+                            <Link href="/" className={`font-serif text-lg md:text-2xl tracking-[0.2em] uppercase transition-colors duration-300 ${textColorClass} hover:opacity-80`}>
                                 Gwo Piña Buchanan
                             </Link>
                         </div>

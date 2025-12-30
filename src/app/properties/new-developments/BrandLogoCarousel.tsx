@@ -32,10 +32,10 @@ export default function BrandLogoCarousel() {
     const marqueeBrands = [...brands, ...brands, ...brands];
 
     return (
-        <section className="py-20 bg-muted overflow-hidden border-t border-border">
+        <section className="py-20 bg-muted overflow-hidden border-border">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center">
                 <h3 className="font-serif text-2xl md:text-3xl text-foreground">
-                    Our Partners & Case Studies
+                    Success Stories
                 </h3>
             </div>
 
@@ -44,7 +44,7 @@ export default function BrandLogoCarousel() {
                     className="flex gap-16 md:gap-24 items-center pr-16 md:pr-24"
                     animate={{ x: "-50%" }}
                     transition={{
-                        duration: 30, // Adjust speed
+                        duration: 60, // Adjust speed
                         ease: "linear",
                         repeat: Infinity,
                     }}

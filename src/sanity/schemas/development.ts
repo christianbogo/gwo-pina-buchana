@@ -11,6 +11,11 @@ export default defineType({
             type: 'string',
         }),
         defineField({
+            name: 'order',
+            title: 'Sort Order',
+            type: 'number',
+        }),
+        defineField({
             name: 'subtitle',
             title: 'Subtitle',
             type: 'string',

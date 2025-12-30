@@ -1,8 +1,44 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 
 export default function CondensedContactForm() {
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+    });
+    const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus('submitting');
+
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            if (res.ok) {
+                setStatus('success');
+                setFormData({ name: "", email: "", phone: "", message: "" });
+            } else {
+                setStatus('error');
+            }
+        } catch (error) {
+            console.error(error);
+            setStatus('error');
+        }
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData(prev => ({ ...prev, [e.target.id]: e.target.value }));
+    };
+
     return (
         <section className="py-24 bg-muted border-t border-border/50">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -12,30 +48,58 @@ export default function CondensedContactForm() {
                 </div>
 
                 <div className="bg-background p-8 md:p-12 shadow-sm border border-border">
-                    <form className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
                                 <label htmlFor="name" className="text-xs uppercase tracking-wider text-muted-foreground">Name</label>
-                                <input type="text" id="name" className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors" />
+                                <input
+                                    type="text"
+                                    id="name"
+                                    required
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors"
+                                />
                             </div>
                             <div className="space-y-2">
                                 <label htmlFor="email" className="text-xs uppercase tracking-wider text-muted-foreground">Email</label>
-                                <input type="email" id="email" className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors" />
+                                <input
+                                    type="email"
+                                    id="email"
+                                    required
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors"
+                                />
                             </div>
                         </div>
                         <div className="space-y-2">
                             <label htmlFor="phone" className="text-xs uppercase tracking-wider text-muted-foreground">Phone</label>
-                            <input type="tel" id="phone" className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors" />
+                            <input
+                                type="tel"
+                                id="phone"
+                                value={formData.phone}
+                                onChange={handleChange}
+                                className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors"
+                            />
                         </div>
                         <div className="space-y-2">
                             <label htmlFor="message" className="text-xs uppercase tracking-wider text-muted-foreground">Message</label>
-                            <textarea id="message" rows={4} className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors resize-none"></textarea>
+                            <textarea
+                                id="message"
+                                rows={4}
+                                required
+                                value={formData.message}
+                                onChange={handleChange}
+                                className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors resize-none"
+                            ></textarea>
                         </div>
 
                         <div className="flex items-start gap-3 pt-2">
                             <input
                                 type="checkbox"
                                 id="privacy"
+                                required
                                 className="mt-1 border-gray-300 rounded focus:ring-accent text-accent"
                             />
                             <label htmlFor="privacy" className="text-xs text-muted-foreground leading-snug">
@@ -45,11 +109,13 @@ export default function CondensedContactForm() {
 
                         <div className="pt-4">
                             <button
-                                type="button"
-                                className="w-full bg-neutral-900 dark:bg-white text-white dark:text-black px-8 py-4 text-sm uppercase tracking-widest hover:bg-accent dark:hover:bg-accent hover:text-white dark:hover:text-white transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                                type="submit"
+                                disabled={status === 'submitting' || status === 'success'}
+                                className="w-full bg-neutral-900 dark:bg-white text-white dark:text-black px-8 py-4 text-sm uppercase tracking-widest hover:bg-accent dark:hover:bg-accent hover:text-white dark:hover:text-white transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                Submit Message
+                                {status === 'submitting' ? 'Sending...' : status === 'success' ? 'Message Sent' : 'Submit Message'}
                             </button>
+                            {status === 'error' && <p className="text-red-500 text-sm mt-2 text-center">Something went wrong. Please try again.</p>}
                         </div>
                     </form>
                 </div>

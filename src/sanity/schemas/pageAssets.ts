@@ -1,6 +1,6 @@
 export default {
     name: 'pageAssets',
-    title: 'Page Video & Images',
+    title: 'Page Images',
     type: 'document',
     fields: [
         {
@@ -11,14 +11,7 @@ export default {
             readOnly: true,
             hidden: true,
         },
-        {
-            name: 'homeVideo',
-            title: 'Home Page Hero Video',
-            type: 'file',
-            options: {
-                accept: 'video/*',
-            },
-        },
+
         {
             name: 'teamGroupPhoto',
             title: 'Team Group Photo (Home Page)',
