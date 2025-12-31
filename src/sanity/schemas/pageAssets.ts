@@ -11,6 +11,22 @@ export default {
             readOnly: true,
             hidden: true,
         },
+        {
+            name: 'teamPageHeroImage',
+            title: 'Team Page Hero Image',
+            type: 'image',
+            options: {
+                hotspot: true,
+            },
+        },
+        {
+            name: 'teamContactImage',
+            title: 'Team Contact Image',
+            type: 'image',
+            options: {
+                hotspot: true,
+            },
+        },
 
         {
             name: 'teamGroupPhoto',

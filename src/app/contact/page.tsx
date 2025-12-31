@@ -2,8 +2,15 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
+import { client } from "@/sanity/lib/client";
+import { urlForImage } from "@/sanity/lib/image";
 
-export default function ContactPage() {
+export default async function ContactPage() {
+    const pageAssets = await client.fetch(`*[_type == "pageAssets"][0]{ teamContactImage }`);
+    const contactImage = pageAssets?.teamContactImage
+        ? urlForImage(pageAssets.teamContactImage).url()
+        : null;
+
     return (
         <div className="min-h-screen flex flex-col">
             <Header theme="solid" />
@@ -51,46 +58,61 @@ export default function ContactPage() {
                         </div>
 
                         {/* Form Side */}
-                        <div className="bg-muted p-8 md:p-12 rounded-sm shadow-sm flex flex-col justify-center">
-                            <h2 className="font-serif text-3xl text-foreground mb-8">Send a Message</h2>
-                            <form className="space-y-6">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div className="space-y-2">
-                                        <label htmlFor="name" className="text-xs uppercase tracking-wider text-muted-foreground">Name</label>
-                                        <input type="text" id="name" className="w-full bg-background border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors" />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label htmlFor="email" className="text-xs uppercase tracking-wider text-muted-foreground">Email</label>
-                                        <input type="email" id="email" className="w-full bg-background border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors" />
-                                    </div>
-                                </div>
-                                <div className="space-y-2">
-                                    <label htmlFor="phone" className="text-xs uppercase tracking-wider text-muted-foreground">Phone</label>
-                                    <input type="tel" id="phone" className="w-full bg-background border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors" />
-                                </div>
-                                <div className="space-y-2">
-                                    <label htmlFor="message" className="text-xs uppercase tracking-wider text-muted-foreground">Message</label>
-                                    <textarea id="message" rows={5} className="w-full bg-background border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors resize-none"></textarea>
-                                </div>
-
-                                <div className="flex items-start gap-3 pt-2">
-                                    <input
-                                        type="checkbox"
-                                        id="privacy"
-                                        className="mt-1 border-gray-300 rounded focus:ring-accent text-accent"
+                        <div className="relative bg-muted p-8 md:p-12 rounded-sm shadow-sm flex flex-col justify-center overflow-hidden">
+                            {/* Background Image */}
+                            {contactImage && (
+                                <div className="absolute inset-0 z-0">
+                                    <Image
+                                        src={contactImage}
+                                        alt="Contact Background"
+                                        fill
+                                        className="object-cover"
                                     />
-                                    <label htmlFor="privacy" className="text-xs text-muted-foreground leading-snug">
-                                        I agree to the <Link href="/privacy" className="text-foreground hover:text-accent underline decoration-gray-300 underline-offset-4">Privacy Policy</Link> and consent to be contacted.
-                                    </label>
+                                    <div className="absolute inset-0 bg-black/60" />
                                 </div>
+                            )}
 
-                                <button
-                                    type="button"
-                                    className="w-full bg-neutral-900 dark:bg-white text-white dark:text-black px-8 py-4 text-sm uppercase tracking-widest hover:bg-accent dark:hover:bg-accent hover:text-white dark:hover:text-white transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                                >
-                                    Submit Message
-                                </button>
-                            </form>
+                            <div className="relative z-10">
+                                <h2 className={`font-serif text-3xl mb-8 ${contactImage ? 'text-white' : 'text-foreground'}`}>Send a Message</h2>
+                                <form className="space-y-6">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div className="space-y-2">
+                                            <label htmlFor="name" className={`text-xs uppercase tracking-wider ${contactImage ? 'text-gray-300' : 'text-muted-foreground'}`}>Name</label>
+                                            <input type="text" id="name" className={`w-full border px-4 py-3 focus:outline-none focus:border-accent transition-colors ${contactImage ? 'bg-black/40 border-white/20 text-white placeholder:text-gray-500' : 'bg-background border-border'}`} />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label htmlFor="email" className={`text-xs uppercase tracking-wider ${contactImage ? 'text-gray-300' : 'text-muted-foreground'}`}>Email</label>
+                                            <input type="email" id="email" className={`w-full border px-4 py-3 focus:outline-none focus:border-accent transition-colors ${contactImage ? 'bg-black/40 border-white/20 text-white placeholder:text-gray-500' : 'bg-background border-border'}`} />
+                                        </div>
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label htmlFor="phone" className={`text-xs uppercase tracking-wider ${contactImage ? 'text-gray-300' : 'text-muted-foreground'}`}>Phone</label>
+                                        <input type="tel" id="phone" className={`w-full border px-4 py-3 focus:outline-none focus:border-accent transition-colors ${contactImage ? 'bg-black/40 border-white/20 text-white placeholder:text-gray-500' : 'bg-background border-border'}`} />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label htmlFor="message" className={`text-xs uppercase tracking-wider ${contactImage ? 'text-gray-300' : 'text-muted-foreground'}`}>Tell us about your project</label>
+                                        <textarea id="message" rows={5} className={`w-full border px-4 py-3 focus:outline-none focus:border-accent transition-colors resize-none ${contactImage ? 'bg-black/40 border-white/20 text-white placeholder:text-gray-500' : 'bg-background border-border'}`}></textarea>
+                                    </div>
+
+                                    <div className="flex items-start gap-3 pt-2">
+                                        <input
+                                            type="checkbox"
+                                            id="privacy"
+                                            className="mt-1 border-gray-300 rounded focus:ring-accent text-accent"
+                                        />
+                                        <label htmlFor="privacy" className={`text-xs leading-snug ${contactImage ? 'text-gray-300' : 'text-muted-foreground'}`}>
+                                            I agree to the <Link href="/privacy" className={`underline decoration-gray-300 underline-offset-4 ${contactImage ? 'text-white hover:text-accent' : 'text-foreground hover:text-accent'}`}>Privacy Policy</Link> and consent to be contacted.
+                                        </label>
+                                    </div>
+
+                                    <button
+                                        type="button"
+                                        className={`w-full px-8 py-4 text-sm uppercase tracking-widest transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-1 ${contactImage ? 'bg-white text-black hover:bg-accent hover:text-white' : 'bg-neutral-900 dark:bg-white text-white dark:text-black hover:bg-accent dark:hover:bg-accent hover:text-white dark:hover:text-white'}`}
+                                    >
+                                        Submit Message
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -99,3 +121,4 @@ export default function ContactPage() {
         </div>
     );
 }
+

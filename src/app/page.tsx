@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ExclusiveListings from "@/components/ExclusiveListings";
-import NewsletterItem from "@/components/NewsletterItem";
+import CondensedContactForm from "@/components/CondensedContactForm";
 import HomeHero from "@/components/HomeHero";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,6 +31,7 @@ export default async function Home() {
     homeValuationCardImage,
     letsConnectCardImage,
     teamGroupPhoto,
+    teamContactImage,
     newDevelopmentsPageImage,
     sothebysAdvantageImage
   }`);
@@ -49,6 +50,10 @@ export default async function Home() {
   const contactImage = pageAssets?.letsConnectCardImage
     ? urlForImage(pageAssets.letsConnectCardImage).url()
     : GREY_PLACEHOLDER;
+
+  const teamContactBg = pageAssets?.teamContactImage
+    ? urlForImage(pageAssets.teamContactImage).url()
+    : undefined;
 
   // Preload images for other pages to improve navigation speed
   const newDevelopmentsImage = pageAssets?.newDevelopmentsPageImage
@@ -171,9 +176,9 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Newsletter Section */}
+        {/* Contact Form Section */}
         <FadeIn>
-          <NewsletterItem />
+          <CondensedContactForm backgroundImage={teamContactBg} />
         </FadeIn>
       </main>
 

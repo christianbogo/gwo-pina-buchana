@@ -86,13 +86,16 @@ export default async function NewDevelopments() {
             imageCaption,
             order
         } | order(order asc)`),
-        client.fetch(`*[_type == "pageAssets"][0]{ newDevelopmentsPageImage }`)
+        client.fetch(`*[_type == "pageAssets"][0]{ newDevelopmentsPageImage, teamContactImage }`)
     ]);
 
     const developments = sanityDevelopments.length > 0 ? sanityDevelopments : FILLER_DEVELOPMENTS;
     const heroImage = pageAssets?.newDevelopmentsPageImage
         ? urlForImage(pageAssets.newDevelopmentsPageImage).url()
         : GREY_PLACEHOLDER;
+    const contactImage = pageAssets?.teamContactImage
+        ? urlForImage(pageAssets.teamContactImage).url()
+        : null;
 
     // Filter by category
     const currentDevelopments = developments.filter(d => !d.category || d.category === 'Current');
@@ -114,7 +117,7 @@ export default async function NewDevelopments() {
                     {/* INFO: Section 1 - Intro Text */}
                     <div className="text-center mb-20 border-t border-b border-accent py-12">
                         <p className="max-w-3xl mx-auto text-muted-foreground leading-relaxed text-lg">
-                            Our clients are the beating heart of our business. From sleek high-rises in Seattle’s vibrant core to boutique buildings on the flourishing Eastside and spacious suburban homes around the Sound, our exceptional clientele of developers and homebuilders are redefining the future of residential living. Their bold visions inspire us to create, market, and sell the most covetable properties in Seattle and across the Pacific Northwest.
+                            From sleek high-rises in Seattle’s vibrant core to boutique buildings on the flourishing Eastside and spacious suburban homes around the Sound, our exceptional clientele of developers and homebuilders are redefining the future of residential living. Their bold visions inspire us to create, market, and sell the most covetable properties in Seattle and across the Pacific Northwest.
                         </p>
                     </div>
                 </div>
@@ -298,7 +301,16 @@ export default async function NewDevelopments() {
 
                 </div>
 
-                <CondensedContactForm />
+                <CondensedContactForm
+                    title="Development Expertise. Proven Results."
+                    subtitle={
+                        <>
+                            <p className="mb-4">Ready to take the next step? Whether you&apos;re evaluating land, repositioning an asset, or preparing for market, we provide data-backed and insight-driven guidance from concept to close-out.</p>
+                            <p>Connect with our team to discuss your next project. All inquiries are confidential.</p>
+                        </>
+                    }
+                    backgroundImage={contactImage || undefined}
+                />
             </main >
 
             <Footer />

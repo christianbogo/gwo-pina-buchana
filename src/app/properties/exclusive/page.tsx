@@ -1,6 +1,5 @@
 import PageHero from "@/components/PageHero";
 import ListingCard from "@/components/ListingCard";
-import AgentContact from "@/components/AgentContact";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { GREY_PLACEHOLDER } from "@/lib/constants";
@@ -24,12 +23,19 @@ export default async function ExclusiveListingsPage() {
             renderOrder,
             slug
         } | order(renderOrder desc, price desc)`),
-        client.fetch(`*[_type == "pageAssets"][0]{ exclusiveListingsImage }`)
+        client.fetch(`*[_type == "pageAssets"][0]{ 
+            exclusiveListingsImage,
+            teamContactImage
+        }`)
     ]);
 
     const heroImage = pageAssets?.exclusiveListingsImage
         ? urlForImage(pageAssets.exclusiveListingsImage).url()
         : GREY_PLACEHOLDER;
+
+    const contactImage = pageAssets?.teamContactImage
+        ? urlForImage(pageAssets.teamContactImage).url()
+        : undefined;
 
     return (
         <div className="min-h-screen flex flex-col">
@@ -59,10 +65,10 @@ export default async function ExclusiveListingsPage() {
                     </div>
                 </section>
 
-                <AgentContact />
-                <CondensedContactForm />
+
+                <CondensedContactForm backgroundImage={contactImage} />
             </main>
             <Footer />
-        </div>
+        </div >
     );
 }

@@ -3,6 +3,9 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { GREY_PLACEHOLDER } from "@/lib/constants";
+import { client } from "@/sanity/lib/client";
+import { urlForImage } from "@/sanity/lib/image";
+import CondensedContactForm from "@/components/CondensedContactForm";
 
 const teamMembers = [
     {
@@ -31,11 +34,38 @@ Rachel’s background is as cosmopolitan as her clientele. Born in Germany and r
     }
 ];
 
-export default function TeamPage() {
+export const revalidate = 60;
+
+export default async function TeamPage() {
+    const pageAssets = await client.fetch(`*[_type == "pageAssets"][0] {
+        teamPageHeroImage,
+        teamContactImage
+    }`);
+
+    const heroImage = pageAssets?.teamPageHeroImage
+        ? urlForImage(pageAssets.teamPageHeroImage).url()
+        : GREY_PLACEHOLDER;
+
+    const contactImage = pageAssets?.teamContactImage
+        ? urlForImage(pageAssets.teamContactImage).url()
+        : null;
+
     return (
         <div className="min-h-screen flex flex-col">
             <Header theme="solid" />
             <main className="flex-grow pt-24">
+                {/* Hero Image Section */}
+                <div className="relative w-full h-[50vh] md:h-[70vh]">
+                    <Image
+                        src={heroImage}
+                        alt="Gwo Piña Buchanan Team"
+                        fill
+                        className="object-cover"
+                        priority
+                    />
+                    <div className="absolute inset-0 bg-black/20" />
+                </div>
+
                 <section className="bg-muted py-24">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center mb-16">
@@ -74,6 +104,17 @@ export default function TeamPage() {
                         </div>
                     </div>
                 </section>
+
+                <CondensedContactForm
+                    title="Development Expertise. Proven Results."
+                    subtitle={
+                        <>
+                            <p className="mb-4">Ready to take the next step? Whether you&apos;re evaluating land, repositioning an asset, or preparing for market, we provide data-backed and insight-driven guidance from concept to close-out.</p>
+                            <p>Connect with our team to discuss your next project. All inquiries are confidential.</p>
+                        </>
+                    }
+                    backgroundImage={contactImage || undefined}
+                />
             </main>
             <Footer />
         </div>

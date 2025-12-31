@@ -3,7 +3,19 @@
 import Link from "next/link";
 import { useState } from "react";
 
-export default function CondensedContactForm() {
+import Image from "next/image";
+
+interface CondensedContactFormProps {
+    title?: string;
+    subtitle?: React.ReactNode;
+    backgroundImage?: string;
+}
+
+export default function CondensedContactForm({
+    title = "Start the Conversation",
+    subtitle = "Ready to take the next step? Contact our team today.",
+    backgroundImage
+}: CondensedContactFormProps) {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -40,11 +52,23 @@ export default function CondensedContactForm() {
     };
 
     return (
-        <section className="py-24 bg-muted border-t border-border/50">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className={`relative py-24 ${backgroundImage ? 'text-white' : 'bg-muted border-t border-border/50'}`}>
+            {backgroundImage && (
+                <>
+                    <Image
+                        src={backgroundImage}
+                        alt="Contact Background"
+                        fill
+                        className="object-cover"
+                        priority
+                    />
+                    <div className="absolute inset-0 bg-black/60" />
+                </>
+            )}
+            <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
-                    <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">Start the Conversation</h2>
-                    <p className="text-muted-foreground">Ready to take the next step? Contact our team today.</p>
+                    <h2 className={`font-serif text-3xl md:text-4xl mb-4 ${backgroundImage ? 'text-white' : 'text-foreground'}`}>{title}</h2>
+                    <div className={`text-lg leading-relaxed ${backgroundImage ? 'text-white/90' : 'text-muted-foreground'}`}>{subtitle}</div>
                 </div>
 
                 <div className="bg-background p-8 md:p-12 shadow-sm border border-border">
@@ -84,7 +108,7 @@ export default function CondensedContactForm() {
                             />
                         </div>
                         <div className="space-y-2">
-                            <label htmlFor="message" className="text-xs uppercase tracking-wider text-muted-foreground">Message</label>
+                            <label htmlFor="message" className="text-xs uppercase tracking-wider text-muted-foreground">Tell us about your project</label>
                             <textarea
                                 id="message"
                                 rows={4}

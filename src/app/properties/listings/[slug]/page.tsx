@@ -4,7 +4,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { PortableText } from "@portabletext/react";
 import ListingGallery from "@/components/ListingGallery";
-import AgentContact from "@/components/AgentContact";
 import CondensedContactForm from "@/components/CondensedContactForm";
 import { notFound } from "next/navigation";
 
@@ -136,13 +135,7 @@ export default async function ListingPage({ params }: { params: any }) {
                             )}
 
                             {/* Sticky Agent Contact on Desktop? Or just inline */}
-                            <div className="sticky top-32">
-                                <h3 className="font-serif text-xl text-foreground mb-6">Interested?</h3>
-                                <p className="text-muted-foreground mb-6">
-                                    Schedule a private viewing of this exclusive property.
-                                </p>
-                                <AgentContact />
-                            </div>
+
                         </div>
                     </div>
                 </div>

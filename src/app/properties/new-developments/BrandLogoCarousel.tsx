@@ -55,7 +55,7 @@ export default function BrandLogoCarousel() {
                         if (!logoUrl) return null;
 
                         const content = (
-                            <div className="relative w-32 h-16 md:w-48 md:h-24 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
+                            <div className="relative w-32 h-16 md:w-48 md:h-24 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 dark:brightness-0 dark:invert dark:hover:invert-0 dark:hover:brightness-100 dark:hover:filter-none">
                                 <Image
                                     src={logoUrl}
                                     alt={brand.name}

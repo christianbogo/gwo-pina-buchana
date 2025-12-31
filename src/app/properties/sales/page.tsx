@@ -25,12 +25,19 @@ export default async function NotableSalesPage() {
             renderOrder,
             slug
         } | order(renderOrder desc, price desc)`),
-        client.fetch(`*[_type == "pageAssets"][0]{ notableSalesImage }`)
+        client.fetch(`*[_type == "pageAssets"][0]{ 
+            notableSalesImage,
+            teamContactImage
+        }`)
     ]);
 
     const heroImage = pageAssets?.notableSalesImage
         ? urlForImage(pageAssets.notableSalesImage).url()
         : GREY_PLACEHOLDER;
+
+    const contactImage = pageAssets?.teamContactImage
+        ? urlForImage(pageAssets.teamContactImage).url()
+        : undefined;
 
     return (
         <div className="min-h-screen flex flex-col">
@@ -83,7 +90,7 @@ export default async function NotableSalesPage() {
                         </Link>
                     </div>
                 </section>
-                <CondensedContactForm />
+                <CondensedContactForm backgroundImage={contactImage} />
             </main>
             <Footer />
         </div >
