@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHero from "@/components/PageHero";
 import FadeIn from "@/components/FadeIn";
 import Image from "next/image";
 import Link from "next/link";
@@ -55,24 +56,11 @@ export default async function AuctionPage() {
 
             <main className="flex-grow">
                 {/* 1. Hero Section */}
-                <section className="relative h-screen min-h-[600px] flex items-center justify-center bg-black text-white">
-                    <div className="absolute inset-0 opacity-40">
-                        <Image
-                            src={heroImage}
-                            alt="Sotheby's Auction House"
-                            fill
-                            className="object-cover"
-                            priority
-                        />
-                    </div>
-                    <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
-                        <FadeIn>
-                            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight uppercase tracking-wide">
-                                Sotheby's Auction House
-                            </h1>
-                        </FadeIn>
-                    </div>
-                </section>
+                {/* 1. Hero Section */}
+                <PageHero
+                    image={heroImage}
+                    title="Sotheby's Auction House"
+                />
 
                 {/* 2. Info Banner */}
                 <section className="bg-[#0a1a2a] py-24 text-white text-center">

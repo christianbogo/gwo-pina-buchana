@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHero from "@/components/PageHero";
 import FadeIn from "@/components/FadeIn";
 import Image from "next/image";
 import Link from "next/link";
@@ -106,27 +107,21 @@ export default async function SothebysAdvantagePage() {
 
             <main className="flex-grow">
                 {/* 1. Hero Section */}
-                <section className="relative h-screen min-h-[600px] flex items-center justify-center bg-gradient-to-br from-[#0a1a2a] to-[#000000] text-white">
-                    {/* Background Video/Image Placeholder */}
-                    <div className="absolute inset-0 opacity-40">
+                {/* 1. Hero Section */}
+                <PageHero
+                    image={heroImage}
+                    title="The Sotheby's Advantage"
+                />
 
-                        <Image
-                            src={heroImage}
-                            alt="Background"
-                            fill
-                            className="object-cover"
-                            priority
-                        />
-                    </div>
-
-                    <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-8">
+                    <div className="text-center border-t border-b border-accent py-12">
                         <FadeIn>
-                            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight uppercase tracking-wide mb-8">
+                            <h2 className="max-w-4xl mx-auto font-serif text-2xl md:text-3xl text-foreground leading-tight uppercase tracking-wide">
                                 Innovating the luxury real estate industry with a network of exceptional agents
-                            </h1>
+                            </h2>
                         </FadeIn>
                     </div>
-                </section>
+                </div>
 
                 {/* Video Section */}
                 <section className="bg-white py-24">
@@ -162,8 +157,8 @@ export default async function SothebysAdvantagePage() {
                 <section className="flex flex-col md:flex-row">
                     <div className="w-full md:w-1/2 relative min-h-[500px]">
                         <Image
-                            src={GREY_PLACEHOLDER}
-                            alt="Sotheby's Auction House"
+                            src={brandImage}
+                            alt="Sotheby's Brand Benefit"
                             fill
                             className="object-cover"
                         />
@@ -178,9 +173,9 @@ export default async function SothebysAdvantagePage() {
                                 The Sotheby’s International Realty® brand is built on the centuries-long prestige of the world’s preeminent auction house. Sotheby’s history and our unmatched reputation give our listings the best-in-class exposure they deserve and assures buyers they are working with a trusted partner. Follow us on social media for highlights on global luxury real estate.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4">
-                                <a href="#" className="inline-block bg-white text-black px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors text-center">
+                                <Link href="/auction" className="inline-block bg-white text-black px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors text-center">
                                     Sotheby's Auction House
-                                </a>
+                                </Link>
                                 <Link href="/contact" className="inline-block border border-white text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-colors text-center">
                                     Connect With Us
                                 </Link>
@@ -212,7 +207,7 @@ export default async function SothebysAdvantagePage() {
                     <div className="flex flex-col md:flex-row">
                         <div className="w-full md:w-1/2 relative min-h-[400px]">
                             <Image
-                                src={GREY_PLACEHOLDER}
+                                src={globalNetworkImage}
                                 alt="Global Network"
                                 fill
                                 className="object-cover"
@@ -251,7 +246,7 @@ export default async function SothebysAdvantagePage() {
                         </div>
                         <div className="w-full md:w-1/2 relative min-h-[400px] order-1 md:order-2">
                             <Image
-                                src={GREY_PLACEHOLDER}
+                                src={worldWeServeImage}
                                 alt="World We Serve"
                                 fill
                                 className="object-cover"

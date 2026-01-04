@@ -35,6 +35,11 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
         { name: "Notable Sales", href: "/properties/sales" },
     ];
 
+    const sothebysLinks = [
+        { name: "The Sotheby's Advantage", href: "/sothebys-advantage" },
+        { name: "Sotheby's Auction House", href: "/auction" },
+    ];
+
     const neighborhoodLinks = [
         { name: "Downtown Seattle", href: "/search/downtown-seattle" },
         { name: "Madison Park - Washington Park", href: "/search/madison-park-washington-park" },
@@ -187,9 +192,21 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
                                 Home Valuation
                             </Link>
 
-                            <Link href="/sothebys-advantage" className="font-serif text-2xl md:text-3xl text-foreground hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
-                                The Sotheby's Advantage
-                            </Link>
+                            <div className="space-y-4">
+                                <p className="font-serif text-2xl md:text-3xl text-foreground">Sotheby&apos;s</p>
+                                <div className="pl-4 flex flex-col space-y-3 border-l-2 border-border">
+                                    {sothebysLinks.map(link => (
+                                        <Link
+                                            key={link.name}
+                                            href={link.href}
+                                            className="font-sans text-sm uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors"
+                                            onClick={() => setIsMenuOpen(false)}
+                                        >
+                                            {link.name}
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
 
                             <Link href="/contact" className="font-serif text-2xl md:text-3xl text-foreground hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
                                 Let's Connect
