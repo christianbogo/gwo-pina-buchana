@@ -189,7 +189,7 @@ export default async function NewDevelopments() {
 
                 {/* INFO: Section 3 - Team Capabilities Tabs */}
                 {/* Background Full Width */}
-                <section className="py-24 bg-muted border-t border-border/50">
+                <section className="pt-24 pb-12 bg-muted border-t border-border/50">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <FadeIn delay={0.2}>
                             <DevelopmentTabs />
@@ -198,6 +198,9 @@ export default async function NewDevelopments() {
                 </section>
 
 
+
+                {/* INFO: Section 3.5 - Brand Logos */}
+                <BrandLogoCarousel />
 
                 {/* INFO: Section 4 - Case Studies (List) */}
                 <section className="py-24 bg-background">
@@ -252,8 +255,7 @@ export default async function NewDevelopments() {
                     </div>
                 </section>
 
-                {/* INFO: Section 3.5 - Brand Logos */}
-                <BrandLogoCarousel />
+
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
                     {/* INFO: Section 5 - Sotheby's Global */}

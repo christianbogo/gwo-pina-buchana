@@ -53,10 +53,12 @@ export default function Footer() {
                     <div className="space-y-4 md:col-start-3">
                         <h4 className="font-serif text-lg tracking-wider text-white">Explore</h4>
                         <ul className="space-y-2 text-sm text-gray-400">
-                            <li><Link href="/properties" className="hover:text-accent transition-colors">Properties</Link></li>
-                            <li><Link href="/about" className="hover:text-accent transition-colors">About Us</Link></li>
-                            <li><Link href="/search" className="hover:text-accent transition-colors">Home Search</Link></li>
-                            <li><Link href="/blog" className="hover:text-accent transition-colors">Market Insights</Link></li>
+                            <li><Link href="/properties/exclusive" className="hover:text-accent transition-colors">Exclusive Listings</Link></li>
+                            <li><Link href="/properties/new-developments" className="hover:text-accent transition-colors">New Developments</Link></li>
+                            <li><Link href="/properties/sales" className="hover:text-accent transition-colors">Notable Sales</Link></li>
+                            <li><Link href="/valuation" className="hover:text-accent transition-colors">Home Valuation</Link></li>
+                            <li><Link href="/sothebys-advantage" className="hover:text-accent transition-colors">The Sotheby's Advantage</Link></li>
+                            <li><Link href="/team" className="hover:text-accent transition-colors">Team</Link></li>
                             <li><Link href="/contact" className="hover:text-accent transition-colors">Contact</Link></li>
                         </ul>
                     </div>

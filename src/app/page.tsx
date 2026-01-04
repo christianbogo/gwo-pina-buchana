@@ -21,20 +21,80 @@ export const metadata = {
 };
 
 export default async function Home() {
-  const pageAssets = await client.fetch(`*[_type == "pageAssets"][0] {
-    homeVideo {
-        asset->{
-            url
-        }
-    },
-    homeSearchCardImage,
-    homeValuationCardImage,
-    letsConnectCardImage,
-    teamGroupPhoto,
-    teamContactImage,
-    newDevelopmentsPageImage,
-    sothebysAdvantageImage
-  }`);
+  const responses = await Promise.all([
+    client.fetch(`*[_type == "pageAssets"][0] {
+      homeVideo {
+          asset->{
+              url
+          }
+      },
+      homeSearchCardImage,
+      homeValuationCardImage,
+      letsConnectCardImage,
+      teamGroupPhoto,
+      teamContactImage,
+      newDevelopmentsPageImage,
+      sothebysAdvantageImage
+    }`),
+    client.fetch(`*[_type == "listing" && type == "exclusive"] {
+      _id,
+      title,
+      subtitle,
+      price,
+      status,
+      coverImage,
+      slug
+    }`),
+    client.fetch(`*[_type == "listing" && type == "notable"] {
+      _id,
+      title,
+      subtitle,
+      price,
+      status,
+      coverImage,
+      slug
+    }`)
+  ]);
+
+  const pageAssets = responses[0];
+  const exclusiveListings = responses[1] || [];
+  const notableSales = responses[2] || [];
+
+  // Sort Notable Sales (Expensive First logic from Sales Page)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const sortedNotableSales = notableSales.sort((a: any, b: any) => {
+    const priceA = a.price || "";
+    const priceB = b.price || "";
+
+    const isUponRequestA = priceA.toLowerCase().includes("upon request");
+    const isUponRequestB = priceB.toLowerCase().includes("upon request");
+
+    if (isUponRequestA && !isUponRequestB) return -1;
+    if (!isUponRequestA && isUponRequestB) return 1;
+    if (isUponRequestA && isUponRequestB) return 0;
+
+    const valA = parseInt(priceA.replace(/[^0-9]/g, '')) || 0;
+    const valB = parseInt(priceB.replace(/[^0-9]/g, '')) || 0;
+    return valB - valA;
+  }).slice(0, 8); // Top 8
+
+  // Fallback Logic
+  const showExclusive = exclusiveListings.length > 0;
+  const listingsToDisplay = showExclusive ? exclusiveListings : sortedNotableSales;
+  const sectionTitle = showExclusive ? "Exclusive Listings" : "Notable Sales";
+  const sectionLink = showExclusive ? "/properties/exclusive" : "/properties/sales";
+
+  // Map to component format
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const formattedListings = listingsToDisplay.map((item: any) => ({
+    id: item._id,
+    title: item.title,
+    location: item.subtitle,
+    price: item.price,
+    image: item.coverImage ? urlForImage(item.coverImage).url() : GREY_PLACEHOLDER,
+    tag: item.status === "for-sale" ? "For Sale" : item.status === "sold" ? "Sold" : item.status === "pending" ? "Pending" : item.status,
+    slug: item.slug.current
+  }));
 
   const videoUrl = pageAssets?.homeVideo?.asset?.url;
 
@@ -77,8 +137,13 @@ export default async function Home() {
         <HomeHero videoUrl={videoUrl} />
 
         {/* Exclusive Listings Section */}
+        {/* Exclusive Listings / Notable Sales Section */}
         <FadeIn>
-          <ExclusiveListings />
+          <ExclusiveListings
+            listings={formattedListings}
+            title={sectionTitle}
+            link={sectionLink}
+          />
         </FadeIn>
 
         {/* Team Section */}
@@ -150,7 +215,7 @@ export default async function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { title: "Home Search", image: searchImage, link: "/search" },
+                { title: "New Developments", image: searchImage, link: "/properties/new-developments" },
                 { title: "Home Valuation", image: valuationImage, link: "/valuation" },
                 { title: "Let's Connect", image: contactImage, link: "/contact" }
               ].map((item, index) => (

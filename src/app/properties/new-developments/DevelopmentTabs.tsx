@@ -1,7 +1,7 @@
 "use client";
 
 import {
-    TrendingUp,
+    DollarSign,
     Megaphone,
     LineChart,
     PencilRuler,
@@ -11,24 +11,24 @@ import FadeIn from "@/components/FadeIn";
 
 const SERVICES = [
     {
-        label: "Sales",
-        icon: TrendingUp,
-    },
-    {
-        label: "Marketing",
-        icon: Megaphone,
-    },
-    {
         label: "Research",
         icon: LineChart,
+    },
+    {
+        label: "Land Acquisition",
+        icon: MapPin,
     },
     {
         label: "Development & Design Advisory",
         icon: PencilRuler,
     },
     {
-        label: "Land Acquisition",
-        icon: MapPin,
+        label: "Marketing",
+        icon: Megaphone,
+    },
+    {
+        label: "Sales",
+        icon: DollarSign,
     },
 ];
 
@@ -49,14 +49,14 @@ export default function DevelopmentTabs() {
                 </p>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12 justify-items-center">
+            <div className="flex flex-wrap justify-center gap-8 md:gap-12">
                 {SERVICES.map((service, index) => {
                     const Icon = service.icon;
                     return (
                         <FadeIn
                             key={service.label}
                             delay={index * 0.1}
-                            className="flex flex-col items-center gap-6 group"
+                            className="flex flex-col items-center gap-6 group w-[45%] md:w-[30%] lg:w-[15%]"
                         >
                             <div className="p-6 rounded-2xl bg-accent/5 group-hover:bg-accent/10 transition-colors duration-300">
                                 <Icon className="w-16 h-16 md:w-20 md:h-20 text-accent stroke-[1.5]" />

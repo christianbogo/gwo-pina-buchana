@@ -11,7 +11,6 @@ interface HeaderProps {
 
 export default function Header({ theme = "transparent" }: HeaderProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isPropertiesOpen, setIsPropertiesOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const pathname = usePathname();
@@ -53,7 +52,6 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
     const desktopLinks = [
         { name: "Exclusive Listings", href: "/properties/exclusive" },
         { name: "New Developments", href: "/properties/new-developments" },
-        { name: "Home Search", href: "/search", type: "dropdown", menu: "search" },
         { name: "Let's Connect", href: "/contact" },
     ];
 
@@ -82,48 +80,6 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
                             {/* Desktop Navigation */}
                             <nav className="hidden lg:flex space-x-8 items-center">
                                 {desktopLinks.map((link) => {
-                                    if (link.type === "dropdown") {
-                                        const isOpen = isSearchOpen;
-                                        const setOpen = setIsSearchOpen;
-                                        const subLinks = neighborhoodLinks;
-
-                                        return (
-                                            <div
-                                                key={link.name}
-                                                className="relative group h-full flex items-center"
-                                                onMouseEnter={() => setOpen(true)}
-                                                onMouseLeave={() => setOpen(false)}
-                                            >
-                                                <Link
-                                                    href={link.href}
-                                                    className={`text-xs uppercase tracking-[0.15em] transition-colors duration-300 font-medium flex items-center gap-1 focus:outline-none py-2 whitespace-nowrap ${textColorClass} ${hoverColorClass}`}
-                                                    onClick={(e) => { if (link.href === '#') e.preventDefault(); }}
-                                                >
-                                                    {link.name}
-                                                    <svg className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                                    </svg>
-                                                </Link>
-
-                                                {/* Dropdown Menu */}
-                                                <div
-                                                    className={`absolute left-0 top-full mt-0 bg-background shadow-lg border border-border py-2 transition-all duration-200 origin-top-left ${isOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'
-                                                        } ${link.menu === 'search' ? 'w-64' : 'w-56'}`}
-                                                >
-                                                    {subLinks.map((subLink) => (
-                                                        <Link
-                                                            key={subLink.name}
-                                                            href={subLink.href}
-                                                            className="block px-6 py-3 text-xs uppercase tracking-[0.1em] text-muted-foreground hover:text-accent hover:bg-muted transition-colors"
-                                                        >
-                                                            {subLink.name}
-                                                        </Link>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        );
-                                    }
-
                                     return (
                                         <Link
                                             key={link.name}
@@ -225,9 +181,7 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
                                 </div>
                             </div>
 
-                            <Link href="/search" className="font-serif text-2xl md:text-3xl text-foreground hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
-                                Home Search
-                            </Link>
+
 
                             <Link href="/valuation" className="font-serif text-2xl md:text-3xl text-foreground hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
                                 Home Valuation
@@ -235,10 +189,6 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
 
                             <Link href="/sothebys-advantage" className="font-serif text-2xl md:text-3xl text-foreground hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
                                 The Sotheby's Advantage
-                            </Link>
-
-                            <Link href="/in-the-news" className="font-serif text-2xl md:text-3xl text-foreground hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
-                                In The News
                             </Link>
 
                             <Link href="/contact" className="font-serif text-2xl md:text-3xl text-foreground hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>

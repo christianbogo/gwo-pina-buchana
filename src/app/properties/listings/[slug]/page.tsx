@@ -68,7 +68,7 @@ export default async function ListingPage({ params }: { params: any }) {
                                 )}
                             </div>
 
-                            <div className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground font-light leading-relaxed">
+                            <div className="prose prose-lg dark:prose-invert max-w-none text-foreground font-normal leading-relaxed">
                                 {listing.description && <PortableText value={listing.description} />}
                             </div>
 
