@@ -16,12 +16,12 @@ export default function NewsletterItem() {
                         <input
                             type="text"
                             placeholder="Name"
-                            className="bg-transparent border-b border-gray-600 text-white placeholder-gray-500 px-0 py-3 w-full focus:outline-none focus:border-accent transition-colors"
+                            className="bg-transparent border-b border-gray-600 text-white placeholder-gray-500 px-0 py-3 w-full focus:outline-none focus:border-accent transition-colors text-white"
                         />
                         <input
                             type="email"
                             placeholder="Email Address"
-                            className="bg-transparent border-b border-gray-600 text-white placeholder-gray-500 px-0 py-3 w-full focus:outline-none focus:border-accent transition-colors"
+                            className="bg-transparent border-b border-gray-600 text-white placeholder-gray-500 px-0 py-3 w-full focus:outline-none focus:border-accent transition-colors text-white"
                         />
                     </div>
 

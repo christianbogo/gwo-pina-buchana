@@ -78,20 +78,20 @@ export default async function ContactPage() {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div className="space-y-2">
                                             <label htmlFor="name" className={`text-xs uppercase tracking-wider ${contactImage ? 'text-gray-300' : 'text-muted-foreground'}`}>Name</label>
-                                            <input type="text" id="name" className={`w-full border px-4 py-3 focus:outline-none focus:border-accent transition-colors ${contactImage ? 'bg-black/40 border-white/20 text-white placeholder:text-gray-500' : 'bg-background border-border'}`} />
+                                            <input type="text" id="name" className={`w-full border px-4 py-3 focus:outline-none focus:border-accent transition-colors ${contactImage ? 'bg-black/40 border-white/20 text-white placeholder:text-gray-500' : 'bg-background border-border text-foreground'}`} />
                                         </div>
                                         <div className="space-y-2">
                                             <label htmlFor="email" className={`text-xs uppercase tracking-wider ${contactImage ? 'text-gray-300' : 'text-muted-foreground'}`}>Email</label>
-                                            <input type="email" id="email" className={`w-full border px-4 py-3 focus:outline-none focus:border-accent transition-colors ${contactImage ? 'bg-black/40 border-white/20 text-white placeholder:text-gray-500' : 'bg-background border-border'}`} />
+                                            <input type="email" id="email" className={`w-full border px-4 py-3 focus:outline-none focus:border-accent transition-colors ${contactImage ? 'bg-black/40 border-white/20 text-white placeholder:text-gray-500' : 'bg-background border-border text-foreground'}`} />
                                         </div>
                                     </div>
                                     <div className="space-y-2">
                                         <label htmlFor="phone" className={`text-xs uppercase tracking-wider ${contactImage ? 'text-gray-300' : 'text-muted-foreground'}`}>Phone</label>
-                                        <input type="tel" id="phone" className={`w-full border px-4 py-3 focus:outline-none focus:border-accent transition-colors ${contactImage ? 'bg-black/40 border-white/20 text-white placeholder:text-gray-500' : 'bg-background border-border'}`} />
+                                        <input type="tel" id="phone" className={`w-full border px-4 py-3 focus:outline-none focus:border-accent transition-colors ${contactImage ? 'bg-black/40 border-white/20 text-white placeholder:text-gray-500' : 'bg-background border-border text-foreground'}`} />
                                     </div>
                                     <div className="space-y-2">
                                         <label htmlFor="message" className={`text-xs uppercase tracking-wider ${contactImage ? 'text-gray-300' : 'text-muted-foreground'}`}>Tell us about your project</label>
-                                        <textarea id="message" rows={5} className={`w-full border px-4 py-3 focus:outline-none focus:border-accent transition-colors resize-none ${contactImage ? 'bg-black/40 border-white/20 text-white placeholder:text-gray-500' : 'bg-background border-border'}`}></textarea>
+                                        <textarea id="message" rows={5} className={`w-full border px-4 py-3 focus:outline-none focus:border-accent transition-colors resize-none ${contactImage ? 'bg-black/40 border-white/20 text-white placeholder:text-gray-500' : 'bg-background border-border text-foreground'}`}></textarea>
                                     </div>
 
                                     <div className="flex items-start gap-3 pt-2">

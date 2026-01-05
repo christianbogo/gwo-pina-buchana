@@ -69,7 +69,7 @@ export default function HomeValuationPage() {
                                     value={formData.propertyAddress}
                                     onChange={handleChange}
                                     required
-                                    className="w-full bg-background border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors"
+                                    className="w-full bg-background border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors text-foreground"
                                     placeholder="123 Luxury Lane"
                                 />
                             </div>
@@ -83,7 +83,7 @@ export default function HomeValuationPage() {
                                         value={formData.name}
                                         onChange={handleChange}
                                         required
-                                        className="w-full bg-background border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors"
+                                        className="w-full bg-background border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors text-foreground"
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -94,7 +94,7 @@ export default function HomeValuationPage() {
                                         value={formData.email}
                                         onChange={handleChange}
                                         required
-                                        className="w-full bg-background border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors"
+                                        className="w-full bg-background border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors text-foreground"
                                     />
                                 </div>
                             </div>

@@ -82,7 +82,7 @@ export default function CondensedContactForm({
                                     required
                                     value={formData.name}
                                     onChange={handleChange}
-                                    className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors"
+                                    className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors text-foreground"
                                 />
                             </div>
                             <div className="space-y-2">
@@ -93,7 +93,7 @@ export default function CondensedContactForm({
                                     required
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors"
+                                    className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors text-foreground"
                                 />
                             </div>
                         </div>
@@ -104,7 +104,7 @@ export default function CondensedContactForm({
                                 id="phone"
                                 value={formData.phone}
                                 onChange={handleChange}
-                                className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors"
+                                className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors text-foreground"
                             />
                         </div>
                         <div className="space-y-2">
@@ -115,7 +115,7 @@ export default function CondensedContactForm({
                                 required
                                 value={formData.message}
                                 onChange={handleChange}
-                                className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors resize-none"
+                                className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors resize-none text-foreground"
                             ></textarea>
                         </div>
 
