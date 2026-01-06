@@ -16,7 +16,7 @@ export async function POST(request: Request) {
         const resend = new Resend(apiKey);
 
         const { data, error } = await resend.emails.send({
-            from: 'onboarding@resend.dev', // User needs to verify domain or use this for testing
+            from: 'GPB Website <contact@gwopinabuchanan.com>', // Updated to production domain
             to: ['yael.pina@rsir.com', 'rachel.buchanan@rsir.com', 'dehlan.gwo@rsir.com'],
             cc: 'christianbcutter@yahoo.com',
             replyTo: email,
