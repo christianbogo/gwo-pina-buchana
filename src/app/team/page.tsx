@@ -64,7 +64,7 @@ export default async function TeamPage() {
                             {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                             {teamMembers.map((member: any) => (
                                 <div key={member.name} className="space-y-6">
-                                    <div className="relative aspect-[3/4] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+                                    <div className="relative aspect-[3/4] w-full overflow-hidden grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-700">
                                         <Image
                                             src={member.headshot ? urlForImage(member.headshot).width(600).height(800).url() : GREY_PLACEHOLDER}
                                             alt={member.name}
@@ -85,7 +85,7 @@ export default async function TeamPage() {
                                             )}
                                         </div>
                                         <p className="text-accent text-sm uppercase tracking-widest mb-4">{member.role}</p>
-                                        <div className="text-gray-600 leading-relaxed text-sm">
+                                        <div className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
                                             {member.bio && <PortableText value={member.bio} />}
                                         </div>
                                     </div>

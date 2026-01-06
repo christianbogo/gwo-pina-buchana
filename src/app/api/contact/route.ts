@@ -1,29 +1,25 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 export async function POST(request: Request) {
     try {
         const body = await request.json();
         const { name, email, phone, message } = body;
 
-        // Configure transport - User needs to provide process.env.EMAIL_USER and EMAIL_PASS
-        // or configure their own SMTP settings. 
-        // For now, mirroring typical setup. 
-        const transporter = nodemailer.createTransport({
-            service: 'yahoo', // explicit service or use host/port
-            auth: {
-                user: process.env.EMAIL_USER || 'christianbcutter@yahoo.com', // Fallback for dev/testing if env not set, though auth determines sender
-                pass: process.env.EMAIL_PASS,
-            },
-        });
+        const apiKey = process.env.RESEND_API_KEY;
 
-        // If no env vars, this might fail to send real emails, but the logic is here.
-        // In a real app, never hardcode credentials.
+        if (!apiKey) {
+            console.error('RESEND_API_KEY is missing');
+            return NextResponse.json({ success: false, message: 'Server configuration error' }, { status: 500 });
+        }
 
-        const mailOptions = {
-            from: process.env.EMAIL_USER, // Sender address
+        const resend = new Resend(apiKey);
+
+        const { data, error } = await resend.emails.send({
+            from: 'onboarding@resend.dev', // User needs to verify domain or use this for testing
             to: ['yael.pina@rsir.com', 'rachel.buchanan@rsir.com', 'dehlan.gwo@rsir.com'],
             cc: 'christianbcutter@yahoo.com',
+            replyTo: email,
             subject: `GPB Website Submission from ${name}`,
             text: `
 Name: ${name}
@@ -42,15 +38,19 @@ ${message}
 <p><strong>Message:</strong></p>
 <p>${message.replace(/\n/g, '<br/>')}</p>
             `,
-        };
+        });
 
-        if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-            await transporter.sendMail(mailOptions);
-            return NextResponse.json({ success: true, message: 'Email sent successfully' }, { status: 200 });
-        } else {
-            console.log('Mock Email Send:', mailOptions);
-            return NextResponse.json({ success: true, message: 'Email logic simulated (missing credentials)' }, { status: 200 });
+        if (error) {
+            console.error('Error sending email:', error);
+            // Return specific error message to help debugging
+            return NextResponse.json({
+                success: false,
+                message: 'Failed to send email. Check API Key and Domain Verification.',
+                details: error
+            }, { status: 500 });
         }
+
+        return NextResponse.json({ success: true, message: 'Email sent successfully', data }, { status: 200 });
 
     } catch (error) {
         console.error('Error sending email:', error);

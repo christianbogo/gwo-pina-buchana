@@ -67,7 +67,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="mt-16 pt-8 border-t border-white/10 flex flex-col items-center text-center">
+                <div className="mt-16 pt-8 border-t border-white/10 flex flex-col items-start text-left md:items-center md:text-center">
                     <div className="max-w-4xl mx-auto space-y-4 text-[10px] text-gray-500 leading-relaxed mb-8">
                         <p>
                             Dehlan Gwo, Yael Piña, and Rachel Buchanan are licensed real estate brokers in Washington State and abide by equal housing opportunity laws. All material presented herein is intended for informational purposes only. Information is compiled from sources deemed reliable but is subject to errors, omissions, changes in price, condition, sale, or withdrawal without notice. No statement is made as to the accuracy of any description. All measurements and square footages are approximate. This is not intended to solicit property already listed. Nothing herein shall be construed as legal, accounting, or other professional advice outside the realm of real estate brokerage.

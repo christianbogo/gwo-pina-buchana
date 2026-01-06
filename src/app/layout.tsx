@@ -14,7 +14,7 @@ const playfair = Playfair_Display({
 const lato = Lato({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["100", "300", "400", "700", "900"],
+  weight: ["300", "400", "700"],
   display: 'swap',
 });
 

@@ -65,7 +65,7 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
 
     const headerClasses = isSolid
         ? "bg-background/90 backdrop-blur-md border-b border-border shadow-sm py-0"
-        : "bg-transparent border-transparent py-4";
+        : "bg-transparent border-transparent py-2 md:py-4";
 
     const textColorClass = isSolid ? "text-foreground" : "text-white";
     const hoverColorClass = isSolid ? "hover:text-accent" : "hover:text-white/80";
@@ -74,7 +74,7 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
         <>
             <header className={`fixed w-full top-0 z-50 transition-all duration-500 ease-in-out ${headerClasses}`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center h-24">
+                    <div className="flex justify-between items-center h-16 md:h-24">
                         {/* Logo */}
                         <div className="flex-shrink-0 flex items-center">
                             <Link href="/" className={`font-serif text-lg md:text-2xl tracking-[0.2em] uppercase transition-colors duration-300 ${textColorClass} hover:opacity-80`}>

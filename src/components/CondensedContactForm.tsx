@@ -61,6 +61,7 @@ export default function CondensedContactForm({
                         src={backgroundImage}
                         alt="Contact Background"
                         fill
+                        sizes="100vw"
                         className="object-cover"
                         priority
                     />
@@ -77,7 +78,7 @@ export default function CondensedContactForm({
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
-                                <label htmlFor="name" className="text-xs uppercase tracking-wider text-muted-foreground">Name</label>
+                                <label htmlFor="name" className="text-xs uppercase tracking-wider text-gray-600 dark:text-gray-200">Name</label>
                                 <input
                                     type="text"
                                     id="name"
@@ -88,7 +89,7 @@ export default function CondensedContactForm({
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="email" className="text-xs uppercase tracking-wider text-gray-600 dark:text-muted-foreground font-medium">Email</label>
+                                <label htmlFor="email" className="text-xs uppercase tracking-wider text-gray-600 dark:text-gray-200 font-medium">Email</label>
                                 <input
                                     type="email"
                                     id="email"
@@ -100,7 +101,7 @@ export default function CondensedContactForm({
                             </div>
                         </div>
                         <div className="space-y-2">
-                            <label htmlFor="phone" className="text-xs uppercase tracking-wider text-gray-600 dark:text-muted-foreground font-medium">Phone</label>
+                            <label htmlFor="phone" className="text-xs uppercase tracking-wider text-gray-600 dark:text-gray-200 font-medium">Phone</label>
                             <input
                                 type="tel"
                                 id="phone"
@@ -110,7 +111,7 @@ export default function CondensedContactForm({
                             />
                         </div>
                         <div className="space-y-2">
-                            <label htmlFor="message" className="text-xs uppercase tracking-wider text-muted-foreground">Tell us about your project</label>
+                            <label htmlFor="message" className="text-xs uppercase tracking-wider text-gray-600 dark:text-gray-200">Tell us about your project</label>
                             <textarea
                                 id="message"
                                 rows={4}
@@ -137,7 +138,7 @@ export default function CondensedContactForm({
                             <button
                                 type="submit"
                                 disabled={status === 'submitting' || status === 'success'}
-                                className="w-full bg-neutral-900 dark:bg-white text-white dark:text-black px-8 py-4 text-sm uppercase tracking-widest hover:bg-accent dark:hover:bg-accent hover:text-white dark:hover:text-white transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="w-full bg-neutral-900 dark:bg-white text-white dark:text-black px-8 py-4 text-sm uppercase tracking-widest hover:bg-accent dark:hover:bg-gray-200 hover:text-white dark:hover:text-black transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 {status === 'submitting' ? 'Sending...' : status === 'success' ? 'Message Sent' : 'Submit Message'}
                             </button>

@@ -74,7 +74,7 @@ export default function ExclusiveListings({
         <section className="py-24 bg-background relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header with Vertically Centered Navigation */}
-                <div className="flex flex-col md:flex-row justify-between items-end md:items-center mb-16 gap-6">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-6">
                     <div>
                         <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-4">{title}</h2>
                         <div className="w-24 h-1 bg-accent" />
@@ -119,6 +119,7 @@ export default function ExclusiveListings({
                                             src={property.image}
                                             alt={property.title}
                                             fill
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                             className="object-cover transition-transform duration-700 group-hover:scale-110"
                                         />
                                         <div className="absolute top-6 left-6 bg-background/90 backdrop-blur-sm px-4 py-2 text-xs uppercase tracking-wider font-medium">
