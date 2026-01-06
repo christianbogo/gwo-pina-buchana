@@ -19,6 +19,15 @@ export default defineType({
             },
         }),
         defineField({
+            name: 'darkModeLogo',
+            title: 'Dark Mode Logo',
+            description: 'Optional. Use this if the standard logo does not look good in dark mode. If provided, we will not auto-invert the standard logo.',
+            type: 'image',
+            options: {
+                hotspot: true,
+            },
+        }),
+        defineField({
             name: 'link',
             title: 'Link',
             type: 'url',

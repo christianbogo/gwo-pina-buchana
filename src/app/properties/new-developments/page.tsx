@@ -203,12 +203,11 @@ export default async function NewDevelopments() {
                 <BrandLogoCarousel />
 
                 {/* INFO: Section 4 - Case Studies (List) */}
-                <section className="py-24 bg-background">
+                <section className="pb-24 bg-background">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <FadeIn delay={0.3}>
                             <div className="text-center mb-16 px-4">
-                                <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6">Case Studies</h2>
-                                <div className="w-16 h-0.5 bg-accent mx-auto" />
+                                <h3 className="font-serif text-2xl md:text-3xl text-foreground mb-6">Case Studies</h3>
                             </div>
 
                             <div className="flex flex-wrap justify-center gap-x-12 gap-y-20">
