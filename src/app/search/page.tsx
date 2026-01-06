@@ -1,131 +1,54 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FadeIn from "@/components/FadeIn";
 import Link from "next/link";
-import Image from "next/image";
-import { client } from "@/sanity/lib/client";
-import { urlForImage } from "@/sanity/lib/image";
-import { GREY_PLACEHOLDER } from "@/lib/constants";
 
-export default async function NeighborhoodsPage() {
-    const pageAssets = await client.fetch(`* [_type == "pageAssets"][0]{ neighborhoodImages } `);
-    const sanityImages = pageAssets?.neighborhoodImages || [];
+export const metadata = {
+    title: "Home Search | Gwo Piña Buchanan",
+    description: "Search for luxury homes in the Pacific Northwest.",
+};
 
-    const getNeighborhoodImage = (slug: string, defaultImage: string) => {
-        const found = sanityImages.find((n: any) => n.slug?.current === slug);
-        return found?.image ? urlForImage(found.image).url() : defaultImage;
-    };
-
-    const neighborhoodGroups = [
-        {
-            name: "Downtown Seattle",
-            slug: "downtown-seattle",
-            image: getNeighborhoodImage("downtown-seattle", GREY_PLACEHOLDER),
-            desc: "Urban living at its finest with luxury condos and penthouses."
-        },
-        {
-            name: "Madison Park - Washington Park",
-            slug: "madison-park-washington-park",
-            image: getNeighborhoodImage("madison-park-washington-park", GREY_PLACEHOLDER),
-            desc: "Historic charm, lush greenery, and stunning lake views."
-        },
-        {
-            name: "Laurelhurst - Windermere",
-            slug: "laurelhurst-windermere",
-            image: getNeighborhoodImage("laurelhurst-windermere", GREY_PLACEHOLDER),
-            desc: "Exclusive waterfront communities with private beach clubs."
-        },
-        {
-            name: "West Seattle",
-            slug: "west-seattle",
-            image: getNeighborhoodImage("west-seattle", GREY_PLACEHOLDER),
-            desc: "Laid-back vibe with Alki Beach and panoramic skyline views."
-        },
-        {
-            name: "West Bellevue - Downtown Bellevue",
-            slug: "west-bellevue-downtown-bellevue",
-            image: getNeighborhoodImage("west-bellevue-downtown-bellevue", GREY_PLACEHOLDER),
-            desc: "A sophisticated urban center with world-class shopping and dining."
-        },
-        {
-            name: "Medina - Clyde Hill",
-            slug: "medina-clyde-hill",
-            image: getNeighborhoodImage("medina-clyde-hill", GREY_PLACEHOLDER),
-            desc: "Prestigious enclaves known for expansive estates and privacy."
-        },
-        {
-            name: "Kirkland",
-            slug: "kirkland",
-            image: getNeighborhoodImage("kirkland", GREY_PLACEHOLDER),
-            desc: "Vibrant waterfront downtown with a strong community feel."
-        },
-        {
-            name: "Mercer Island",
-            slug: "mercer-island",
-            image: getNeighborhoodImage("mercer-island", GREY_PLACEHOLDER),
-            desc: "An island oasis located conveniently between Seattle and Bellevue."
-        },
-        {
-            name: "Sammamish",
-            slug: "sammamish",
-            image: getNeighborhoodImage("sammamish", GREY_PLACEHOLDER),
-            desc: "Family-friendly with top-rated schools and outdoor recreation."
-        },
-        {
-            name: "Issaquah",
-            slug: "issaquah",
-            image: getNeighborhoodImage("issaquah", GREY_PLACEHOLDER),
-            desc: "Where the mountains meet the city, offering a unique lifestyle."
-        },
-        {
-            name: "Redmond",
-            slug: "redmond",
-            image: getNeighborhoodImage("redmond", GREY_PLACEHOLDER),
-            desc: "The bicycle capital of the Northwest and a tech hub."
-        },
-    ];
-
+export default function HomeSearchPage() {
     return (
         <div className="min-h-screen flex flex-col">
             <Header theme="solid" />
-            <main className="flex-grow pt-24">
-                <section className="bg-background py-24">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center mb-16">
-                            <h1 className="font-serif text-4xl md:text-6xl text-foreground mb-6">Home Search</h1>
-                            <div className="w-24 h-1 bg-accent mx-auto mb-8" />
-                            <p className="max-w-2xl mx-auto text-muted-foreground leading-relaxed text-lg">
-                                Explore the finest neighborhoods in the Pacific Northwest, our area of expertise.
-                            </p>
-                        </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {neighborhoodGroups.map((neighborhood) => (
-                                <Link
-                                    key={neighborhood.slug}
-                                    href={`/ search / ${neighborhood.slug} `} // Or separate search page logic if listing specific homes
-                                    // For now, linking to a slug under neighborhoods. 
-                                    // If "Home Search" implies searching for homes IN that neighborhood, this is correct structure.
-                                    className="group relative h-[300px] overflow-hidden shadow-sm hover:shadow-xl transition-all"
-                                >
-                                    <Image
-                                        src={neighborhood.image}
-                                        alt={neighborhood.name}
-                                        fill
-                                        className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                                    />
-                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300" />
-                                    <div className="absolute inset-0 flex flex-col justify-end p-8">
-                                        <h3 className="font-serif text-2xl text-white tracking-wide group-hover:translate-x-2 transition-transform duration-300">
-                                            {neighborhood.name}
-                                        </h3>
-                                        <div className="h-[1px] w-0 bg-white mt-4 group-hover:w-16 transition-all duration-500 delay-100" />
-                                    </div>
-                                </Link>
-                            ))}
+            <main className="flex-grow bg-background flex items-center justify-center relative overflow-hidden min-h-[90vh]">
+                {/* Background Pattern/Texture Optional */}
+                <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+                    <div className="absolute inset-0 bg-[url('/pattern.png')] bg-repeat opacity-50"></div>
+                    {/* Using a simple subtle gradient instead if no pattern asset */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-accent/10 to-transparent" />
+                </div>
+
+                <div className="max-w-3xl mx-auto px-4 text-center relative z-10 py-24">
+                    <FadeIn>
+                        <h1 className="font-serif text-4xl md:text-6xl text-foreground mb-6">Coming Soon</h1>
+                        <div className="w-24 h-1 bg-accent mx-auto mb-12" />
+
+                        <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-light mb-12">
+                            We are currently curating an exceptional home search experience for you.
+                            Our new search platform will provide seamless access to the finest properties in the Pacific Northwest.
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row justify-center gap-6">
+                            <Link
+                                href="/properties/exclusive"
+                                className="inline-block border border-foreground px-10 py-4 text-sm uppercase tracking-widest hover:bg-foreground hover:text-background transition-all duration-300"
+                            >
+                                View Exclusive Listings
+                            </Link>
+                            <Link
+                                href="/contact"
+                                className="inline-block bg-foreground text-background border border-foreground px-10 py-4 text-sm uppercase tracking-widest hover:bg-background hover:text-foreground transition-all duration-300"
+                            >
+                                Contact Our Team
+                            </Link>
                         </div>
-                    </div>
-                </section>
+                    </FadeIn>
+                </div>
             </main>
+
             <Footer />
         </div>
     );

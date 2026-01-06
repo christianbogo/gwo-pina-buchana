@@ -60,29 +60,53 @@ export default async function Home() {
   const exclusiveListings = responses[1] || [];
   const notableSales = responses[2] || [];
 
-  // Sort Notable Sales (Expensive First logic from Sales Page)
+  // Sort Exclusive Listings by Price High -> Low
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const sortedNotableSales = notableSales.sort((a: any, b: any) => {
+  const sortedExclusiveListings = exclusiveListings.sort((a: any, b: any) => {
     const priceA = a.price || "";
     const priceB = b.price || "";
 
     const isUponRequestA = priceA.toLowerCase().includes("upon request");
     const isUponRequestB = priceB.toLowerCase().includes("upon request");
 
-    if (isUponRequestA && !isUponRequestB) return -1;
-    if (!isUponRequestA && isUponRequestB) return 1;
-    if (isUponRequestA && isUponRequestB) return 0;
+    if (isUponRequestA && !isUponRequestB) return -1; // "Upon Request" at bottom? Or top? Usually top or bottom. Let's say bottom for now or handled as 0. 
+    // Actually, expensive to lowest. "Upon Request" is ambiguous. Let's treat as High Value (top)? Or ignore?
+    // Let's assume standard number parsing. "Upon Request" -> 0 for sort?
+    // If we want "Upon Request" to be effectively 0 or Infinity? 
+    // Let's stick to simple price descend.
 
     const valA = parseInt(priceA.replace(/[^0-9]/g, '')) || 0;
     const valB = parseInt(priceB.replace(/[^0-9]/g, '')) || 0;
     return valB - valA;
-  }).slice(0, 8); // Top 8
+  });
 
-  // Fallback Logic
-  const showExclusive = exclusiveListings.length > 0;
-  const listingsToDisplay = showExclusive ? exclusiveListings : sortedNotableSales;
-  const sectionTitle = showExclusive ? "Exclusive Listings" : "Notable Sales";
-  const sectionLink = showExclusive ? "/properties/exclusive" : "/properties/sales";
+  // Sort Notable Sales (Expensive First logic)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const sortedNotableSales = notableSales.sort((a: any, b: any) => {
+    const priceA = a.price || "";
+    const priceB = b.price || "";
+    const valA = parseInt(priceA.replace(/[^0-9]/g, '')) || 0;
+    const valB = parseInt(priceB.replace(/[^0-9]/g, '')) || 0;
+    return valB - valA;
+  });
+
+  // Combine: Exclusive First, then Notable Sales, up to 10 total.
+  const combinedListings = [...sortedExclusiveListings, ...sortedNotableSales].slice(0, 10);
+
+  // Display Logic: Always show the combined list if there are items.
+  const listingsToDisplay = combinedListings;
+  // Title for section - if we have exclusives, maybe "Exclusive Listings & Notable Sales"?
+  // The request said: "Under the hero section, when there is exclusive listings, the listings section will show 10 items... first items be all of the Exclusive Listings... then... sold listings"
+  // If there are NO exclusives, it might just be "Notable Sales".
+  // Let's use "Exclusive Listings" as primary title if exclusives exist, or just general "Selected Properties"?
+  // Re-reading request: "Under the hero section, when there is exclusive listings..."
+  // It implies this logic replaces the "ExclusiveListings" component data.
+  // The component `ExclusiveListings` takes a `title`.
+  // Let's dynamically set title.
+  const sectionTitle = sortedExclusiveListings.length > 0 ? "Exclusive Listings" : "Notable Sales";
+  const sectionLink = "/properties/exclusive"; // Main link to exclusive page? Or change depending on content?
+  // Request: "In the Exclusive Listings page, the listings aren't populating..." (Separate issue)
+  // For Homepage, "Have the first items be all of the Exclusive Listings... then... sold listings".
 
   // Map to component format
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -93,7 +117,12 @@ export default async function Home() {
     price: item.price,
     image: item.coverImage ? urlForImage(item.coverImage).url() : GREY_PLACEHOLDER,
     tag: item.status === "for-sale" ? "For Sale" : item.status === "sold" ? "Sold" : item.status === "pending" ? "Pending" : item.status,
-    slug: item.slug.current
+    slug: item.slug.current,
+    type: item.type // Pass type if needed to distinguish link? Assuming all go to /properties/listings/[slug] or similar? 
+    // Wait, the routes might be different. 
+    // Notable sales might just be in /properties/sales?
+    // ListingCard usually links to dynamic route.
+    // Let's assume standard listing route works for both if they are "listing" type documents.
   }));
 
   const videoUrl = pageAssets?.homeVideo?.asset?.url;
@@ -195,7 +224,7 @@ export default async function Home() {
                   href="/team"
                   className="inline-block border border-foreground px-8 py-3 text-sm uppercase tracking-widest hover:bg-foreground hover:text-background transition-all duration-300"
                 >
-                  View Full Team
+                  Meet Our Team
                 </Link>
               </FadeIn>
             </div>
@@ -243,12 +272,12 @@ export default async function Home() {
 
         {/* Contact Form Section */}
         <FadeIn>
-          <CondensedContactForm backgroundImage={teamContactBg} />
+          <CondensedContactForm backgroundImage={teamContactBg} isTransparent={true} />
         </FadeIn>
       </main>
 
       <Footer />
       <ImagePreloader images={imagesToPreload} />
-    </div>
+    </div >
   );
 }

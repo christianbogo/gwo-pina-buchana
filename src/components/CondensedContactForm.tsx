@@ -9,12 +9,14 @@ interface CondensedContactFormProps {
     title?: string;
     subtitle?: React.ReactNode;
     backgroundImage?: string;
+    isTransparent?: boolean;
 }
 
 export default function CondensedContactForm({
     title = "Start the Conversation",
     subtitle = "Ready to take the next step? Contact our team today.",
-    backgroundImage
+    backgroundImage,
+    isTransparent = false
 }: CondensedContactFormProps) {
     const [formData, setFormData] = useState({
         name: "",
@@ -71,7 +73,7 @@ export default function CondensedContactForm({
                     <div className={`text-lg leading-relaxed ${backgroundImage ? 'text-white/90' : 'text-muted-foreground'}`}>{subtitle}</div>
                 </div>
 
-                <div className="bg-background p-8 md:p-12 shadow-sm border border-border">
+                <div className={`${isTransparent ? 'bg-background/60 backdrop-blur-md' : 'bg-background'} p-8 md:p-12 shadow-sm border border-border`}>
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
@@ -82,29 +84,29 @@ export default function CondensedContactForm({
                                     required
                                     value={formData.name}
                                     onChange={handleChange}
-                                    className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors text-foreground"
+                                    className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors text-gray-800 dark:text-foreground placeholder:text-gray-500"
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="email" className="text-xs uppercase tracking-wider text-muted-foreground">Email</label>
+                                <label htmlFor="email" className="text-xs uppercase tracking-wider text-gray-600 dark:text-muted-foreground font-medium">Email</label>
                                 <input
                                     type="email"
                                     id="email"
                                     required
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors text-foreground"
+                                    className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors text-gray-800 dark:text-foreground placeholder:text-gray-500"
                                 />
                             </div>
                         </div>
                         <div className="space-y-2">
-                            <label htmlFor="phone" className="text-xs uppercase tracking-wider text-muted-foreground">Phone</label>
+                            <label htmlFor="phone" className="text-xs uppercase tracking-wider text-gray-600 dark:text-muted-foreground font-medium">Phone</label>
                             <input
                                 type="tel"
                                 id="phone"
                                 value={formData.phone}
                                 onChange={handleChange}
-                                className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors text-foreground"
+                                className="w-full bg-muted/30 border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors text-gray-800 dark:text-foreground placeholder:text-gray-500"
                             />
                         </div>
                         <div className="space-y-2">

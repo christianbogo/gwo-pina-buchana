@@ -16,19 +16,24 @@ export default async function ListingPage({ params }: { params: any }) {
     // In standard Next 14 app router `params` is an object.
     const { slug } = await params;
 
-    const listing = await client.fetch(`*[_type == "listing" && slug.current == $slug][0] {
-        title,
-        subtitle,
-        price,
-        status,
-        zinger,
-        description,
-        coverImage,
-        gallery,
-        listingVideo,
-        keyStats,
-        otherStats
-    }`, { slug });
+    const [listing, pageAssets] = await Promise.all([
+        client.fetch(`*[_type == "listing" && slug.current == $slug][0] {
+            title,
+            subtitle,
+            price,
+            status,
+            zinger,
+            description,
+            coverImage,
+            gallery,
+            listingVideo,
+            keyStats,
+            otherStats
+        }`, { slug }),
+        client.fetch(`*[_type == "pageAssets"][0] {
+            teamContactImage
+        }`)
+    ]);
 
     if (!listing) {
         notFound();
@@ -38,6 +43,10 @@ export default async function ListingPage({ params }: { params: any }) {
         listing.coverImage,
         ...(listing.gallery || [])
     ].filter(Boolean).map(img => urlForImage(img).url());
+
+    const contactImage = pageAssets?.teamContactImage
+        ? urlForImage(pageAssets.teamContactImage).url()
+        : undefined;
 
     return (
         <div className="min-h-screen flex flex-col">
@@ -122,17 +131,7 @@ export default async function ListingPage({ params }: { params: any }) {
                                 </div>
                             )}
 
-                            {listing.listingVideo && (
-                                <div className="aspect-video w-full relative bg-black">
-                                    <iframe
-                                        src={listing.listingVideo} // Assuming embed URL
-                                        className="absolute inset-0 w-full h-full"
-                                        allow="autoplay; fullscreen; picture-in-picture"
-                                        allowFullScreen
-                                        style={{ border: 'none' }}
-                                    />
-                                </div>
-                            )}
+
 
                             {/* Sticky Agent Contact on Desktop? Or just inline */}
 
@@ -140,10 +139,27 @@ export default async function ListingPage({ params }: { params: any }) {
                     </div>
                 </div>
 
-                <CondensedContactForm />
-            </main>
+                {listing.listingVideo && (
+                    <div className="w-full bg-background">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                            <div className="aspect-video w-full relative">
+                                <iframe
+                                    src={getVideoEmbedUrl(listing.listingVideo)}
+                                    className="absolute inset-0 w-full h-full"
+                                    allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer"
+                                    allowFullScreen
+                                    style={{ border: 'none' }}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                )
+                }
+
+                <CondensedContactForm backgroundImage={contactImage} isTransparent={true} />
+            </main >
             <Footer />
-        </div>
+        </div >
     );
 }
 
@@ -160,4 +176,36 @@ function getIcon(name: string) {
         case 'calendar': return <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>;
         default: return <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="16" /><line x1="8" y1="12" x2="16" y2="12" /></svg>;
     }
+}
+
+function getVideoEmbedUrl(url: string) {
+    if (!url) return "";
+
+    // YouTube
+    if (url.includes("youtube.com") || url.includes("youtu.be")) {
+        let videoId = "";
+        if (url.includes("youtube.com/watch")) {
+            videoId = new URL(url).searchParams.get("v") || "";
+        } else if (url.includes("youtu.be/")) {
+            videoId = url.split("youtu.be/")[1]?.split("?")[0] || "";
+        } else if (url.includes("youtube.com/embed/")) {
+            return url;
+        }
+
+        if (videoId) {
+            return `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`;
+        }
+    }
+
+    // Vimeo
+    if (url.includes("vimeo.com")) {
+        const videoId = url.split("vimeo.com/")[1]?.split("?")[0] || "";
+        if (videoId && !url.includes("player.vimeo.com")) {
+            return `https://player.vimeo.com/video/${videoId}`;
+        }
+        return url; // Already embed or unknown
+    }
+
+    // Bunny or other (return as is)
+    return url;
 }

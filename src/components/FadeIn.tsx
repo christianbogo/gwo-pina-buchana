@@ -16,7 +16,8 @@ export default function FadeIn({
     delay = 0,
     direction = "up",
     fullWidth = false,
-}: FadeInProps) {
+    viewportAmount = 0.1,
+}: FadeInProps & { viewportAmount?: number }) {
     const directions = {
         up: { y: 40, x: 0 },
         down: { y: -40, x: 0 },
@@ -31,7 +32,7 @@ export default function FadeIn({
         <motion.div
             initial={initial}
             whileInView={{ opacity: 1, x: 0, y: 0 }}
-            viewport={{ once: true, margin: "0px", amount: 0.1 }}
+            viewport={{ once: true, margin: "0px", amount: viewportAmount }}
             transition={{
                 duration: 0.7,
                 ease: "easeOut",

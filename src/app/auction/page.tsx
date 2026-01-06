@@ -65,7 +65,7 @@ export default async function AuctionPage() {
                 {/* 2. Info Banner */}
                 <section className="bg-[#0a1a2a] py-24 text-white text-center">
                     <div className="max-w-4xl mx-auto px-4">
-                        <FadeIn>
+                        <FadeIn viewportAmount={0}>
                             <h2 className="font-serif text-3xl md:text-4xl uppercase tracking-widest mb-8">
                                 Sotheby's Auction
                             </h2>
@@ -87,9 +87,9 @@ export default async function AuctionPage() {
                             className="object-cover"
                         />
                     </div>
-                    <div className="w-full md:w-1/2 p-12 md:p-20 bg-white flex flex-col justify-center">
-                        <FadeIn>
-                            <h2 className="font-serif text-3xl md:text-4xl uppercase tracking-widest mb-8 text-black">
+                    <div className="w-full md:w-1/2 p-12 md:p-20 bg-background flex flex-col justify-center">
+                        <FadeIn viewportAmount={0}>
+                            <h2 className="font-serif text-3xl md:text-4xl uppercase tracking-widest mb-8 text-foreground">
                                 Sotheby's Auction House
                             </h2>
                             <div className="w-16 h-0.5 bg-[#bf9b30] mb-8" />
@@ -105,7 +105,7 @@ export default async function AuctionPage() {
                                 href="http://www.sothebys.com/en/calendar"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-block bg-black text-white px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-zinc-800 transition-colors"
+                                className="inline-block bg-foreground text-background px-10 py-4 text-xs font-bold uppercase tracking-widest hover:opacity-90 transition-colors"
                             >
                                 Learn More
                             </a>
@@ -115,9 +115,9 @@ export default async function AuctionPage() {
 
                 {/* 4. Sotheby's Institute of Arts (Text Left, Image Right) */}
                 <section className="flex flex-col md:flex-row">
-                    <div className="w-full md:w-1/2 p-12 md:p-20 bg-[#f4f4f4] flex flex-col justify-center order-2 md:order-1">
+                    <div className="w-full md:w-1/2 p-12 md:p-20 bg-muted flex flex-col justify-center order-2 md:order-1">
                         <FadeIn>
-                            <h2 className="font-serif text-3xl md:text-4xl uppercase tracking-widest mb-8 text-black">
+                            <h2 className="font-serif text-3xl md:text-4xl uppercase tracking-widest mb-8 text-foreground">
                                 Sotheby's Institute of Arts
                             </h2>
                             <div className="w-16 h-0.5 bg-[#bf9b30] mb-8" />
@@ -133,7 +133,7 @@ export default async function AuctionPage() {
                                 href="https://www.sothebysinstitute.com/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-block bg-black text-white px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-zinc-800 transition-colors"
+                                className="inline-block bg-foreground text-background px-10 py-4 text-xs font-bold uppercase tracking-widest hover:opacity-90 transition-colors"
                             >
                                 Learn More
                             </a>
@@ -150,7 +150,7 @@ export default async function AuctionPage() {
                 </section>
 
                 {/* 5. Bottom Cards */}
-                <section className="bg-white py-24">
+                <section className="bg-background py-24">
                     <div className="max-w-7xl mx-auto px-4">
                         <FadeIn>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

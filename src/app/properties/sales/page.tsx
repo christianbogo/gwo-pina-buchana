@@ -90,6 +90,43 @@ export default async function NotableSalesPage({ searchParams }: NotableSalesPag
 
                 <section className="py-24 bg-background">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        {/* Top Pagination */}
+                        {totalPages > 1 && (
+                            <div className="flex justify-center items-center gap-8 mb-12">
+                                {page > 1 ? (
+                                    <Link
+                                        href={`/properties/sales?page=${page - 1}`}
+                                        scroll={false}
+                                        className="uppercase tracking-widest text-xs font-bold border-b border-black dark:border-white pb-1 hover:text-accent hover:border-accent transition-colors"
+                                    >
+                                        Previous
+                                    </Link>
+                                ) : (
+                                    <span className="uppercase tracking-widest text-xs font-bold text-gray-300 border-b border-transparent pb-1 cursor-not-allowed">
+                                        Previous
+                                    </span>
+                                )}
+
+                                <span className="text-sm text-gray-500">
+                                    Page {page} of {totalPages}
+                                </span>
+
+                                {page < totalPages ? (
+                                    <Link
+                                        href={`/properties/sales?page=${page + 1}`}
+                                        scroll={false}
+                                        className="uppercase tracking-widest text-xs font-bold border-b border-black dark:border-white pb-1 hover:text-accent hover:border-accent transition-colors"
+                                    >
+                                        Next
+                                    </Link>
+                                ) : (
+                                    <span className="uppercase tracking-widest text-xs font-bold text-gray-300 border-b border-transparent pb-1 cursor-not-allowed">
+                                        Next
+                                    </span>
+                                )}
+                            </div>
+                        )}
+
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                             {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                             {listings.map((listing: any) => (
@@ -111,6 +148,7 @@ export default async function NotableSalesPage({ searchParams }: NotableSalesPag
                                 {page > 1 ? (
                                     <Link
                                         href={`/properties/sales?page=${page - 1}`}
+                                        scroll={false}
                                         className="uppercase tracking-widest text-xs font-bold border-b border-black dark:border-white pb-1 hover:text-accent hover:border-accent transition-colors"
                                     >
                                         Previous
@@ -128,6 +166,7 @@ export default async function NotableSalesPage({ searchParams }: NotableSalesPag
                                 {page < totalPages ? (
                                     <Link
                                         href={`/properties/sales?page=${page + 1}`}
+                                        scroll={false}
                                         className="uppercase tracking-widest text-xs font-bold border-b border-black dark:border-white pb-1 hover:text-accent hover:border-accent transition-colors"
                                     >
                                         Next
@@ -165,7 +204,7 @@ export default async function NotableSalesPage({ searchParams }: NotableSalesPag
                         </Link>
                     </div>
                 </section>
-                <CondensedContactForm backgroundImage={contactImage} />
+                <CondensedContactForm backgroundImage={contactImage} isTransparent={true} />
             </main>
             <Footer />
         </div >

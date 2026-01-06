@@ -58,24 +58,48 @@ export default function ListingGallery({ images, title, status }: ListingGallery
                 </div>
             )}
 
-            {/* Controls */}
-            <div className="absolute inset-0 pointer-events-none flex items-center justify-between px-4 sm:px-8">
-                <button
-                    onClick={(e) => { e.stopPropagation(); prevImage(); }}
-                    className="pointer-events-auto w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors duration-300 opacity-0 group-hover:opacity-100"
-                >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-                </button>
-                <button
-                    onClick={(e) => { e.stopPropagation(); nextImage(); }}
-                    className="pointer-events-auto w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors duration-300 opacity-0 group-hover:opacity-100"
-                >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-                </button>
-            </div>
+            {/* Controls - Only show if more than 1 image */}
+            {images.length > 1 && (
+                <div className="absolute inset-0 pointer-events-none flex items-center justify-between px-4 sm:px-8">
+                    <button
+                        onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                        className="pointer-events-auto w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors duration-300 opacity-0 group-hover:opacity-100"
+                    >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+                    </button>
+                    <button
+                        onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                        className="pointer-events-auto w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors duration-300 opacity-0 group-hover:opacity-100"
+                    >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                    </button>
+                </div>
+            )}
 
-            {/* Counter */}
-            <div className="absolute bottom-8 right-8 z-20 bg-black/50 backdrop-blur-sm px-4 py-2 text-white text-xs uppercase tracking-widest rounded-full">
+            {/* Thumbnails Strip - Only show if more than 1 image */}
+            {images.length > 1 && (
+                <div className="absolute bottom-8 left-0 right-0 z-30 flex justify-center px-4">
+                    <div className="flex space-x-2 overflow-x-auto max-w-full pb-2 scrollbar-hide bg-black/40 backdrop-blur-md p-2 rounded-lg">
+                        {images.map((img, index) => (
+                            <button
+                                key={index}
+                                onClick={(e) => { e.stopPropagation(); setCurrentIndex(index); }}
+                                className={`relative w-16 h-12 flex-shrink-0 overflow-hidden border-2 transition-all duration-300 ${index === currentIndex ? 'border-white scale-105' : 'border-transparent opacity-60 hover:opacity-100'}`}
+                            >
+                                <Image
+                                    src={img}
+                                    alt={`Thumbnail ${index + 1}`}
+                                    fill
+                                    className="object-cover"
+                                />
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {/* Counter - Removed relative to thumbnails or kept? Let's keep it but move it top right or hide if thumbnails exist? User asked for thumbnails. I'll keep counter as well for accessibility/count. */}
+            <div className="absolute top-8 right-8 z-20 bg-black/50 backdrop-blur-sm px-4 py-2 text-white text-xs uppercase tracking-widest rounded-full">
                 {currentIndex + 1} / {images.length}
             </div>
 
@@ -102,6 +126,8 @@ export default function ListingGallery({ images, title, status }: ListingGallery
                                 />
                             )}
                         </div>
+
+                        {/* Thumbnails in Lightbox too? Optional, but good UX. User asked for thumbnails "along the bottom of the full image viewer". This implies the main viewer. I added them to the main view. */}
                     </motion.div>
                 )}
             </AnimatePresence>

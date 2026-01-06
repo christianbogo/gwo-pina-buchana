@@ -216,15 +216,14 @@ export default async function NewDevelopments() {
                                     const imageUrl = dev.photo ? urlForImage(dev.photo).url() : GREY_PLACEHOLDER;
                                     return (
                                         <FadeIn key={dev._id} delay={index * 0.1} className="w-full md:w-[calc(50%-24px)]">
-                                            <Link href={dev.link || "#"} className="group block">
+                                            <div className="block">
                                                 <div className="relative aspect-[4/3] w-full overflow-hidden mb-8">
                                                     <Image
                                                         src={imageUrl}
                                                         alt={dev.title}
                                                         fill
-                                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                                        className="object-cover"
                                                     />
-                                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
 
                                                     {/* Image Caption - e.g. SOLD 3 UNITS */}
                                                     {dev.imageCaption && (
@@ -238,7 +237,7 @@ export default async function NewDevelopments() {
                                                     <p className="text-xs font-bold tracking-[0.2em] uppercase text-accent mb-3">
                                                         {dev.subtitle}
                                                     </p>
-                                                    <h2 className="font-serif text-3xl text-foreground mb-4 group-hover:text-accent transition-colors duration-300">
+                                                    <h2 className="font-serif text-3xl text-foreground mb-4">
                                                         {dev.title}
                                                     </h2>
                                                     <p className="text-muted-foreground leading-relaxed mb-6">
@@ -246,7 +245,7 @@ export default async function NewDevelopments() {
                                                     </p>
 
                                                 </div>
-                                            </Link>
+                                            </div>
                                         </FadeIn>
                                     );
                                 })}
@@ -304,14 +303,8 @@ export default async function NewDevelopments() {
                 </div>
 
                 <CondensedContactForm
-                    title="Development Expertise. Proven Results."
-                    subtitle={
-                        <>
-                            <p className="mb-4">Ready to take the next step? Whether you&apos;re evaluating land, repositioning an asset, or preparing for market, we provide data-backed and insight-driven guidance from concept to close-out.</p>
-                            <p>Connect with our team to discuss your next project. All inquiries are confidential.</p>
-                        </>
-                    }
                     backgroundImage={contactImage || undefined}
+                    isTransparent={true}
                 />
             </main >
 

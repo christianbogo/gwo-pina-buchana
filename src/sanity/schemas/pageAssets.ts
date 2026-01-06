@@ -27,6 +27,14 @@ export default {
                 hotspot: true,
             },
         },
+        {
+            name: 'contactPageFormImage',
+            title: 'Contact Page Form Image',
+            type: 'image',
+            options: {
+                hotspot: true,
+            },
+        },
 
         {
             name: 'teamGroupPhoto',

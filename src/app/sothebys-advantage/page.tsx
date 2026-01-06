@@ -124,29 +124,30 @@ export default async function SothebysAdvantagePage() {
                 </div>
 
                 {/* Video Section */}
-                <section className="bg-white py-24">
+                <section className="bg-background py-24">
                     <div className="max-w-4xl mx-auto px-4">
-                        <div className="aspect-video w-full shadow-lg">
+                        <div className="aspect-video w-full shadow-lg relative">
                             <iframe
-                                src="https://iframe.mediadelivery.net/embed/567649/3e4b3faa-bfd9-426c-b1e8-9929966b3ee8?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
-                                loading="lazy"
-                                className="w-full h-full"
-                                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-                                allowFullScreen={true}
+                                src="https://www.youtube.com/embed/Q9xlSscTaYU?rel=0&modestbranding=1"
+                                title="Sotheby's International Realty"
+                                className="absolute inset-0 w-full h-full"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowFullScreen
+                                style={{ border: 'none' }}
                             ></iframe>
                         </div>
                     </div>
                 </section>
 
                 {/* 2. Expertise Section */}
-                <section className="py-24 bg-white text-black">
+                <section className="py-24 bg-background text-foreground">
                     <div className="max-w-4xl mx-auto px-4 text-center">
                         <FadeIn>
                             <h2 className="font-serif text-3xl md:text-4xl uppercase tracking-widest mb-8">
                                 Expertise wherever you are and wherever you want to be.
                             </h2>
                             <div className="w-24 h-0.5 bg-[#bf9b30] mx-auto mb-10" />
-                            <p className="text-lg md:text-xl leading-relaxed text-gray-800 font-light">
+                            <p className="text-lg md:text-xl leading-relaxed text-muted-foreground font-light">
                                 Sotheby’s International Realty is the only truly global real estate brand, with a global network of residential brokerage companies. Through our personal relationships, our sellers reach a highly qualified global clientele — and our buyers receive access to remarkable properties and agents everywhere.
                             </p>
                         </FadeIn>
@@ -185,17 +186,17 @@ export default async function SothebysAdvantagePage() {
                 </section>
 
                 {/* 4. Setting the World’s Highest Standard */}
-                <section className="py-24 bg-white text-black">
+                <section className="py-24 bg-background text-foreground">
                     <div className="max-w-4xl mx-auto px-4 text-center">
                         <FadeIn>
                             <h2 className="font-serif text-3xl md:text-4xl uppercase tracking-widest mb-8">
                                 Setting the World’s Highest Standard.
                             </h2>
                             <div className="w-24 h-0.5 bg-[#bf9b30] mx-auto mb-10" />
-                            <p className="text-lg md:text-xl leading-relaxed text-gray-800 font-light mb-12">
+                            <p className="text-lg md:text-xl leading-relaxed text-muted-foreground font-light mb-12">
                                 Established in 1976, Sotheby’s International Realty has become the world’s premier luxury residential real estate brokerage. Through our vast global footprint, local expertise, and unequalled referral network, we ensure that the properties we represent receive the far-reaching and unparalleled exposure they deserve.
                             </p>
-                            <Link href="/contact" className="inline-block bg-black text-white px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-zinc-800 transition-colors">
+                            <Link href="/contact" className="inline-block bg-foreground text-background px-10 py-4 text-xs font-bold uppercase tracking-widest hover:opacity-90 transition-opacity">
                                 Sell With Us
                             </Link>
                         </FadeIn>
@@ -203,7 +204,7 @@ export default async function SothebysAdvantagePage() {
                 </section>
 
                 {/* 5. Global Network & World We Serve */}
-                <section className="bg-[#f4f4f4]">
+                <section className="bg-muted">
                     <div className="flex flex-col md:flex-row">
                         <div className="w-full md:w-1/2 relative min-h-[400px]">
                             <Image
@@ -213,33 +214,46 @@ export default async function SothebysAdvantagePage() {
                                 className="object-cover"
                             />
                         </div>
-                        <div className="w-full md:w-1/2 p-12 md:p-20 bg-white flex flex-col justify-center">
+                        <div className="w-full md:w-1/2 p-12 md:p-20 bg-background flex flex-col justify-center">
                             <h3 className="font-serif text-2xl uppercase tracking-wide mb-6">
                                 A Global Network of Exceptional Agents and Exclusive Properties
                             </h3>
-                            <p className="text-gray-600 leading-relaxed">
+                            <p className="text-muted-foreground leading-relaxed">
                                 Our international network spans across 79 countries and territories. Find a home that suits your lifestyle by exploring all that Sotheby’s International Realty has to offer globally.
                             </p>
                         </div>
                     </div>
 
                     <div className="flex flex-col md:flex-row">
-                        <div className="w-full md:w-1/2 p-12 md:p-20 bg-white flex flex-col justify-center order-2 md:order-1">
+                        <div className="w-full md:w-1/2 p-12 md:p-20 bg-background flex flex-col justify-center order-2 md:order-1">
                             <h3 className="font-serif text-xl uppercase tracking-wide mb-8 font-bold">
                                 The World We Serve:
                             </h3>
-                            <div className="grid grid-cols-2 gap-y-4 gap-x-12 text-sm text-gray-600 uppercase tracking-wider mb-12">
-                                <div>New York</div>
-                                <div>France</div>
-                                <div>Italy</div>
-                                <div>Madrid</div>
-                                <div>Miami</div>
-                                <div>Hong Kong</div>
-                                <div>Bahamas</div>
-                                <div>Tokyo</div>
+                            <div className="grid grid-cols-2 md:grid-cols-3 gap-y-4 gap-x-8 text-sm text-gray-600 dark:text-gray-300 uppercase tracking-wider mb-12">
+                                <div className="space-y-2">
+                                    <p>New York</p>
+                                    <p>Italy</p>
+                                    <p>Miami</p>
+                                    <p>Bahamas</p>
+                                    <p>France</p>
+                                </div>
+                                <div className="space-y-2">
+                                    <p>Hong Kong</p>
+                                    <p>Tokyo</p>
+                                    <p>Los Angeles</p>
+                                    <p>San Francisco</p>
+                                    <p>Sun Valley</p>
+                                </div>
+                                <div className="space-y-2">
+                                    <p>Jackson Hole</p>
+                                    <p>Park City</p>
+                                    <p>Aspen</p>
+                                    <p>Hawaii</p>
+                                    <p>Los Cabos</p>
+                                </div>
                             </div>
                             <div>
-                                <a href="https://www.sothebysrealty.com/eng/offices/int" target="_blank" rel="noopener noreferrer" className="inline-block bg-black text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-zinc-800 transition-colors">
+                                <a href="https://www.sothebysrealty.com/eng/offices/int" target="_blank" rel="noopener noreferrer" className="inline-block bg-foreground text-background px-8 py-4 text-xs font-bold uppercase tracking-widest hover:opacity-90 transition-opacity">
                                     View Our Global Network
                                 </a>
                             </div>

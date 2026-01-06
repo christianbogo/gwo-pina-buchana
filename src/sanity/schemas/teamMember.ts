@@ -27,12 +27,9 @@ export default defineType({
             validation: (Rule) => Rule.required(),
         }),
         defineField({
-            name: 'casualImage',
-            title: 'Casual Image (Hover)',
-            type: 'image',
-            options: {
-                hotspot: true,
-            },
+            name: 'linkedin',
+            title: 'LinkedIn URL',
+            type: 'url',
         }),
         defineField({
             name: 'bio',

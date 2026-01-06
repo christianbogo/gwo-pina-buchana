@@ -102,7 +102,7 @@ export default defineType({
             name: 'listingVideo',
             title: 'Listing Video URL',
             type: 'url',
-            description: 'URL to the video (e.g. Bunny.net embed URL)'
+            description: 'URL to the video (YouTube, Vimeo, or Bunny.net embed URL)'
         }),
         defineField({
             name: 'description',

@@ -57,6 +57,7 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
     const desktopLinks = [
         { name: "Exclusive Listings", href: "/properties/exclusive" },
         { name: "New Developments", href: "/properties/new-developments" },
+        { name: "Team", href: "/team" },
         { name: "Let's Connect", href: "/contact" },
     ];
 
@@ -208,6 +209,10 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
                                 </div>
                             </div>
 
+                            <Link href="/search" className="font-serif text-2xl md:text-3xl text-foreground hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
+                                Home Search
+                            </Link>
+
                             <Link href="/contact" className="font-serif text-2xl md:text-3xl text-foreground hover:text-accent transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
                                 Let's Connect
                             </Link>
@@ -215,10 +220,30 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
 
                         <div className="mt-auto pt-10 space-y-4 text-muted-foreground text-sm">
                             <div className="mt-4 w-max"><ThemeToggle /></div>
-                            <p className="uppercase tracking-widest text-xs font-bold text-foreground mb-4">Contact</p>
-                            <p>123 Luxury Lane, Beverly Hills, CA 90210</p>
-                            <p><a href="tel:+13105550123" className="hover:text-accent">+1 (310) 555-0123</a></p>
-                            <p><a href="mailto:contact@gwopiñabuchanan.com" className="hover:text-accent">contact@gwopiñabuchanan.com</a></p>
+
+                            <div className="space-y-6 mt-8">
+                                <Link href="/contact" className="uppercase tracking-widest text-xs font-bold text-foreground mb-4 block hover:text-accent transition-colors" onClick={() => setIsMenuOpen(false)}>
+                                    Contact Us
+                                </Link>
+
+                                <div className="grid grid-cols-1 gap-4 text-xs">
+                                    <div>
+                                        <p className="font-medium text-foreground mb-1">Bellevue</p>
+                                        <p>10237 Main Street</p>
+                                        <p>Bellevue, WA 98004</p>
+                                    </div>
+                                    <div>
+                                        <p className="font-medium text-foreground mb-1">Downtown Seattle</p>
+                                        <p>2715 1st Ave</p>
+                                        <p>Seattle, WA 98121</p>
+                                    </div>
+                                    <div>
+                                        <p className="font-medium text-foreground mb-1">Kirkland</p>
+                                        <p>15 Lake Street</p>
+                                        <p>Kirkland, WA 98033</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

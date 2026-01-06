@@ -6,41 +6,24 @@ import { GREY_PLACEHOLDER } from "@/lib/constants";
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 import CondensedContactForm from "@/components/CondensedContactForm";
-
-const teamMembers = [
-    {
-        name: "Dehlan Gwo",
-        role: "Vice President of New Developments | Broker",
-        bio: `Dehlan Gwo is not just a participant in the Seattle real estate market; he is one of its active shapers. As the Vice President of New Developments at Realogics Sotheby's International Realty (RSIR), Dehlan operates at the intersection of urban evolution and individual client advocacy. His practice is built on a foundation of technical rigor: a two-time graduate of the University of Washington, he holds a degree from the Foster School of Business and a Master of Science in Real Estate (MSRE) from the Runstad Department.
-
-Prior to rejoining RSIR, Dehlan served as a Director at Create World Real Estate, where he led the delivery of high-profile condominium buildings in Downtown Seattle and Bellevue. This experience allows him to look at a property differently than most brokers. He sees the "bones" of a building—the construction quality, the zoning potential, the cap rates, and the long-term appreciation metrics.`,
-        image: GREY_PLACEHOLDER
-    },
-    {
-        name: "Yael Piña",
-        role: "Global Real Estate Advisor",
-        bio: `Yael Piña believes that luxury is not a price point; it is a quality of experience. As a Global Real Estate Advisor with Gwo Piña Buchanan, Yael brings a "concierge-first" philosophy to the real estate industry. Born in Guadalajara, Mexico, and raised in West Seattle from the age of three, Yael embodies the multicultural, globally connected spirit of the modern Pacific Northwest. He is fluent in both Spanish and English.
-
-Yael’s professional DNA was formed in the demanding world of luxury hospitality. Rising quickly through the ranks of management, he learned that true service is about anticipation—solving problems before the client even knows they exist.`,
-        image: GREY_PLACEHOLDER
-    },
-    {
-        name: "Rachel Buchanan",
-        role: "Real Estate Associate",
-        bio: `Rachel Buchanan brings a curator’s eye to the business of real estate. With over twelve years of experience in management and visual merchandising for iconic luxury brands like Louis Vuitton, Rachel understands the psychology of aesthetics. She knows that in the luxury market, presentation is everything. A home must do more than function; it must seduce.
-
-Rachel’s background is as cosmopolitan as her clientele. Born in Germany and raised in Southern California, she is fluent in Mandarin Chinese and holds a Bachelor of Arts in Asian Literature and Culture from the University of California Riverside. This deep cultural fluency makes her an invaluable advisor for international buyers.`,
-        image: GREY_PLACEHOLDER
-    }
-];
+import { PortableText } from "@portabletext/react";
 
 export const revalidate = 60;
 
 export default async function TeamPage() {
-    const pageAssets = await client.fetch(`*[_type == "pageAssets"][0] {
-        teamPageHeroImage,
-        teamContactImage
-    }`);
+    const [pageAssets, teamMembers] = await Promise.all([
+        client.fetch(`*[_type == "pageAssets"][0] {
+            teamPageHeroImage,
+            teamContactImage
+        }`),
+        client.fetch(`*[_type == "teamMember"] {
+            name,
+            role,
+            headshot,
+            bio,
+            linkedin
+        }`)
+    ]);
 
     const heroImage = pageAssets?.teamPageHeroImage
         ? urlForImage(pageAssets.teamPageHeroImage).url()
@@ -55,7 +38,7 @@ export default async function TeamPage() {
             <Header theme="solid" />
             <main className="flex-grow pt-24">
                 {/* Hero Image Section */}
-                <div className="relative w-full h-[50vh] md:h-[70vh]">
+                <div className="relative w-full aspect-[2/1]">
                     <Image
                         src={heroImage}
                         alt="Gwo Piña Buchanan Team"
@@ -78,26 +61,33 @@ export default async function TeamPage() {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                            {teamMembers.map((member) => (
+                            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                            {teamMembers.map((member: any) => (
                                 <div key={member.name} className="space-y-6">
-                                    <div className="relative h-[350px] md:h-[500px] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+                                    <div className="relative aspect-[3/4] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
                                         <Image
-                                            src={member.image}
+                                            src={member.headshot ? urlForImage(member.headshot).width(600).height(800).url() : GREY_PLACEHOLDER}
                                             alt={member.name}
                                             fill
                                             className="object-cover"
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
                                         />
                                     </div>
                                     <div>
-                                        <h3 className="font-serif text-2xl text-foreground mb-1">{member.name}</h3>
+                                        <div className="flex items-center justify-between mb-1">
+                                            <h3 className="font-serif text-2xl text-foreground">{member.name}</h3>
+                                            {member.linkedin && (
+                                                <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent transition-colors">
+                                                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                        <path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd" />
+                                                    </svg>
+                                                </a>
+                                            )}
+                                        </div>
                                         <p className="text-accent text-sm uppercase tracking-widest mb-4">{member.role}</p>
-                                        <p className="text-gray-600 leading-relaxed text-sm">
-                                            {member.bio.split('\n\n').map((paragraph, idx) => (
-                                                <span key={idx} className="block mb-2 last:mb-0">
-                                                    {paragraph}
-                                                </span>
-                                            ))}
-                                        </p>
+                                        <div className="text-gray-600 leading-relaxed text-sm">
+                                            {member.bio && <PortableText value={member.bio} />}
+                                        </div>
                                     </div>
                                 </div>
                             ))}
@@ -106,14 +96,8 @@ export default async function TeamPage() {
                 </section>
 
                 <CondensedContactForm
-                    title="Development Expertise. Proven Results."
-                    subtitle={
-                        <>
-                            <p className="mb-4">Ready to take the next step? Whether you&apos;re evaluating land, repositioning an asset, or preparing for market, we provide data-backed and insight-driven guidance from concept to close-out.</p>
-                            <p>Connect with our team to discuss your next project. All inquiries are confidential.</p>
-                        </>
-                    }
                     backgroundImage={contactImage || undefined}
+                    isTransparent={true}
                 />
             </main>
             <Footer />
