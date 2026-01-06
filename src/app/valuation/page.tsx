@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import { useState } from "react";
 import { GREY_PLACEHOLDER } from "@/lib/constants";
+import Link from "next/link";
 
 export default function HomeValuationPage() {
     const [formData, setFormData] = useState({
@@ -97,6 +98,18 @@ export default function HomeValuationPage() {
                                         className="w-full bg-background border border-border px-4 py-3 focus:outline-none focus:border-accent transition-colors text-foreground"
                                     />
                                 </div>
+                            </div>
+
+                            <div className="flex items-start gap-3 pt-2">
+                                <input
+                                    type="checkbox"
+                                    id="privacy"
+                                    required
+                                    className="mt-1 border-gray-300 rounded focus:ring-accent text-accent"
+                                />
+                                <label htmlFor="privacy" className="text-xs text-muted-foreground leading-snug">
+                                    I agree to the <Link href="/privacy" className="text-foreground hover:text-accent underline decoration-gray-300 underline-offset-4">Privacy Policy</Link> and to be contacted about my valuation inquiry.
+                                </label>
                             </div>
 
                             <button
