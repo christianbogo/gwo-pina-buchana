@@ -195,7 +195,10 @@ export default async function Home() {
                 )}
 
                 <p className="max-w-2xl mx-auto text-muted-foreground leading-relaxed text-lg">
-                  Real estate excellence is no longer a solo endeavor. The Gwo Piña Buchanan team unites distinct disciplines—development strategy, luxury hospitality, and visual design—to offer a holistic, concierge-level advisory service.
+                  The Gwo Piña Buchanan Team draws from complementary backgrounds — real estate development, luxury hospitality, and bespoke retail — to deliver a holistic, concierge-level client experience.
+                </p>
+                <p className="max-w-2xl mx-auto text-muted-foreground leading-relaxed text-lg">
+                  Today’s clients require strategic advisors, data interpreters, design consultants, marketing masterminds, and global connectors.
                 </p>
               </div>
             </FadeIn>

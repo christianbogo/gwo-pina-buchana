@@ -16,19 +16,19 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
 
     const slides = [
         {
-            eyebrow: "Seattle & Bellevue",
+            eyebrow: "Discover the Art of Pacific Northwest Real Estate with",
             title: "Gwo Piña Buchanan",
-            subtitle: "Defining the New Pacific Northwest."
+            subtitle: "Distinctive Properties | New Developments | Portfolio Advisory"
         },
         {
-            eyebrow: "Sotheby's International Realty",
-            title: "Global Vision",
-            subtitle: "Luxury Real Estate Advisory."
+            eyebrow: "Realogics Sotheby’s International Realty",
+            title: "Gwo Piña Buchanan",
+            subtitle: "Award Winning & Top Producing Team | Over $350 Million Sold"
         },
         {
-            eyebrow: "Modern Living",
-            title: "Curated Design",
-            subtitle: "Urban Sanctuaries & Coastal Retreats."
+            eyebrow: "Exceptional Real Estate Representation",
+            title: "Gwo Piña Buchanan",
+            subtitle: "Trusted by Discerning Buyers, Sellers, and Builders"
         }
     ];
 
