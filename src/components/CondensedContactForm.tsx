@@ -74,7 +74,7 @@ export default function CondensedContactForm({
                     <div className={`text-lg leading-relaxed ${backgroundImage ? 'text-white/90' : 'text-muted-foreground'}`}>{subtitle}</div>
                 </div>
 
-                <div className={`${isTransparent ? 'bg-black/20 backdrop-blur-md border-white/10' : 'bg-background border-border'} p-8 md:p-12 shadow-sm border`}>
+                <div className={`${isTransparent ? 'bg-black/05 border-white/10' : 'bg-background border-border'} p-8 md:p-12 shadow-sm border`}>
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
