@@ -1,22 +1,26 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Image from "next/image";
+
+type FormVariant = 'default' | 'new-developments' | 'connect';
 
 interface CondensedContactFormProps {
     title?: string;
     subtitle?: React.ReactNode;
     backgroundImage?: string;
     isTransparent?: boolean;
+    variant?: FormVariant;
 }
 
 export default function CondensedContactForm({
-    title = "Start the Conversation",
-    subtitle = "Ready to take the next step? Contact our team today.",
+    title,
+    subtitle,
     backgroundImage,
-    isTransparent = false
+    isTransparent = false,
+    variant = 'default'
 }: CondensedContactFormProps) {
     const [formData, setFormData] = useState({
         name: "",
@@ -26,6 +30,30 @@ export default function CondensedContactForm({
     });
     const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
+    // Default values based on variant
+    const defaultTitle = variant === 'new-developments'
+        ? "Development Expertise. Proven Results."
+        : variant === 'connect'
+            ? "Start the Conversation"
+            : "Elevate Your Real Estate IQ";
+
+    const defaultSubtitle = variant === 'new-developments'
+        ? (
+            <>
+                Whether you’re evaluating land, repositioning an asset, or preparing for market, we provide data-backed and insight-driven guidance from concept to close-out.
+                <br /><br />
+                Connect with our team to discuss your next project. All inquiries are confidential.
+            </>
+        )
+        : variant === 'connect'
+            ? "Ready to take the next step? Contact our team today."
+            : "Elevate your real estate expertise with our exclusive newsletter—packed with expert perspectives, curated analyses, and market insights. Subscribe today and stay ahead in the property game.";
+
+    const displayTitle = title || defaultTitle;
+    const displaySubtitle = subtitle || defaultSubtitle;
+    const showMessageField = variant !== 'default';
+    const messageLabel = variant === 'new-developments' ? "Tell us About Your Project" : "Tell us about your Real Estate needs";
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus('submitting');
@@ -34,7 +62,7 @@ export default function CondensedContactForm({
             const res = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({ ...formData, variant }),
             });
 
             if (res.ok) {
@@ -70,8 +98,8 @@ export default function CondensedContactForm({
             )}
             <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
-                    <h2 className={`font-serif text-3xl md:text-4xl mb-4 ${backgroundImage ? 'text-white' : 'text-foreground'}`}>{title}</h2>
-                    <div className={`text-lg leading-relaxed ${backgroundImage ? 'text-white/90' : 'text-muted-foreground'}`}>{subtitle}</div>
+                    <h2 className={`font-serif text-3xl md:text-4xl mb-4 ${backgroundImage ? 'text-white' : 'text-foreground'}`}>{displayTitle}</h2>
+                    <div className={`text-lg leading-relaxed ${backgroundImage ? 'text-white/90' : 'text-muted-foreground'}`}>{displaySubtitle}</div>
                 </div>
 
                 <div className={`${isTransparent ? 'bg-black/05 border-white/10' : 'bg-background border-border'} p-8 md:p-12 shadow-sm border`}>
@@ -101,7 +129,7 @@ export default function CondensedContactForm({
                             </div>
                         </div>
                         <div className="space-y-2">
-                            <label htmlFor="phone" className={`text-xs uppercase tracking-wider font-medium ${isTransparent ? 'text-gray-200' : 'text-gray-600 dark:text-gray-200'}`}>Phone</label>
+                            <label htmlFor="phone" className={`text-xs uppercase tracking-wider font-medium ${isTransparent ? 'text-gray-200' : 'text-gray-600 dark:text-gray-200'}`}>Phone (Optional)</label>
                             <input
                                 type="tel"
                                 id="phone"
@@ -110,17 +138,20 @@ export default function CondensedContactForm({
                                 className={`w-full px-4 py-3 focus:outline-none transition-colors ${isTransparent ? 'bg-white/5 border-white/20 text-white placeholder:text-gray-400 focus:border-white' : 'bg-muted/30 border border-border focus:border-accent text-gray-800 dark:text-foreground placeholder:text-gray-500'}`}
                             />
                         </div>
-                        <div className="space-y-2">
-                            <label htmlFor="message" className={`text-xs uppercase tracking-wider ${isTransparent ? 'text-gray-200' : 'text-gray-600 dark:text-gray-200'}`}>Tell us about your project</label>
-                            <textarea
-                                id="message"
-                                rows={4}
-                                required
-                                value={formData.message}
-                                onChange={handleChange}
-                                className={`w-full px-4 py-3 focus:outline-none transition-colors resize-none ${isTransparent ? 'bg-white/5 border-white/20 text-white placeholder:text-gray-400 focus:border-white' : 'bg-muted/30 border border-border focus:border-accent text-foreground'}`}
-                            ></textarea>
-                        </div>
+
+                        {showMessageField && (
+                            <div className="space-y-2">
+                                <label htmlFor="message" className={`text-xs uppercase tracking-wider ${isTransparent ? 'text-gray-200' : 'text-gray-600 dark:text-gray-200'}`}>{messageLabel}</label>
+                                <textarea
+                                    id="message"
+                                    rows={4}
+                                    required
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    className={`w-full px-4 py-3 focus:outline-none transition-colors resize-none ${isTransparent ? 'bg-white/5 border-white/20 text-white placeholder:text-gray-400 focus:border-white' : 'bg-muted/30 border border-border focus:border-accent text-foreground'}`}
+                                ></textarea>
+                            </div>
+                        )}
 
                         <div className="flex items-start gap-3 pt-2">
                             <input

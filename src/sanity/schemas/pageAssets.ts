@@ -35,6 +35,14 @@ export default {
                 hotspot: true,
             },
         },
+        {
+            name: 'newDevelopmentsContactImage',
+            title: 'New Developments Contact Section Image',
+            type: 'image',
+            options: {
+                hotspot: true,
+            },
+        },
 
         {
             name: 'teamGroupPhoto',

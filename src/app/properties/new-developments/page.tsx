@@ -86,15 +86,15 @@ export default async function NewDevelopments() {
             imageCaption,
             order
         } | order(order asc)`),
-        client.fetch(`*[_type == "pageAssets"][0]{ newDevelopmentsPageImage, teamContactImage }`)
+        client.fetch(`*[_type == "pageAssets"][0]{ newDevelopmentsPageImage, newDevelopmentsContactImage }`)
     ]);
 
     const developments = sanityDevelopments.length > 0 ? sanityDevelopments : FILLER_DEVELOPMENTS;
     const heroImage = pageAssets?.newDevelopmentsPageImage
         ? urlForImage(pageAssets.newDevelopmentsPageImage).url()
         : GREY_PLACEHOLDER;
-    const contactImage = pageAssets?.teamContactImage
-        ? urlForImage(pageAssets.teamContactImage).url()
+    const contactImage = pageAssets?.newDevelopmentsContactImage
+        ? urlForImage(pageAssets.newDevelopmentsContactImage).url()
         : null;
 
     // Filter by category
@@ -304,6 +304,7 @@ export default async function NewDevelopments() {
                 <CondensedContactForm
                     backgroundImage={contactImage || undefined}
                     isTransparent={true}
+                    variant="new-developments"
                 />
             </main >
 

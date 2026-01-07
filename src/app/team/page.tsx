@@ -67,22 +67,22 @@ export default async function TeamPage() {
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                        <div className="flex flex-col gap-16 md:gap-24 max-w-5xl mx-auto">
                             {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                             {sortedTeamMembers.map((member: any) => (
-                                <div key={member.name} className="space-y-6">
-                                    <div className="relative aspect-[3/4] w-full overflow-hidden grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-700">
+                                <div key={member.name} className="flex flex-col md:flex-row gap-8 md:gap-16 items-start">
+                                    <div className="relative aspect-[3/4] w-full md:w-[350px] shrink-0 overflow-hidden grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-700 shadow-sm">
                                         <Image
                                             src={member.headshot ? urlForImage(member.headshot).width(600).height(800).url() : GREY_PLACEHOLDER}
                                             alt={member.name}
                                             fill
                                             className="object-cover"
-                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                                            sizes="(max-width: 768px) 100vw, 350px"
                                         />
                                     </div>
-                                    <div>
-                                        <div className="flex items-center justify-between mb-1">
-                                            <h3 className="font-serif text-2xl text-foreground">{member.name}</h3>
+                                    <div className="flex-grow pt-2">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <h3 className="font-serif text-3xl text-foreground">{member.name}</h3>
                                             {member.linkedin && (
                                                 <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent transition-colors">
                                                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -91,8 +91,8 @@ export default async function TeamPage() {
                                                 </a>
                                             )}
                                         </div>
-                                        <p className="text-accent text-sm uppercase tracking-widest mb-4">{member.role}</p>
-                                        <div className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
+                                        <p className="text-accent text-sm uppercase tracking-widest mb-6 border-b border-accent/20 pb-4 inline-block">{member.role}</p>
+                                        <div className="text-gray-600 dark:text-gray-300 leading-relaxed text-base space-y-4">
                                             {member.bio && <PortableText value={member.bio} />}
                                         </div>
                                     </div>

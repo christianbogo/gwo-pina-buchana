@@ -97,7 +97,7 @@ export default function ContactPageForm({ contactImage }: ContactPageFormProps) 
                         />
                     </div>
                     <div className="space-y-2">
-                        <label htmlFor="message" className={`text-xs uppercase tracking-wider ${contactImage ? 'text-gray-300' : 'text-muted-foreground'}`}>Tell us about your project</label>
+                        <label htmlFor="message" className={`text-xs uppercase tracking-wider ${contactImage ? 'text-gray-300' : 'text-muted-foreground'}`}>Tell us about your Real Estate needs</label>
                         <textarea
                             id="message"
                             rows={5}
