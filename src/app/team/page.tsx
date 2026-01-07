@@ -21,9 +21,16 @@ export default async function TeamPage() {
             role,
             headshot,
             bio,
-            linkedin
+            linkedin,
+            renderPriority
         }`)
     ]);
+
+    // Sort team members by renderPriority desc (High to Low)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const sortedTeamMembers = teamMembers.sort((a: any, b: any) => {
+        return (b.renderPriority || 0) - (a.renderPriority || 0);
+    });
 
     const heroImage = pageAssets?.teamPageHeroImage
         ? urlForImage(pageAssets.teamPageHeroImage).url()
@@ -62,7 +69,7 @@ export default async function TeamPage() {
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                             {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                            {teamMembers.map((member: any) => (
+                            {sortedTeamMembers.map((member: any) => (
                                 <div key={member.name} className="space-y-6">
                                     <div className="relative aspect-[3/4] w-full overflow-hidden grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-700">
                                         <Image

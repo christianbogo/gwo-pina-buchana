@@ -47,5 +47,12 @@ export default defineType({
             title: 'Email',
             type: 'string',
         }),
+        defineField({
+            name: 'renderPriority',
+            title: 'Render Priority',
+            type: 'number',
+            initialValue: 0,
+            description: 'Higher number = appears first in the list',
+        }),
     ],
 })

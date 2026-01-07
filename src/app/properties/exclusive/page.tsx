@@ -33,12 +33,33 @@ export default async function ExclusiveListingsPage({ searchParams }: ExclusiveL
             coverImage,
             renderOrder,
             slug
-        } | order(renderOrder desc, price desc)`),
+        } | order(renderOrder desc)`),
         client.fetch(`*[_type == "pageAssets"][0]{ 
             exclusiveListingsImage,
             teamContactImage
         }`)
     ]);
+
+    // Custom Sort Function matching Notable Sales logic
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const sortedListings = allListings.sort((a: any, b: any) => {
+        const priceA = a.price || "";
+        const priceB = b.price || "";
+
+        // Check for "Upon Request" or similar non-numeric high-priority strings
+        const isUponRequestA = priceA.toLowerCase().includes("upon request");
+        const isUponRequestB = priceB.toLowerCase().includes("upon request");
+
+        if (isUponRequestA && !isUponRequestB) return -1; // A comes first
+        if (!isUponRequestA && isUponRequestB) return 1;  // B comes first
+        if (isUponRequestA && isUponRequestB) return 0;   // Keep relative order
+
+        // Parse numbers: "$1,536,500" -> 1536500
+        const valA = parseInt(priceA.replace(/[^0-9]/g, '')) || 0;
+        const valB = parseInt(priceB.replace(/[^0-9]/g, '')) || 0;
+
+        return valB - valA; // Descending order
+    });
 
     const totalCount = allListings.length;
     const totalPages = Math.ceil(totalCount / pageSize);
@@ -46,7 +67,7 @@ export default async function ExclusiveListingsPage({ searchParams }: ExclusiveL
     // Slice for current page
     const start = (page - 1) * pageSize;
     const end = start + pageSize;
-    const listings = allListings.slice(start, end);
+    const listings = sortedListings.slice(start, end);
 
     const heroImage = pageAssets?.exclusiveListingsImage
         ? urlForImage(pageAssets.exclusiveListingsImage).url()
