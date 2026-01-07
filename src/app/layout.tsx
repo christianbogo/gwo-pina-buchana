@@ -19,7 +19,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Gwo Piña Buchanan",
+  title: "Gwo Piña Buchanan | Seattle & Bellevue",
   description: "Luxury Real Estate Group",
 };
 
