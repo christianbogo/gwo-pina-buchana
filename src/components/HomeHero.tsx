@@ -23,7 +23,7 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
         {
             eyebrow: "Realogics Sotheby’s International Realty",
             title: "Gwo Piña Buchanan",
-            subtitle: "Award Winning & Top Producing Team | Over $350 Million Sold"
+            subtitle: "Top Producing Team | Over $350 Million Sold"
         },
         {
             eyebrow: "Exceptional Real Estate Representation",
