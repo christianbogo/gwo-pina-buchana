@@ -6,7 +6,7 @@ import { GREY_PLACEHOLDER } from "@/lib/constants";
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 import CondensedContactForm from "@/components/CondensedContactForm";
-import { PortableText } from "@portabletext/react";
+import TeamMember from "@/components/TeamMember";
 
 export const revalidate = 60;
 
@@ -73,33 +73,7 @@ export default async function TeamPage() {
                         <div className="flex flex-col gap-16 md:gap-24 max-w-5xl mx-auto">
                             {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                             {sortedTeamMembers.map((member: any) => (
-                                <div key={member.name} className="flex flex-col md:flex-row gap-8 md:gap-16 items-start">
-                                    <div className="relative aspect-[3/4] w-full md:w-[350px] shrink-0 overflow-hidden grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-700 shadow-sm">
-                                        <Image
-                                            src={member.headshot ? urlForImage(member.headshot).width(600).height(800).url() : GREY_PLACEHOLDER}
-                                            alt={member.name}
-                                            fill
-                                            className="object-cover"
-                                            sizes="(max-width: 768px) 100vw, 350px"
-                                        />
-                                    </div>
-                                    <div className="flex-grow pt-2">
-                                        <div className="flex items-center justify-between mb-2">
-                                            <h3 className="font-serif text-3xl text-foreground">{member.name}</h3>
-                                            {member.linkedin && (
-                                                <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent transition-colors">
-                                                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                                        <path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd" />
-                                                    </svg>
-                                                </a>
-                                            )}
-                                        </div>
-                                        <p className="text-accent text-sm uppercase tracking-widest mb-6 border-b border-accent/20 pb-4 inline-block">{member.role}</p>
-                                        <div className="text-gray-600 dark:text-gray-300 leading-relaxed text-base space-y-4">
-                                            {member.bio && <PortableText value={member.bio} />}
-                                        </div>
-                                    </div>
-                                </div>
+                                <TeamMember key={member.name} member={member} />
                             ))}
                         </div>
                     </div>
