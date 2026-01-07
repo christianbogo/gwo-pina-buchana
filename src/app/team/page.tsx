@@ -62,8 +62,11 @@ export default async function TeamPage() {
                             <h1 className="font-serif text-4xl md:text-6xl text-foreground mb-6">Architects of the Client Experience</h1>
                             <div className="w-24 h-1 bg-accent mx-auto mb-8" />
                             <p className="max-w-2xl mx-auto text-muted-foreground leading-relaxed text-lg">
-                                Where Development Strategy Meets Global Concierge Service.<br /><br />
-                                In the complex, high-velocity real estate market of the Pacific Northwest, the traditional "salesperson" model is obsolete. Today’s clients require strategic advisors, data interpreters, design consultants, and global connectors.
+                                The Gwo Piña Buchanan Team draws from complementary backgrounds — real estate development, luxury hospitality, and bespoke retail — to deliver a holistic, concierge-level client experience.
+
+                                <br />
+                                <br />
+                                Today’s clients require strategic advisors, data interpreters, design consultants, marketing masterminds, and global connectors.
                             </p>
                         </div>
 

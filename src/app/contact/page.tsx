@@ -30,8 +30,7 @@ export default async function ContactPage() {
                             <div>
                                 <h1 className="font-serif text-5xl md:text-7xl text-foreground mb-8">Start the Conversation</h1>
                                 <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
-                                    Real estate is a journey, and every journey begins with a single step. Whether you are exploring the value of your current home, looking for unparalleled investment opportunities, or ready to find your dream residence in the Pacific Northwest, the Gwo Piña Buchanan team is here to guide you.
-                                </p>
+                                    Real estate is a journey, and every journey begins with a single step. Whether you are exploring the value of your current home, weighing investment opportunities, or ready to find your dream residence in the Pacific Northwest, the Gwo Piña Buchanan team is here to guide you.                                </p>
                             </div>
 
                             <div className="space-y-8">

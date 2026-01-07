@@ -13,9 +13,8 @@ export default function Footer() {
                             Gwo Piña Buchanan
                         </h3>
                         <p className="text-gray-400 text-sm leading-relaxed">
-                            Luxury Real Estate Team<br />
-                            Serving the finest neighborhoods.
-                        </p>
+                            Exceptional Real Estate Representation<br />
+                            Distinctive Properties | New Developments | Residential Portfolio Advisory                        </p>
                         <div className="pt-4 space-y-2 text-sm text-gray-400">
                             {/* Contact info removed per request to force form usage */}
                         </div>

@@ -195,11 +195,9 @@ export default async function Home() {
                 )}
 
                 <p className="max-w-2xl mx-auto text-muted-foreground leading-relaxed text-lg">
-                  The Gwo Piña Buchanan Team draws from complementary backgrounds — real estate development, luxury hospitality, and bespoke retail — to deliver a holistic, concierge-level client experience.
+                  Real estate excellence is no longer a solo endeavor. With more than 20 years of combined experience, numerous industry awards, and hundreds of millions of dollars in sales, the Gwo Pina Buchanan Team enters a new era — pioneering luxury real estate across Seattle and the Eastside, together
                 </p>
-                <p className="max-w-2xl mx-auto text-muted-foreground leading-relaxed text-lg">
-                  Today’s clients require strategic advisors, data interpreters, design consultants, marketing masterminds, and global connectors.
-                </p>
+
               </div>
             </FadeIn>
 
