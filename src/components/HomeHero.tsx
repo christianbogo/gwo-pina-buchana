@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface HomeHeroProps {
     videoUrl?: string | null;
@@ -52,8 +53,9 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
                     src="https://iframe.mediadelivery.net/embed/567649/6e276b49-a58c-43a4-8483-0d299e6bf1d9?autoplay=true&loop=true&muted=true&preload=true&controls=0&playsinline=true&playlist=6e276b49-a58c-43a4-8483-0d299e6bf1d9"
                     loading="eager"
                     className="absolute top-1/2 left-1/2 w-[177.77777778vh] h-[56.25vw] min-w-full min-h-full object-cover"
-                    allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; storage-access-by-user-activation"
+                    allow="autoplay *; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; storage-access-by-user-activation"
                     allowFullScreen
+                    referrerPolicy="no-referrer"
                     style={{
                         border: 'none',
                         position: 'absolute',
@@ -73,9 +75,15 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
                     <p className="text-sm md:text-base tracking-[0.2em] uppercase mb-4 text-gray-200 drop-shadow-sm font-medium">
                         {slides[currentSlide].eyebrow}
                     </p>
-                    <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl mb-6 tracking-wide drop-shadow-lg leading-tight">
-                        {slides[currentSlide].title}
-                    </h1>
+                    <div className="relative h-16 w-[300px] md:h-32 md:w-[600px] lg:h-40 lg:w-[800px] mb-6 drop-shadow-lg">
+                        <Image
+                            src="/images/logos/inline-white.png"
+                            alt="Gwo Piña Buchanan"
+                            fill
+                            className="object-contain"
+                            priority
+                        />
+                    </div>
                     <p className="text-lg md:text-xl tracking-widest uppercase drop-shadow-md text-gray-100 max-w-3xl mx-auto">
                         {slides[currentSlide].subtitle}
                     </p>
