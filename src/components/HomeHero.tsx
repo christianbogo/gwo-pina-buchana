@@ -69,24 +69,52 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
             </div>
 
             <div className="relative z-20 text-center text-white px-4 max-w-5xl mx-auto w-full flex flex-col items-center gap-12">
-                <div
-                    className={`flex flex-col justify-center items-center transition-opacity duration-500 ease-in-out ${isVisible ? "opacity-100" : "opacity-0"}`}
-                >
-                    <p className="text-sm md:text-base tracking-[0.2em] uppercase mb-4 text-gray-200 drop-shadow-sm font-medium">
-                        {slides[currentSlide].eyebrow}
-                    </p>
-                    <div className="relative h-16 w-[300px] md:h-32 md:w-[600px] lg:h-40 lg:w-[800px] mb-6 drop-shadow-lg">
+                <div className="flex flex-col justify-center items-center w-full">
+                    {/* Eyebrow - Min Height for stability - Desktop Only */}
+                    <div className="hidden md:flex md:min-h-[2rem] items-end mb-4">
+                        <p className={`text-base tracking-[0.2em] uppercase text-gray-200 drop-shadow-sm font-medium transition-opacity duration-500 ease-in-out ${isVisible ? "opacity-100" : "opacity-0"}`}>
+                            {slides[currentSlide].eyebrow}
+                        </p>
+                    </div>
+
+                    {/* Static Logos */}
+                    {/* Mobile: Vertical Logo - Increased Size, Negative Margin to fix built-in gap */}
+                    <div className="relative h-64 w-64 sm:h-80 sm:w-80 -mb-12 sm:-mb-16 drop-shadow-lg block md:hidden">
+                        <Image
+                            src="/images/logos/vertical-white.png"
+                            alt="Gwo Piña Buchanan"
+                            fill
+                            className="object-contain"
+                            priority
+                            sizes="(max-width: 768px) 80vw, 33vw"
+                        />
+                    </div>
+
+                    {/* Desktop: Inline Logo */}
+                    <div className="relative hidden md:block md:h-32 md:w-[600px] lg:h-40 lg:w-[800px] mb-6 drop-shadow-lg">
                         <Image
                             src="/images/logos/inline-white.png"
                             alt="Gwo Piña Buchanan"
                             fill
                             className="object-contain"
                             priority
+                            sizes="80vw"
                         />
                     </div>
-                    <p className="text-lg md:text-xl tracking-widest uppercase drop-shadow-md text-gray-100 max-w-3xl mx-auto">
-                        {slides[currentSlide].subtitle}
-                    </p>
+
+                    {/* Desktop Subtitle - Min Height for stability (approx 1 line desktop) */}
+                    <div className="hidden md:flex md:min-h-[2rem] items-start justify-center">
+                        <p className={`text-xl tracking-widest uppercase drop-shadow-md text-gray-100 max-w-3xl mx-auto transition-opacity duration-500 ease-in-out ${isVisible ? "opacity-100" : "opacity-0"}`}>
+                            {slides[currentSlide].subtitle}
+                        </p>
+                    </div>
+
+                    {/* Mobile Subtitle - Between Logo and Buttons */}
+                    <div className="flex md:hidden min-h-[4rem] items-start justify-center mt-4">
+                        <p className={`text-lg tracking-widest uppercase drop-shadow-md text-gray-100 max-w-md mx-auto transition-opacity duration-500 ease-in-out ${isVisible ? "opacity-100" : "opacity-0"}`}>
+                            {slides[currentSlide].subtitle}
+                        </p>
+                    </div>
                 </div>
 
                 <div className="flex flex-col md:flex-row md:flex-nowrap gap-4 md:gap-12 justify-center items-center w-full max-w-7xl mx-auto">

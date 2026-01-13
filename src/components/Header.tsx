@@ -81,8 +81,8 @@ export default function Header({ theme: initialTheme = "transparent" }: HeaderPr
                         {/* Logo */}
                         <div className="flex-shrink-0 flex items-center">
                             <Link href="/" className="relative block group">
-                                {/* Desktop Logo (> md) */}
-                                <div className="hidden md:block">
+                                {/* Desktop Logo (> sm) */}
+                                <div className="hidden sm:block">
                                     <div className="relative h-10 w-[300px]">
                                         {/* White Logo (Default/Dark Mode) */}
                                         <Image
@@ -103,8 +103,8 @@ export default function Header({ theme: initialTheme = "transparent" }: HeaderPr
                                     </div>
                                 </div>
 
-                                {/* Mobile Logo (< md) */}
-                                <div className="block md:hidden">
+                                {/* Mobile Logo (< sm) */}
+                                <div className="block sm:hidden">
                                     <div className="relative h-10 w-10">
                                         {/* White Monogram */}
                                         <Image
