@@ -25,6 +25,8 @@ html {
 
   --font-serif: var(--font-serif);
   --font-sans: var(--font-sans);
+
+  --breakpoint-sm: 420px;
 }
 
 /* Manual dark mode support via class */
