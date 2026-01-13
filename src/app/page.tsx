@@ -16,7 +16,7 @@ import InitialLoader from "@/components/InitialLoader";
 export const revalidate = 60;
 
 export const metadata = {
-  title: "Gwo Piña Buchanan | New Developments & Luxury Real Estate Seattle & Bellevue",
+  title: "Gwo Piña Buchanan | Luxury Real Estate & New Developments | Seattle & Bellevue",
   description: "Dehlan Gwo, Yael Piña, and Rachel Buchanan present the region's most comprehensive portfolio of new homes. From Alki Beach to Bellevue high-rises, discover the future of living in the Pacific Northwest.",
 };
 

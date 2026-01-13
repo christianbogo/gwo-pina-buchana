@@ -9,9 +9,14 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
                     {/* Brand / Contact */}
                     <div className="space-y-4">
-                        <h3 className="font-serif text-2xl tracking-widest uppercase text-white">
-                            Gwo Piña Buchanan
-                        </h3>
+                        <Link href="/" className="block relative h-8 w-64 mb-6 opacity-90 hover:opacity-100 transition-opacity">
+                            <Image
+                                src="/images/logos/inline-white.png"
+                                alt="Gwo Piña Buchanan"
+                                fill
+                                className="object-contain object-left"
+                            />
+                        </Link>
                         <p className="text-gray-400 text-sm leading-relaxed">
                             Exceptional Real Estate Representation<br />
                             Distinctive Properties | New Developments | Residential Portfolio Advisory                        </p>

@@ -1,18 +1,21 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface HeaderProps {
     theme?: "transparent" | "solid";
 }
 
-export default function Header({ theme = "transparent" }: HeaderProps) {
+export default function Header({ theme: initialTheme = "transparent" }: HeaderProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const { resolvedTheme } = useTheme();
     const pathname = usePathname();
 
     useEffect(() => {
@@ -61,7 +64,7 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
         { name: "Let's Connect", href: "/contact" },
     ];
 
-    const isSolid = theme === "solid" || isScrolled;
+    const isSolid = initialTheme === "solid" || isScrolled;
 
     const headerClasses = isSolid
         ? "bg-background/90 backdrop-blur-md border-b border-border shadow-sm py-0"
@@ -77,8 +80,50 @@ export default function Header({ theme = "transparent" }: HeaderProps) {
                     <div className="flex justify-between items-center h-16 md:h-24">
                         {/* Logo */}
                         <div className="flex-shrink-0 flex items-center">
-                            <Link href="/" className={`font-serif text-lg md:text-2xl tracking-[0.2em] uppercase transition-colors duration-300 ${textColorClass} hover:opacity-80`}>
-                                Gwo Piña Buchanan
+                            <Link href="/" className="relative block group">
+                                {/* Desktop Logo (> md) */}
+                                <div className="hidden md:block">
+                                    <div className="relative h-10 w-[300px]">
+                                        {/* White Logo (Default/Dark Mode) */}
+                                        <Image
+                                            src="/images/logos/inline-white.png"
+                                            alt="Gwo Piña Buchanan"
+                                            fill
+                                            className={`object-contain object-left transition-opacity duration-300 ${isSolid && resolvedTheme !== "dark" ? "opacity-0" : "opacity-100"}`}
+                                            priority
+                                        />
+                                        {/* Black Logo (Light Mode + Scrolled) */}
+                                        <Image
+                                            src="/images/logos/inline-black.png"
+                                            alt="Gwo Piña Buchanan"
+                                            fill
+                                            className={`object-contain object-left transition-opacity duration-300 ${isSolid && resolvedTheme !== "dark" ? "opacity-100" : "opacity-0"}`}
+                                            priority
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Mobile Logo (< md) */}
+                                <div className="block md:hidden">
+                                    <div className="relative h-10 w-10">
+                                        {/* White Monogram */}
+                                        <Image
+                                            src="/images/logos/monogram-white.png"
+                                            alt="GPB"
+                                            fill
+                                            className={`object-contain transition-opacity duration-300 ${isSolid && resolvedTheme !== "dark" ? "opacity-0" : "opacity-100"}`}
+                                            priority
+                                        />
+                                        {/* Black Monogram */}
+                                        <Image
+                                            src="/images/logos/monogram-black.png"
+                                            alt="GPB"
+                                            fill
+                                            className={`object-contain transition-opacity duration-300 ${isSolid && resolvedTheme !== "dark" ? "opacity-100" : "opacity-0"}`}
+                                            priority
+                                        />
+                                    </div>
+                                </div>
                             </Link>
                         </div>
 
