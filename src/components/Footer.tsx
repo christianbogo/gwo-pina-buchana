@@ -11,7 +11,7 @@ export default function Footer() {
                     <div className="space-y-4">
                         <Link href="/" className="block relative h-8 w-64 mb-6 opacity-90 hover:opacity-100 transition-opacity">
                             <Image
-                                src="/images/logos/inline-white.png"
+                                src="/images/logos/main-logo-white.png"
                                 alt="Gwo Piña Buchanan"
                                 fill
                                 className="object-contain object-left"

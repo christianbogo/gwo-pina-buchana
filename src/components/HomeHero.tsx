@@ -83,18 +83,18 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
 
             <div className="relative z-20 text-center text-white px-4 max-w-5xl mx-auto w-full flex flex-col items-center gap-12">
                 <div className="flex flex-col justify-center items-center w-full">
-                    {/* Eyebrow - Min Height for stability - Desktop Only */}
-                    <div className="hidden md:flex md:min-h-[2rem] items-end mb-4">
+                    {/* Eyebrow - Min Height for stability - Desktop & Mobile */}
+                    <div className="min-h-[2rem] flex items-end mb-4">
                         <p className={`text-base tracking-[0.2em] uppercase text-gray-200 drop-shadow-sm font-medium transition-opacity duration-500 ease-in-out ${isVisible ? "opacity-100" : "opacity-0"}`}>
                             {slides[currentSlide].eyebrow}
                         </p>
                     </div>
 
                     {/* Static Logos */}
-                    {/* Mobile: Vertical Logo - Increased Size, Negative Margin to fix built-in gap */}
-                    <div className="relative h-64 w-64 sm:h-80 sm:w-80 -mb-12 sm:-mb-16 drop-shadow-lg block md:hidden">
+                    {/* Mobile: LogoType (Horizontal) - Replaced Vertical Logo */}
+                    <div className="relative h-16 w-64 sm:h-24 sm:w-[400px] mb-6 drop-shadow-lg block md:hidden">
                         <Image
-                            src="/images/logos/vertical-white.png"
+                            src="/images/logos/logotype-white.png"
                             alt="Gwo Piña Buchanan"
                             fill
                             className="object-contain"
