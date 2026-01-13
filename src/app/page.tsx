@@ -163,7 +163,10 @@ export default async function Home() {
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <HomeHero videoUrl={videoUrl} />
+        <HomeHero
+          videoUrl={videoUrl}
+          posterImage={newDevelopmentsImage ? newDevelopmentsImage : undefined}
+        />
 
         {/* Exclusive Listings Section */}
         {/* Exclusive Listings / Notable Sales Section */}

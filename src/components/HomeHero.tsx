@@ -7,7 +7,7 @@ import Image from "next/image";
 interface HomeHeroProps {
     videoUrl?: string | null;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    posterImage?: any; // Sanity image object
+    posterImage?: string | any; // Sanity image object or URL string
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -47,6 +47,19 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
     return (
         <section className="relative h-screen flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 z-0 select-none pointer-events-none">
+                {/* Fallback Poster Image */}
+                {posterImage && (
+                    <div className="absolute inset-0 z-0">
+                        <Image
+                            src={posterImage}
+                            alt="Background"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                    </div>
+                )}
+
                 <div className="w-full h-full bg-gray-900/40 absolute z-10" />
 
                 <iframe
