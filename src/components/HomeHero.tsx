@@ -14,6 +14,8 @@ interface HomeHeroProps {
 export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isVisible, setIsVisible] = useState(true);
+    const [isMobile, setIsMobile] = useState(false);
+    const [mounted, setMounted] = useState(false);
 
     const slides = [
         {
@@ -32,6 +34,20 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
             subtitle: "Trusted by Discerning Buyers, Sellers, and Builders"
         }
     ];
+
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setMounted(true);
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        // Initial check
+        handleResize();
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -62,23 +78,36 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
 
                 <div className="w-full h-full bg-gray-900/40 absolute z-10" />
 
-                <iframe
-                    src="https://iframe.mediadelivery.net/embed/567649/6e276b49-a58c-43a4-8483-0d299e6bf1d9?autoplay=true&loop=true&muted=true&preload=true&controls=0&playsinline=true&playlist=6e276b49-a58c-43a4-8483-0d299e6bf1d9"
-                    loading="eager"
-                    className="absolute top-1/2 left-1/2 w-[177.77777778vh] h-[56.25vw] min-w-full min-h-full object-cover"
-                    allow="autoplay *; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; storage-access-by-user-activation"
-                    allowFullScreen
-                    referrerPolicy="no-referrer"
-                    style={{
-                        border: 'none',
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        objectFit: 'cover',
-                        pointerEvents: 'none',
-                    }}
-                />
+                {mounted && (
+                    isMobile ? (
+                        <video
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="absolute inset-0 w-full h-full object-cover"
+                            src="https://vz-94cfd471-e5f.b-cdn.net/abd5d4e2-91ef-42db-8c78-62715e92a6fc/play_720p.mp4"
+                        />
+                    ) : (
+                        <iframe
+                            src="https://iframe.mediadelivery.net/embed/567649/6e276b49-a58c-43a4-8483-0d299e6bf1d9?autoplay=true&loop=true&muted=true&preload=true&controls=0&playsinline=true&playlist=6e276b49-a58c-43a4-8483-0d299e6bf1d9"
+                            loading="eager"
+                            className="absolute top-1/2 left-1/2 w-[177.77777778vh] h-[56.25vw] min-w-full min-h-full object-cover"
+                            allow="autoplay *; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; storage-access-by-user-activation"
+                            allowFullScreen
+                            referrerPolicy="no-referrer"
+                            style={{
+                                border: 'none',
+                                position: 'absolute',
+                                top: '50%',
+                                left: '50%',
+                                transform: 'translate(-50%, -50%)',
+                                objectFit: 'cover',
+                                pointerEvents: 'none',
+                            }}
+                        />
+                    )
+                )}
             </div>
 
             <div className="relative z-20 text-center text-white px-4 max-w-5xl mx-auto w-full flex flex-col items-center gap-12">
