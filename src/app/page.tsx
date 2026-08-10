@@ -207,7 +207,7 @@ export default async function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 max-w-5xl mx-auto">
               <FadeIn delay={0.1}>
                 <div className="text-center p-8 md:p-12 border border-border bg-background hover:shadow-lg transition-shadow duration-300">
-                  <p className="text-4xl md:text-5xl lg:text-6xl font-serif text-foreground mb-4">$350 Million+</p>
+                  <p className="text-4xl md:text-5xl lg:text-6xl font-serif text-foreground mb-4">$500 Million+</p>
                   <p className="text-sm md:text-base uppercase tracking-widest text-muted-foreground">Career Sales</p>
                   <p className="text-xs text-muted-foreground mt-2">(Total Combined Sales Volume Since 2016)</p>
                 </div>
