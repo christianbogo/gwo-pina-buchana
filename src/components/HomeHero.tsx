@@ -86,11 +86,11 @@ export default function HomeHero({ videoUrl, posterImage }: HomeHeroProps) {
                             muted
                             playsInline
                             className="absolute inset-0 w-full h-full object-cover"
-                            src="https://vz-94cfd471-e5f.b-cdn.net/da8e9a62-234e-4e72-80b3-b0dc60cdedf1/play_720p.mp4"
+                            src="https://vz-94cfd471-e5f.b-cdn.net/73c0b647-6118-4002-bac7-923f12cad6c3/play_720p.mp4"
                         />
                     ) : (
                         <iframe
-                            src="https://iframe.mediadelivery.net/embed/567649/da8e9a62-234e-4e72-80b3-b0dc60cdedf1?autoplay=true&loop=true&muted=true&preload=true&controls=0&playsinline=true&playlist=da8e9a62-234e-4e72-80b3-b0dc60cdedf1"
+                            src="https://iframe.mediadelivery.net/embed/567649/73c0b647-6118-4002-bac7-923f12cad6c3?autoplay=true&loop=true&muted=true&preload=true&controls=0&playsinline=true&playlist=73c0b647-6118-4002-bac7-923f12cad6c3"
                             loading="eager"
                             className="absolute top-1/2 left-1/2 w-[177.77777778vh] h-[56.25vw] min-w-full min-h-full object-cover"
                             allow="autoplay *; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; storage-access-by-user-activation"
